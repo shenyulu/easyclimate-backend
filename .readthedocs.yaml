@@ -13,8 +13,6 @@ build:
     python: "3.10"
   apt_packages:
     - optipng
-  jobs:
-    build: html  # 指定构建类型为 html
-    post_install:  # 在安装依赖后运行自定义命令
-      - make -C docs html
+  commands:
       - cp -r ./docs/source/src/raw ./docs/build/html/src
+
