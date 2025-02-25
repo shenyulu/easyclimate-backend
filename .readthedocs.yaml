@@ -14,7 +14,7 @@ build:
   apt_packages:
     - optipng
   jobs:
-    build: 
-      - make -C docs html
-      - cp -r ./docs/source/src/raw ./docs/build/html/src
-
+    build:
+      commands:
+        - make -C docs html
+        - cp -r ./docs/source/src/raw ./docs/build/html/src
