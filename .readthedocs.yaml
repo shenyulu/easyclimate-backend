@@ -14,7 +14,7 @@ build:
   apt_packages:
     - optipng
   jobs:
-    build:
-      commands:
-        - make -C docs html
-        - cp -r ./docs/source/src/raw ./docs/build/html/src
+    build: html  # 指定构建类型为 html
+    post_install:  # 在安装依赖后运行自定义命令
+      - make -C docs html
+      - cp -r ./docs/source/src/raw ./docs/build/html/src
