@@ -13,6 +13,7 @@ build:
     python: "3.10"
   apt_packages:
     - optipng
-  commands:
+  jobs:
+    post_install:
       - cp -r ./docs/source/src/raw ./docs/build/html/src
 
