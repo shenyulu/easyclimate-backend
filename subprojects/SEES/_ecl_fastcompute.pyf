@@ -1,0 +1,44 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module _ecl_fastcompute ! in 
+    interface  ! in :_ecl_fastcompute
+        subroutine sawyer_eliassen(nz,nr,dz,dr,omega,tol,iter_max,lateral_bdy,rhs,psiin,aa,bb,cc,daa_dr,dbb_dr,dbb_dz,dcc_dz,psiout) ! in :_ecl_fastcompute:./src/SE_eqn_coreV3.3.f95
+            integer, optional,intent(in),check(shape(rhs, 0) == nz),depend(rhs) :: nz=shape(rhs, 0)
+            integer, optional,intent(in),check(shape(rhs, 1) == nr),depend(rhs) :: nr=shape(rhs, 1)
+            real*8 intent(in) :: dz
+            real*8 intent(in) :: dr
+            real*8 intent(in) :: omega
+            real*8 intent(in) :: tol
+            integer intent(in) :: iter_max
+            character*6 intent(in) :: lateral_bdy
+            real*8 dimension(nz,nr),intent(in) :: rhs
+            real*8 dimension(nz,nr),intent(in),depend(nz,nr) :: psiin
+            real*8 dimension(nz,nr),intent(in),depend(nz,nr) :: aa
+            real*8 dimension(nz,nr),intent(in),depend(nz,nr) :: bb
+            real*8 dimension(nz,nr),intent(in),depend(nz,nr) :: cc
+            real*8 dimension(nz,nr),intent(in),depend(nz,nr) :: daa_dr
+            real*8 dimension(nz,nr),intent(in),depend(nz,nr) :: dbb_dr
+            real*8 dimension(nz,nr),intent(in),depend(nz,nr) :: dbb_dz
+            real*8 dimension(nz,nr),intent(in),depend(nz,nr) :: dcc_dz
+            real*8 dimension(nz,nr),intent(out),depend(nz,nr) :: psiout
+        end subroutine sawyer_eliassen
+        subroutine interp3d(lenx,leny,lenz,dx,dy,nt,nr,xrthetalocation,yrthetalocation,xydata,rthetadata) ! in :_ecl_fastcompute:./src/SE_eqn_coreV3.3.f95
+            integer, optional,intent(in),check(shape(xydata, 2) == lenx),depend(xydata) :: lenx=shape(xydata, 2)
+            integer, optional,intent(in),check(shape(xydata, 1) == leny),depend(xydata) :: leny=shape(xydata, 1)
+            integer, optional,intent(in),check(shape(xydata, 0) == lenz),depend(xydata) :: lenz=shape(xydata, 0)
+            real*8 intent(in) :: dx
+            real*8 intent(in) :: dy
+            integer, optional,intent(in),check(shape(xrthetalocation, 0) == nt),depend(xrthetalocation) :: nt=shape(xrthetalocation, 0)
+            integer, optional,intent(in),check(shape(xrthetalocation, 1) == nr),depend(xrthetalocation) :: nr=shape(xrthetalocation, 1)
+            real*8 dimension(nt,nr),intent(in) :: xrthetalocation
+            real*8 dimension(nt,nr),intent(in),depend(nt,nr) :: yrthetalocation
+            real*8 dimension(lenz,leny,lenx),intent(in) :: xydata
+            real*8 dimension(lenz,nt,nr),intent(out),depend(lenz,nt,nr) :: rthetadata
+        end subroutine interp3d
+    end interface 
+end python module _ecl_fastcompute
+
+! This file was auto-generated with f2py (version:1.24.3).
+! See:
+! https://web.archive.org/web/20140822061353/http://cens.ioc.ee/projects/f2py2e

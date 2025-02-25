@@ -1,0 +1,885 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module _wrf ! in 
+    interface  ! in :_wrf
+    subroutine dcalcuh(nx,ny,nz,nzp1,zp,mapfct,dx,dy,uhmnhgt,uhmxhgt,us,vs,w,uh,tem1,tem2) ! in calc_uh.f90
+        threadsafe 
+        integer, optional,intent(in),check(shape(zp, 0) == nx),depend(zp) :: nx=shape(zp, 0)
+        integer, optional,intent(in),check(shape(zp, 1) == ny),depend(zp) :: ny=shape(zp, 1)
+        integer, optional,intent(in),check(shape(us, 2) == nz),depend(us) :: nz=shape(us, 2)
+        integer, optional,intent(in),check(shape(zp, 2) == nzp1),depend(zp) :: nzp1=shape(zp, 2)
+        real(kind=8) dimension(nx,ny,nzp1),intent(in) :: zp
+        real(kind=8) dimension(nx,ny),intent(in),depend(ny,nx) :: mapfct
+        real(kind=8) intent(in) :: dx
+        real(kind=8) intent(in) :: dy
+        real(kind=8) intent(in) :: uhmnhgt
+        real(kind=8) intent(in) :: uhmxhgt
+        real(kind=8) dimension(nx,ny,nz),intent(in),depend(ny,nx) :: us
+        real(kind=8) dimension(nx,ny,nz),intent(in),depend(nz,ny,nx) :: vs
+        real(kind=8) dimension(nx,ny,nzp1),intent(in),depend(ny,nx,nzp1) :: w
+        real(kind=8) dimension(nx,ny),intent(out,in),depend(ny,nx) :: uh
+        real(kind=8) dimension(nx,ny,nz),intent(inout),depend(nz,ny,nx) :: tem1
+        real(kind=8) dimension(nx,ny,nz),intent(inout),depend(nz,ny,nx) :: tem2
+    end subroutine dcalcuh
+    subroutine dmaptform(dskmc,miycors,mjxcors,nproj,xlatc,xlonc,true1,true2,riy,rjx,rlat,rlon,idir) ! in wrf_bint3d.f
+        double precision :: dskmc
+        integer :: miycors
+        integer :: mjxcors
+        integer :: nproj
+        double precision :: xlatc
+        double precision :: xlonc
+        double precision :: true1
+        double precision :: true2
+        double precision :: riy
+        double precision :: rjx
+        double precision :: rlat
+        double precision :: rlon
+        integer :: idir
+    end subroutine dmaptform
+    subroutine dbint3d(data_out,obsii,obsjj,data_in,nx,ny,nz,nobsicrs,nobsjcrs,icrs,jcrs) ! in wrf_bint3d.f
+        double precision dimension(nobsicrs,nobsjcrs,nz) :: data_out
+        double precision dimension(nobsicrs,nobsjcrs),depend(nobsjcrs,nobsicrs) :: obsii
+        double precision dimension(nobsicrs,nobsjcrs),depend(nobsjcrs,nobsicrs) :: obsjj
+        double precision dimension(nx,ny,nz),depend(nz) :: data_in
+        integer, optional,check(shape(data_in, 0) == nx),depend(data_in) :: nx=shape(data_in, 0)
+        integer, optional,check(shape(data_in, 1) == ny),depend(data_in) :: ny=shape(data_in, 1)
+        integer, optional,check(shape(data_out, 2) == nz),depend(data_out) :: nz=shape(data_out, 2)
+        integer, optional,check(shape(data_out, 0) == nobsicrs),depend(data_out) :: nobsicrs=shape(data_out, 0)
+        integer, optional,check(shape(data_out, 1) == nobsjcrs),depend(data_out) :: nobsjcrs=shape(data_out, 1)
+        integer :: icrs
+        integer :: jcrs
+    end subroutine dbint3d
+    subroutine dbint(pp,xx,yy,list,iii,jjj,icrs,jcrs) ! in wrf_bint3d.f
+        double precision :: pp
+        double precision :: xx
+        double precision :: yy
+        double precision dimension(iii,jjj) :: list
+        integer, optional,check(shape(list, 0) == iii),depend(list) :: iii=shape(list, 0)
+        integer, optional,check(shape(list, 1) == jjj),depend(list) :: jjj=shape(list, 1)
+        integer :: icrs
+        integer :: jcrs
+    end subroutine dbint
+    subroutine doned(y,x,a,b,c,d) ! in wrf_bint3d.f
+        double precision :: y
+        double precision :: x
+        double precision :: a
+        double precision :: b
+        double precision :: c
+        double precision :: d
+    end subroutine doned
+    subroutine dcloudfrac(pres,rh,lowc,midc,highc,nz,ns,ew) ! in wrf_cloud_fracf.f90
+        threadsafe 
+        real(kind=8) dimension(ew,ns,nz),intent(in) :: pres
+        real(kind=8) dimension(ew,ns,nz),intent(in),depend(ns,ew,nz) :: rh
+        real(kind=8) dimension(ew,ns),intent(out,in),depend(ns,ew) :: lowc
+        real(kind=8) dimension(ew,ns),intent(out,in),depend(ns,ew) :: midc
+        real(kind=8) dimension(ew,ns),intent(out,in),depend(ns,ew) :: highc
+        integer, optional,check(shape(pres, 2) == nz),depend(pres) :: nz=shape(pres, 2)
+        integer, optional,check(shape(pres, 1) == ns),depend(pres) :: ns=shape(pres, 1)
+        integer, optional,check(shape(pres, 0) == ew),depend(pres) :: ew=shape(pres, 0)
+    end subroutine dcloudfrac
+    subroutine dcloudfrac2(vert,rh,vert_inc_w_height,low_thresh,mid_thresh,high_thresh,msg,lowc,midc,highc,nz,ns,ew) ! in wrf_cloud_fracf.f90
+        threadsafe 
+        real(kind=8) dimension(ew,ns,nz),intent(in) :: vert
+        real(kind=8) dimension(ew,ns,nz),intent(in),depend(ns,ew,nz) :: rh
+        integer intent(in) :: vert_inc_w_height
+        real(kind=8) intent(in) :: low_thresh
+        real(kind=8) intent(in) :: mid_thresh
+        real(kind=8) intent(in) :: high_thresh
+        real(kind=8) intent(in) :: msg
+        real(kind=8) dimension(ew,ns),intent(out,in),depend(ns,ew) :: lowc
+        real(kind=8) dimension(ew,ns),intent(out,in),depend(ns,ew) :: midc
+        real(kind=8) dimension(ew,ns),intent(out,in),depend(ns,ew) :: highc
+        integer, optional,check(shape(vert, 2) == nz),depend(vert) :: nz=shape(vert, 2)
+        integer, optional,check(shape(vert, 1) == ns),depend(vert) :: ns=shape(vert, 1)
+        integer, optional,check(shape(vert, 0) == ew),depend(vert) :: ew=shape(vert, 0)
+    end subroutine dcloudfrac2
+    subroutine wrfcttcalc(prs,tk,qci,qcw,qvp,ght,ter,ctt,pf,haveqci,fill_nocloud,missing,opt_thresh,nz,ns,ew) ! in wrf_fctt.f90
+        threadsafe 
+        use wrf_constants, only: eps,ussalr,rd,g,abscoefi,abscoef,celkel
+        real(kind=8) dimension(ew,ns,nz),intent(in) :: prs
+        real(kind=8) dimension(ew,ns,nz),intent(in),depend(ns,ew,nz) :: tk
+        real(kind=8) dimension(ew,ns,nz),intent(in),depend(ns,ew,nz) :: qci
+        real(kind=8) dimension(ew,ns,nz),intent(in),depend(ns,ew,nz) :: qcw
+        real(kind=8) dimension(ew,ns,nz),intent(in),depend(ns,ew,nz) :: qvp
+        real(kind=8) dimension(ew,ns,nz),intent(in),depend(ns,ew,nz) :: ght
+        real(kind=8) dimension(ew,ns),intent(in),depend(ns,ew) :: ter
+        real(kind=8) dimension(ew,ns),intent(out,in),depend(ns,ew) :: ctt
+        real(kind=8) dimension(ew,ns,nz),intent(inout),depend(ns,ew,nz) :: pf
+        integer intent(in) :: haveqci
+        integer intent(in) :: fill_nocloud
+        real(kind=8) intent(in) :: missing
+        real(kind=8) intent(in) :: opt_thresh
+        integer, optional,intent(in),check(shape(prs, 2) == nz),depend(prs) :: nz=shape(prs, 2)
+        integer, optional,intent(in),check(shape(prs, 1) == ns),depend(prs) :: ns=shape(prs, 1)
+        integer, optional,intent(in),check(shape(prs, 0) == ew),depend(prs) :: ew=shape(prs, 0)
+    end subroutine wrfcttcalc
+    subroutine dcomputeabsvort(av,u,v,msfu,msfv,msft,cor,dx,dy,nx,ny,nz,nxp1,nyp1) ! in wrf_pvo.f90
+        threadsafe 
+        real(kind=8) dimension(nx,ny,nz),intent(out,in) :: av
+        real(kind=8) dimension(nxp1,ny,nz),intent(in),depend(nz,ny) :: u
+        real(kind=8) dimension(nx,nyp1,nz),intent(in),depend(nz,nx) :: v
+        real(kind=8) dimension(nxp1,ny),intent(in),depend(nxp1,ny) :: msfu
+        real(kind=8) dimension(nx,nyp1),intent(in),depend(nx,nyp1) :: msfv
+        real(kind=8) dimension(nx,ny),intent(in),depend(ny,nx) :: msft
+        real(kind=8) dimension(nx,ny),intent(in),depend(ny,nx) :: cor
+        real(kind=8) :: dx
+        real(kind=8) :: dy
+        integer, optional,intent(in),check(shape(av, 0) == nx),depend(av) :: nx=shape(av, 0)
+        integer, optional,intent(in),check(shape(av, 1) == ny),depend(av) :: ny=shape(av, 1)
+        integer, optional,intent(in),check(shape(av, 2) == nz),depend(av) :: nz=shape(av, 2)
+        integer, optional,intent(in),check(shape(u, 0) == nxp1),depend(u) :: nxp1=shape(u, 0)
+        integer, optional,intent(in),check(shape(v, 1) == nyp1),depend(v) :: nyp1=shape(v, 1)
+    end subroutine dcomputeabsvort
+    subroutine dcomputepv(pv,u,v,theta,prs,msfu,msfv,msft,cor,dx,dy,nx,ny,nz,nxp1,nyp1) ! in wrf_pvo.f90
+        threadsafe 
+        use wrf_constants, only: g
+        real(kind=8) dimension(nx,ny,nz),intent(out,in) :: pv
+        real(kind=8) dimension(nxp1,ny,nz),intent(in),depend(nz,ny) :: u
+        real(kind=8) dimension(nx,nyp1,nz),intent(in),depend(nz,nx) :: v
+        real(kind=8) dimension(nx,ny,nz),intent(in),depend(nz,ny,nx) :: theta
+        real(kind=8) dimension(nx,ny,nz),intent(in),depend(nz,ny,nx) :: prs
+        real(kind=8) dimension(nxp1,ny),intent(in),depend(nxp1,ny) :: msfu
+        real(kind=8) dimension(nx,nyp1),intent(in),depend(nx,nyp1) :: msfv
+        real(kind=8) dimension(nx,ny),intent(in),depend(ny,nx) :: msft
+        real(kind=8) dimension(nx,ny),intent(in),depend(ny,nx) :: cor
+        real(kind=8) :: dx
+        real(kind=8) :: dy
+        integer, optional,intent(in),check(shape(pv, 0) == nx),depend(pv) :: nx=shape(pv, 0)
+        integer, optional,intent(in),check(shape(pv, 1) == ny),depend(pv) :: ny=shape(pv, 1)
+        integer, optional,intent(in),check(shape(pv, 2) == nz),depend(pv) :: nz=shape(pv, 2)
+        integer, optional,intent(in),check(shape(u, 0) == nxp1),depend(u) :: nxp1=shape(u, 0)
+        integer, optional,intent(in),check(shape(v, 1) == nyp1),depend(v) :: nyp1=shape(v, 1)
+    end subroutine dcomputepv
+    subroutine dcomputepw(p,tv,qv,ht,pw,nx,ny,nz,nzh) ! in wrf_pw.f90
+        threadsafe 
+        use wrf_constants, only: rd
+        real(kind=8) dimension(nx,ny,nz),intent(in) :: p
+        real(kind=8) dimension(nx,ny,nz),intent(in),depend(nz,ny,nx) :: tv
+        real(kind=8) dimension(nx,ny,nz),intent(in),depend(nz,ny,nx) :: qv
+        real(kind=8) dimension(nx,ny,nzh),intent(in),depend(ny,nx) :: ht
+        real(kind=8) dimension(nx,ny),intent(out,in),depend(ny,nx) :: pw
+        integer, optional,intent(in),check(shape(p, 0) == nx),depend(p) :: nx=shape(p, 0)
+        integer, optional,intent(in),check(shape(p, 1) == ny),depend(p) :: ny=shape(p, 1)
+        integer, optional,intent(in),check(shape(p, 2) == nz),depend(p) :: nz=shape(p, 2)
+        integer, optional,intent(in),check(shape(ht, 2) == nzh),depend(ht) :: nzh=shape(ht, 2)
+    end subroutine dcomputepw
+    subroutine dcalrelhl(u,v,ght,ter,lat,top,sreh,miy,mjx,mkzh) ! in wrf_relhl.f90
+        threadsafe 
+        use wrf_constants, only: pi,rad_per_deg,deg_per_rad
+        real(kind=8) dimension(miy,mjx,mkzh),intent(in) :: u
+        real(kind=8) dimension(miy,mjx,mkzh),intent(in),depend(mjx,miy,mkzh) :: v
+        real(kind=8) dimension(miy,mjx,mkzh),intent(in),depend(mjx,miy,mkzh) :: ght
+        real(kind=8) dimension(miy,mjx),intent(in),depend(mjx,miy) :: ter
+        real(kind=8) dimension(miy,mjx),intent(in),depend(mjx,miy) :: lat
+        real(kind=8) intent(in) :: top
+        real(kind=8) dimension(miy,mjx),intent(out,in),depend(mjx,miy) :: sreh
+        integer, optional,intent(in),check(shape(u, 0) == miy),depend(u) :: miy=shape(u, 0)
+        integer, optional,intent(in),check(shape(u, 1) == mjx),depend(u) :: mjx=shape(u, 1)
+        integer, optional,intent(in),check(shape(u, 2) == mkzh),depend(u) :: mkzh=shape(u, 2)
+    end subroutine dcalrelhl
+    subroutine wetbulbcalc(prs,tmk,qvp,twb,nx,ny,nz,psafile,errstat,errmsg) ! in wrf_rip_phys_routines.f90
+        threadsafe 
+        use wrf_constants, only: algerr,gamma,gammamd,tlclc1,tlclc2,tlclc3,eps,tlclc4,thtecon1,thtecon2,thtecon3
+        real(kind=8) dimension(nx,ny,nz),intent(in) :: prs
+        real(kind=8) dimension(nx,ny,nz),intent(in),depend(nz,ny,nx) :: tmk
+        real(kind=8) dimension(nx,ny,nz),intent(in),depend(nz,ny,nx) :: qvp
+        real(kind=8) dimension(nx,ny,nz),intent(out,in),depend(nz,ny,nx) :: twb
+        integer, optional,intent(in),check(shape(prs, 0) == nx),depend(prs) :: nx=shape(prs, 0)
+        integer, optional,intent(in),check(shape(prs, 1) == ny),depend(prs) :: ny=shape(prs, 1)
+        integer, optional,intent(in),check(shape(prs, 2) == nz),depend(prs) :: nz=shape(prs, 2)
+        character*(*) intent(in) :: psafile
+        integer intent(inout) :: errstat
+        character*(*) intent(inout) :: errmsg
+    end subroutine wetbulbcalc
+    subroutine omgcalc(qvp,tmk,www,prs,omg,mx,my,mz) ! in wrf_rip_phys_routines.f90
+        threadsafe 
+        use wrf_constants, only: g,rd,eps
+        real(kind=8) dimension(mx,my,mz),intent(in) :: qvp
+        real(kind=8) dimension(mx,my,mz),intent(in),depend(my,mz,mx) :: tmk
+        real(kind=8) dimension(mx,my,mz),intent(in),depend(my,mz,mx) :: www
+        real(kind=8) dimension(mx,my,mz),intent(in),depend(my,mz,mx) :: prs
+        real(kind=8) dimension(mx,my,mz),intent(out,in),depend(my,mz,mx) :: omg
+        integer, optional,intent(in),check(shape(qvp, 0) == mx),depend(qvp) :: mx=shape(qvp, 0)
+        integer, optional,intent(in),check(shape(qvp, 1) == my),depend(qvp) :: my=shape(qvp, 1)
+        integer, optional,intent(in),check(shape(qvp, 2) == mz),depend(qvp) :: mz=shape(qvp, 2)
+    end subroutine omgcalc
+    subroutine virtual_temp(temp,ratmix,tv,nx,ny,nz) ! in wrf_rip_phys_routines.f90
+        threadsafe 
+        use wrf_constants, only: eps
+        real(kind=8) dimension(nx,ny,nz),intent(in) :: temp
+        real(kind=8) dimension(nx,ny,nz),intent(in),depend(nz,ny,nx) :: ratmix
+        real(kind=8) dimension(nx,ny,nz),intent(out,in),depend(nz,ny,nx) :: tv
+        integer, optional,intent(in),check(shape(temp, 0) == nx),depend(temp) :: nx=shape(temp, 0)
+        integer, optional,intent(in),check(shape(temp, 1) == ny),depend(temp) :: ny=shape(temp, 1)
+        integer, optional,intent(in),check(shape(temp, 2) == nz),depend(temp) :: nz=shape(temp, 2)
+    end subroutine virtual_temp
+    subroutine calcdbz(prs,tmk,qvp,qra,qsn,qgr,sn0,ivarint,iliqskin,dbz,nx,ny,nz) ! in wrf_user_dbz.f90
+        threadsafe 
+        use wrf_constants, only: gamma_seven,rhowat,rho_r,rho_s,rho_g,alpha,celkel,pi,rd
+        real(kind=8) dimension(nx,ny,nz),intent(in) :: prs
+        real(kind=8) dimension(nx,ny,nz),intent(in),depend(nz,ny,nx) :: tmk
+        real(kind=8) dimension(nx,ny,nz),intent(inout),depend(nz,ny,nx) :: qvp
+        real(kind=8) dimension(nx,ny,nz),intent(inout),depend(nz,ny,nx) :: qra
+        real(kind=8) dimension(nx,ny,nz),intent(inout),depend(nz,ny,nx) :: qsn
+        real(kind=8) dimension(nx,ny,nz),intent(inout),depend(nz,ny,nx) :: qgr
+        integer intent(in) :: sn0
+        integer intent(in) :: ivarint
+        integer intent(in) :: iliqskin
+        real(kind=8) dimension(nx,ny,nz),intent(out,in),depend(nz,ny,nx) :: dbz
+        integer, optional,intent(in),check(shape(prs, 0) == nx),depend(prs) :: nx=shape(prs, 0)
+        integer, optional,intent(in),check(shape(prs, 1) == ny),depend(prs) :: ny=shape(prs, 1)
+        integer, optional,intent(in),check(shape(prs, 2) == nz),depend(prs) :: nz=shape(prs, 2)
+    end subroutine calcdbz
+    subroutine rotatecoords(ilat,ilon,olat,olon,lat_np,lon_np,lon_0,direction) ! in wrf_user_latlon_routines.f90
+        threadsafe 
+        use wrf_constants, only: pi,rad_per_deg,deg_per_rad
+        real(kind=8) intent(in) :: ilat
+        real(kind=8) intent(in) :: ilon
+        real(kind=8) intent(out,in) :: olat
+        real(kind=8) intent(out,in) :: olon
+        real(kind=8) intent(in) :: lat_np
+        real(kind=8) intent(in) :: lon_np
+        real(kind=8) intent(in) :: lon_0
+        integer intent(in) :: direction
+    end subroutine rotatecoords
+    subroutine dlltoij(map_proj,truelat1,truelat2,stdlon,lat1,lon1,pole_lat,pole_lon,knowni,knownj,dx,dy,latinc,loninc,lat,lon,loc,errstat,errmsg) ! in wrf_user_latlon_routines.f90
+        threadsafe 
+        use wrf_constants, only: algerr,pi,rad_per_deg,deg_per_rad,wrf_earth_radius
+        integer intent(in) :: map_proj
+        real(kind=8) intent(inout) :: truelat1
+        real(kind=8) intent(inout) :: truelat2
+        real(kind=8) intent(in) :: stdlon
+        real(kind=8) intent(in) :: lat1
+        real(kind=8) intent(in) :: lon1
+        real(kind=8) intent(in) :: pole_lat
+        real(kind=8) intent(in) :: pole_lon
+        real(kind=8) intent(in) :: knowni
+        real(kind=8) intent(in) :: knownj
+        real(kind=8) intent(in) :: dx
+        real(kind=8) intent(in) :: dy
+        real(kind=8) intent(in) :: latinc
+        real(kind=8) intent(in) :: loninc
+        real(kind=8) intent(inout) :: lat
+        real(kind=8) intent(inout) :: lon
+        real(kind=8) dimension(2),intent(out,in) :: loc
+        integer intent(inout) :: errstat
+        character*(*) intent(inout) :: errmsg
+    end subroutine dlltoij
+    subroutine dijtoll(map_proj,truelat1,truelat2,stdlon,lat1,lon1,pole_lat,pole_lon,knowni,knownj,dx,dy,latinc,loninc,ai,aj,loc,errstat,errmsg) ! in wrf_user_latlon_routines.f90
+        threadsafe 
+        use wrf_constants, only: algerr,pi,rad_per_deg,deg_per_rad,wrf_earth_radius
+        integer intent(in) :: map_proj
+        real(kind=8) intent(inout) :: truelat1
+        real(kind=8) intent(inout) :: truelat2
+        real(kind=8) intent(in) :: stdlon
+        real(kind=8) intent(in) :: lat1
+        real(kind=8) intent(in) :: lon1
+        real(kind=8) intent(in) :: pole_lat
+        real(kind=8) intent(in) :: pole_lon
+        real(kind=8) intent(in) :: knowni
+        real(kind=8) intent(in) :: knownj
+        real(kind=8) intent(in) :: dx
+        real(kind=8) intent(in) :: dy
+        real(kind=8) intent(in) :: latinc
+        real(kind=8) intent(in) :: loninc
+        real(kind=8) intent(in) :: ai
+        real(kind=8) intent(in) :: aj
+        real(kind=8) dimension(2),intent(out,in) :: loc
+        integer intent(inout) :: errstat
+        character*(*) intent(inout) :: errmsg
+    end subroutine dijtoll
+    subroutine dcomputepi(pi,pressure,nx,ny,nz) ! in wrf_user.f90
+        threadsafe 
+        use wrf_constants, only: p1000mb,rd,cp
+        real(kind=8) dimension(nx,ny,nz),intent(out,in) :: pi
+        real(kind=8) dimension(nx,ny,nz),intent(in),depend(nz,ny,nx) :: pressure
+        integer, optional,intent(in),check(shape(pi, 0) == nx),depend(pi) :: nx=shape(pi, 0)
+        integer, optional,intent(in),check(shape(pi, 1) == ny),depend(pi) :: ny=shape(pi, 1)
+        integer, optional,intent(in),check(shape(pi, 2) == nz),depend(pi) :: nz=shape(pi, 2)
+    end subroutine dcomputepi
+    subroutine dcomputetk(tk,pressure,theta,nx) ! in wrf_user.f90
+        threadsafe 
+        use wrf_constants, only: p1000mb,rd,cp
+        real(kind=8) dimension(nx),intent(out,in) :: tk
+        real(kind=8) dimension(nx),intent(in),depend(nx) :: pressure
+        real(kind=8) dimension(nx),intent(in),depend(nx) :: theta
+        integer, optional,intent(in),check(shape(tk, 0) == nx),depend(tk) :: nx=shape(tk, 0)
+    end subroutine dcomputetk
+    subroutine dinterp3dz(data3d,out2d,zdata,levels,nx,ny,nz,nlev,missingval) ! in wrf_user.f90
+        threadsafe 
+        real(kind=8) dimension(nx,ny,nz),intent(in) :: data3d
+        real(kind=8) dimension(nx,ny,nlev),intent(out,in),depend(ny,nx) :: out2d
+        real(kind=8) dimension(nx,ny,nz),intent(in),depend(nz,ny,nx) :: zdata
+        real(kind=8) dimension(nlev),intent(in),depend(nlev) :: levels
+        integer, optional,intent(in),check(shape(data3d, 0) == nx),depend(data3d) :: nx=shape(data3d, 0)
+        integer, optional,intent(in),check(shape(data3d, 1) == ny),depend(data3d) :: ny=shape(data3d, 1)
+        integer, optional,intent(in),check(shape(data3d, 2) == nz),depend(data3d) :: nz=shape(data3d, 2)
+        integer, optional,intent(in),check(shape(out2d, 2) == nlev),depend(out2d) :: nlev=shape(out2d, 2)
+        real(kind=8) intent(in) :: missingval
+    end subroutine dinterp3dz
+    subroutine dinterp3dz_2dlev(data3d,out2d,zdata,levs2d,nx,ny,nz,missingval) ! in wrf_user.f90
+        threadsafe 
+        real(kind=8) dimension(nx,ny,nz),intent(in) :: data3d
+        real(kind=8) dimension(nx,ny),intent(out,in),depend(ny,nx) :: out2d
+        real(kind=8) dimension(nx,ny,nz),intent(in),depend(nz,ny,nx) :: zdata
+        real(kind=8) dimension(nx,ny),intent(in),depend(ny,nx) :: levs2d
+        integer, optional,intent(in),check(shape(data3d, 0) == nx),depend(data3d) :: nx=shape(data3d, 0)
+        integer, optional,intent(in),check(shape(data3d, 1) == ny),depend(data3d) :: ny=shape(data3d, 1)
+        integer, optional,intent(in),check(shape(data3d, 2) == nz),depend(data3d) :: nz=shape(data3d, 2)
+        real(kind=8) intent(in) :: missingval
+    end subroutine dinterp3dz_2dlev
+    subroutine dzstag(znew,nx,ny,nz,z,nxz,nyz,nzz,terrain) ! in wrf_user.f90
+        threadsafe 
+        real(kind=8) dimension(nx,ny,nz),intent(out,in) :: znew
+        integer, optional,intent(in),check(shape(znew, 0) == nx),depend(znew) :: nx=shape(znew, 0)
+        integer, optional,intent(in),check(shape(znew, 1) == ny),depend(znew) :: ny=shape(znew, 1)
+        integer, optional,intent(in),check(shape(znew, 2) == nz),depend(znew) :: nz=shape(znew, 2)
+        real(kind=8) dimension(nxz,nyz,nzz),intent(in) :: z
+        integer, optional,intent(in),check(shape(z, 0) == nxz),depend(z) :: nxz=shape(z, 0)
+        integer, optional,intent(in),check(shape(z, 1) == nyz),depend(z) :: nyz=shape(z, 1)
+        integer, optional,intent(in),check(shape(z, 2) == nzz),depend(z) :: nzz=shape(z, 2)
+        real(kind=8) dimension(nxz,nyz),intent(in),depend(nxz,nyz) :: terrain
+    end subroutine dzstag
+    subroutine dinterp2dxy(v3d,v2d,xy,nx,ny,nz,nxy) ! in wrf_user.f90
+        threadsafe 
+        real(kind=8) dimension(nx,ny,nz),intent(in) :: v3d
+        real(kind=8) dimension(nxy,nz),intent(out,in),depend(nz) :: v2d
+        real(kind=8) dimension(2,nxy),intent(in),depend(nxy) :: xy
+        integer, optional,intent(in),check(shape(v3d, 0) == nx),depend(v3d) :: nx=shape(v3d, 0)
+        integer, optional,intent(in),check(shape(v3d, 1) == ny),depend(v3d) :: ny=shape(v3d, 1)
+        integer, optional,intent(in),check(shape(v3d, 2) == nz),depend(v3d) :: nz=shape(v3d, 2)
+        integer, optional,intent(in),check(shape(v2d, 0) == nxy),depend(v2d) :: nxy=shape(v2d, 0)
+    end subroutine dinterp2dxy
+    subroutine dinterp1d(v_in,v_out,z_in,z_out,vmsg,nz_in,nz_out) ! in wrf_user.f90
+        threadsafe 
+        real(kind=8) dimension(nz_in),intent(in) :: v_in
+        real(kind=8) dimension(nz_out),intent(out,in) :: v_out
+        real(kind=8) dimension(nz_in),intent(in),depend(nz_in) :: z_in
+        real(kind=8) dimension(nz_out),intent(in),depend(nz_out) :: z_out
+        real(kind=8) intent(in) :: vmsg
+        integer, optional,intent(in),check(shape(v_in, 0) == nz_in),depend(v_in) :: nz_in=shape(v_in, 0)
+        integer, optional,intent(in),check(shape(v_out, 0) == nz_out),depend(v_out) :: nz_out=shape(v_out, 0)
+    end subroutine dinterp1d
+    subroutine dcomputeseaprs(nx,ny,nz,z,t,p,q,sea_level_pressure,t_sea_level,t_surf,level,errstat,errmsg) ! in wrf_user.f90
+        threadsafe 
+        use wrf_constants, only: algerr,rd,g,ussalr
+        integer, optional,intent(in),check(shape(z, 0) == nx),depend(z) :: nx=shape(z, 0)
+        integer, optional,intent(in),check(shape(z, 1) == ny),depend(z) :: ny=shape(z, 1)
+        integer, optional,intent(in),check(shape(z, 2) == nz),depend(z) :: nz=shape(z, 2)
+        real(kind=8) dimension(nx,ny,nz),intent(in) :: z
+        real(kind=8) dimension(nx,ny,nz),intent(in),depend(nz,ny,nx) :: t
+        real(kind=8) dimension(nx,ny,nz),intent(in),depend(nz,ny,nx) :: p
+        real(kind=8) dimension(nx,ny,nz),intent(in),depend(nz,ny,nx) :: q
+        real(kind=8) dimension(nx,ny),intent(out,in),depend(ny,nx) :: sea_level_pressure
+        real(kind=8) dimension(nx,ny),intent(inout),depend(ny,nx) :: t_sea_level
+        real(kind=8) dimension(nx,ny),intent(inout),depend(ny,nx) :: t_surf
+        integer dimension(nx,ny),intent(inout),depend(ny,nx) :: level
+        integer intent(inout) :: errstat
+        character*(*) intent(inout) :: errmsg
+    end subroutine dcomputeseaprs
+    subroutine dfilter2d(a,b,nx,ny,it,missing,cenweight) ! in wrf_user.f90
+        threadsafe 
+        real(kind=8) dimension(nx,ny),intent(in,out) :: a
+        real(kind=8) dimension(nx,ny),intent(inout),depend(ny,nx) :: b
+        integer, optional,intent(in),check(shape(a, 0) == nx),depend(a) :: nx=shape(a, 0)
+        integer, optional,intent(in),check(shape(a, 1) == ny),depend(a) :: ny=shape(a, 1)
+        integer intent(in) :: it
+        real(kind=8) intent(in) :: missing
+        real(kind=8) intent(in) :: cenweight
+    end subroutine dfilter2d
+    subroutine filter2d(a,b,nx,ny,it,missing,cenweight) ! in wrf_user.f90
+        threadsafe 
+        real(kind=4) dimension(nx,ny),intent(in,out) :: a
+        real(kind=4) dimension(nx,ny),intent(inout),depend(ny,nx) :: b
+        integer, optional,intent(in),check(shape(a, 0) == nx),depend(a) :: nx=shape(a, 0)
+        integer, optional,intent(in),check(shape(a, 1) == ny),depend(a) :: ny=shape(a, 1)
+        integer intent(in) :: it
+        real(kind=4) intent(in) :: missing
+        real(kind=4) intent(in) :: cenweight
+    end subroutine filter2d
+    subroutine dcomputerh(qv,p,t,rh,nx) ! in wrf_user.f90
+        threadsafe 
+        use wrf_constants, only: ezero,eslcon1,eslcon2,celkel,rd,rv,eps
+        real(kind=8) dimension(nx),intent(in) :: qv
+        real(kind=8) dimension(nx),intent(in),depend(nx) :: p
+        real(kind=8) dimension(nx),intent(in),depend(nx) :: t
+        real(kind=8) dimension(nx),intent(out,in),depend(nx) :: rh
+        integer, optional,intent(in),check(shape(qv, 0) == nx),depend(qv) :: nx=shape(qv, 0)
+    end subroutine dcomputerh
+    subroutine dgetijlatlong(lat_array,long_array,lat,longitude,ii,jj,nx,ny,imsg) ! in wrf_user.f90
+        threadsafe 
+        real(kind=8) dimension(nx,ny),intent(in) :: lat_array
+        real(kind=8) dimension(nx,ny),intent(in),depend(ny,nx) :: long_array
+        real(kind=8) :: lat
+        real(kind=8) :: longitude
+        integer intent(out,in) :: ii
+        integer intent(out,in) :: jj
+        integer, optional,intent(in),check(shape(lat_array, 0) == nx),depend(lat_array) :: nx=shape(lat_array, 0)
+        integer, optional,intent(in),check(shape(lat_array, 1) == ny),depend(lat_array) :: ny=shape(lat_array, 1)
+        integer intent(in) :: imsg
+    end subroutine dgetijlatlong
+    subroutine dcomputeuvmet(u,v,uvmet,longca,longcb,flong,flat,cen_long,cone,rpd,nx,ny,nxp1,nyp1,istag,is_msg_val,umsg,vmsg,uvmetmsg) ! in wrf_user.f90
+        threadsafe 
+        real(kind=8) dimension(nxp1,ny),intent(in) :: u
+        real(kind=8) dimension(nx,nyp1),intent(in) :: v
+        real(kind=8) dimension(nx,ny,2),intent(out,in),depend(ny,nx) :: uvmet
+        real(kind=8) dimension(nx,ny),intent(inout),depend(ny,nx) :: longca
+        real(kind=8) dimension(nx,ny),intent(inout),depend(ny,nx) :: longcb
+        real(kind=8) dimension(nx,ny),intent(in),depend(ny,nx) :: flong
+        real(kind=8) dimension(nx,ny),intent(in),depend(ny,nx) :: flat
+        real(kind=8) intent(in) :: cen_long
+        real(kind=8) intent(in) :: cone
+        real(kind=8) intent(in) :: rpd
+        integer, optional,intent(in),check(shape(v, 0) == nx),depend(v) :: nx=shape(v, 0)
+        integer, optional,intent(in),check(shape(u, 1) == ny),depend(u) :: ny=shape(u, 1)
+        integer, optional,intent(in),check(shape(u, 0) == nxp1),depend(u) :: nxp1=shape(u, 0)
+        integer, optional,intent(in),check(shape(v, 1) == nyp1),depend(v) :: nyp1=shape(v, 1)
+        integer intent(in) :: istag
+        logical intent(in) :: is_msg_val
+        real(kind=8) intent(in) :: umsg
+        real(kind=8) intent(in) :: vmsg
+        real(kind=8) intent(in) :: uvmetmsg
+    end subroutine dcomputeuvmet
+    subroutine dcomputetd(td,pressure,qv_in,nx) ! in wrf_user.f90
+        threadsafe 
+        real(kind=8) dimension(nx),intent(out,in) :: td
+        real(kind=8) dimension(nx),intent(in),depend(nx) :: pressure
+        real(kind=8) dimension(nx),intent(in),depend(nx) :: qv_in
+        integer, optional,intent(in),check(shape(td, 0) == nx),depend(td) :: nx=shape(td, 0)
+    end subroutine dcomputetd
+    subroutine dcomputeiclw(iclw,pressure,qc_in,nx,ny,nz) ! in wrf_user.f90
+        threadsafe 
+        use wrf_constants, only: g
+        real(kind=8) dimension(nx,ny),intent(out,in) :: iclw
+        real(kind=8) dimension(nx,ny,nz),intent(in),depend(ny,nx) :: pressure
+        real(kind=8) dimension(nx,ny,nz),intent(in),depend(nz,ny,nx) :: qc_in
+        integer, optional,intent(in),check(shape(iclw, 0) == nx),depend(iclw) :: nx=shape(iclw, 0)
+        integer, optional,intent(in),check(shape(iclw, 1) == ny),depend(iclw) :: ny=shape(iclw, 1)
+        integer, optional,intent(in),check(shape(pressure, 2) == nz),depend(pressure) :: nz=shape(pressure, 2)
+    end subroutine dcomputeiclw
+    subroutine wrf_monotonic(out,in,lvprs,cor,idir,delta,ew,ns,nz,icorsw) ! in wrf_vinterp.f90
+        threadsafe 
+        real(kind=8) dimension(ew,ns,nz),intent(out,in) :: out
+        real(kind=8) dimension(ew,ns,nz),intent(inout),depend(ns,ew,nz) :: in
+        real(kind=8) dimension(ew,ns,nz),intent(in),depend(ns,ew,nz) :: lvprs
+        real(kind=8) dimension(ew,ns),intent(in),depend(ns,ew) :: cor
+        integer intent(in) :: idir
+        real(kind=8) intent(in) :: delta
+        integer, optional,intent(in),check(shape(out, 0) == ew),depend(out) :: ew=shape(out, 0)
+        integer, optional,intent(in),check(shape(out, 1) == ns),depend(out) :: ns=shape(out, 1)
+        integer, optional,intent(in),check(shape(out, 2) == nz),depend(out) :: nz=shape(out, 2)
+        integer intent(in) :: icorsw
+    end subroutine wrf_monotonic
+    function wrf_intrp_value(wvalp0,wvalp1,vlev,vcp0,vcp1,icase,errstat) ! in wrf_vinterp.f90
+        threadsafe 
+        use wrf_constants, only: algerr,sclht
+        real(kind=8) intent(in) :: wvalp0
+        real(kind=8) intent(in) :: wvalp1
+        real(kind=8) intent(in) :: vlev
+        real(kind=8) intent(in) :: vcp0
+        real(kind=8) intent(in) :: vcp1
+        integer intent(in) :: icase
+        integer intent(inout) :: errstat
+        real(kind=8) :: wrf_intrp_value
+    end function wrf_intrp_value
+    subroutine wrf_vintrp(datain,dataout,pres,tk,qvp,ght,terrain,sfp,smsfp,vcarray,interp_levels,numlevels,icase,ew,ns,nz,extrap,vcor,logp,tempout,rmsg,errstat,errmsg) ! in wrf_vinterp.f90
+        threadsafe 
+        use wrf_constants, only: algerr,sclht,expon,exponi,gamma,gammamd,tlclc1,tlclc2,tlclc3,tlclc4,thtecon1,thtecon2,thtecon3,celkel,eps,ussalr
+        real(kind=8) dimension(ew,ns,nz),intent(in) :: datain
+        real(kind=8) dimension(ew,ns,numlevels),intent(out,in),depend(ns,ew) :: dataout
+        real(kind=8) dimension(ew,ns,nz),intent(in),depend(ns,ew,nz) :: pres
+        real(kind=8) dimension(ew,ns,nz),intent(in),depend(ns,ew,nz) :: tk
+        real(kind=8) dimension(ew,ns,nz),intent(in),depend(ns,ew,nz) :: qvp
+        real(kind=8) dimension(ew,ns,nz),intent(in),depend(ns,ew,nz) :: ght
+        real(kind=8) dimension(ew,ns),intent(in),depend(ns,ew) :: terrain
+        real(kind=8) dimension(ew,ns),intent(in),depend(ns,ew) :: sfp
+        real(kind=8) dimension(ew,ns),intent(in),depend(ns,ew) :: smsfp
+        real(kind=8) dimension(ew,ns,nz),intent(in),depend(ns,ew,nz) :: vcarray
+        real(kind=8) dimension(numlevels),intent(in),depend(numlevels) :: interp_levels
+        integer, optional,intent(in),check(shape(dataout, 2) == numlevels),depend(dataout) :: numlevels=shape(dataout, 2)
+        integer intent(in) :: icase
+        integer, optional,intent(in),check(shape(datain, 0) == ew),depend(datain) :: ew=shape(datain, 0)
+        integer, optional,intent(in),check(shape(datain, 1) == ns),depend(datain) :: ns=shape(datain, 1)
+        integer, optional,intent(in),check(shape(datain, 2) == nz),depend(datain) :: nz=shape(datain, 2)
+        integer intent(in) :: extrap
+        integer intent(in) :: vcor
+        integer intent(in) :: logp
+        real(kind=8) dimension(ew,ns),intent(inout),depend(ns,ew) :: tempout
+        real(kind=8) intent(in) :: rmsg
+        integer intent(inout) :: errstat
+        character*(*) intent(inout) :: errmsg
+    end subroutine wrf_vintrp
+    subroutine dcomputewspd(wspd,u,v,n) ! in wrf_wind.f90
+        threadsafe 
+        real(kind=8) dimension(n),intent(out,in) :: wspd
+        real(kind=8) dimension(n),intent(in),depend(n) :: u
+        real(kind=8) dimension(n),intent(in),depend(n) :: v
+        integer, optional,intent(in),check(shape(wspd, 0) == n),depend(wspd) :: n=shape(wspd, 0)
+    end subroutine dcomputewspd
+    subroutine dcomputewdir(wdir,u,v,n) ! in wrf_wind.f90
+        threadsafe 
+        use wrf_constants, only: deg_per_rad
+        real(kind=8) dimension(n),intent(out,in) :: wdir
+        real(kind=8) dimension(n),intent(in),depend(n) :: u
+        real(kind=8) dimension(n),intent(in),depend(n) :: v
+        integer, optional,intent(in),check(shape(wdir, 0) == n),depend(wdir) :: n=shape(wdir, 0)
+    end subroutine dcomputewdir
+    function tvirtual(temp,ratmix) ! in rip_cape.f90
+        threadsafe 
+        use wrf_constants, only: eps
+        real(kind=8) intent(in) :: temp
+        real(kind=8) intent(in) :: ratmix
+        real(kind=8) :: tvirtual
+    end function tvirtual
+    function tonpsadiabat(thte,prs,psadithte,psadiprs,psaditmk,gamma,errstat,errmsg) ! in rip_cape.f90
+        threadsafe 
+        use wrf_constants, only: algerr
+        real(kind=8) intent(in) :: thte
+        real(kind=8) intent(in) :: prs
+        real(kind=8) dimension(150),intent(in) :: psadithte
+        real(kind=8) dimension(150),intent(in) :: psadiprs
+        real(kind=8) dimension(150,150),intent(in) :: psaditmk
+        real(kind=8) intent(in) :: gamma
+        integer intent(inout) :: errstat
+        character*(*) intent(inout) :: errmsg
+        real(kind=8) :: tonpsadiabat
+    end function tonpsadiabat
+    subroutine dlookup_table(psadithte,psadiprs,psaditmk,fname,errstat,errmsg) ! in rip_cape.f90
+        threadsafe 
+        use wrf_constants, only: algerr
+        real(kind=8) dimension(150),intent(inout) :: psadithte
+        real(kind=8) dimension(150),intent(inout) :: psadiprs
+        real(kind=8) dimension(150,150),intent(inout) :: psaditmk
+        character*(*) intent(in) :: fname
+        integer intent(inout) :: errstat
+        character*(*) intent(inout) :: errmsg
+    end subroutine dlookup_table
+    subroutine dpfcalc(prs,sfp,pf,mix,mjy,mkzh,ter_follow) ! in rip_cape.f90
+        real(kind=8) dimension(mkzh,mix,mjy),intent(in) :: prs
+        real(kind=8) dimension(mix,mjy),intent(in),depend(mix,mjy) :: sfp
+        real(kind=8) dimension(mkzh,mix,mjy),intent(out),depend(mkzh,mix,mjy) :: pf
+        integer, optional,intent(in),check(shape(prs, 1) == mix),depend(prs) :: mix=shape(prs, 1)
+        integer, optional,intent(in),check(shape(prs, 2) == mjy),depend(prs) :: mjy=shape(prs, 2)
+        integer, optional,intent(in),check(shape(prs, 0) == mkzh),depend(prs) :: mkzh=shape(prs, 0)
+        integer intent(in) :: ter_follow
+    end subroutine dpfcalc
+    subroutine dcapecalc3d(prs,tmk,qvp,ght,ter,sfp,cape,cin,prsf,prs_new,tmk_new,qvp_new,ght_new,cmsg,mix,mjy,mkzh,ter_follow,psafile,errstat,errmsg) ! in rip_cape.f90
+        threadsafe 
+        use wrf_constants, only: celkel,g,ezero,eslcon1,eslcon2,eps,rd,cp,gamma,cpmd,rgasmd,gammamd,tlclc1,tlclc2,tlclc3,tlclc4,thtecon1,thtecon2,thtecon3
+        real(kind=8) dimension(mix,mjy,mkzh),intent(in) :: prs
+        real(kind=8) dimension(mix,mjy,mkzh),intent(in),depend(mkzh,mix,mjy) :: tmk
+        real(kind=8) dimension(mix,mjy,mkzh),intent(in),depend(mkzh,mix,mjy) :: qvp
+        real(kind=8) dimension(mix,mjy,mkzh),intent(in),depend(mkzh,mix,mjy) :: ght
+        real(kind=8) dimension(mix,mjy),intent(in),depend(mix,mjy) :: ter
+        real(kind=8) dimension(mix,mjy),intent(in),depend(mix,mjy) :: sfp
+        real(kind=8) dimension(mix,mjy,mkzh),intent(out,in),depend(mkzh,mix,mjy) :: cape
+        real(kind=8) dimension(mix,mjy,mkzh),intent(out,in),depend(mkzh,mix,mjy) :: cin
+        real(kind=8) dimension(mkzh,mix,mjy),intent(inout),depend(mkzh,mix,mjy) :: prsf
+        real(kind=8) dimension(mkzh,mix,mjy),intent(inout),depend(mkzh,mix,mjy) :: prs_new
+        real(kind=8) dimension(mkzh,mix,mjy),intent(inout),depend(mkzh,mix,mjy) :: tmk_new
+        real(kind=8) dimension(mkzh,mix,mjy),intent(inout),depend(mkzh,mix,mjy) :: qvp_new
+        real(kind=8) dimension(mkzh,mix,mjy),intent(inout),depend(mkzh,mix,mjy) :: ght_new
+        real(kind=8) intent(in) :: cmsg
+        integer, optional,intent(in),check(shape(prs, 0) == mix),depend(prs) :: mix=shape(prs, 0)
+        integer, optional,intent(in),check(shape(prs, 1) == mjy),depend(prs) :: mjy=shape(prs, 1)
+        integer, optional,intent(in),check(shape(prs, 2) == mkzh),depend(prs) :: mkzh=shape(prs, 2)
+        integer intent(in) :: ter_follow
+        character*(*) intent(in) :: psafile
+        integer intent(inout) :: errstat
+        character*(*) intent(inout) :: errmsg
+    end subroutine dcapecalc3d
+    subroutine dcapecalc2d(prs,tmk,qvp,ght,ter,sfp,cape,cin,prsf,prs_new,tmk_new,qvp_new,ght_new,cmsg,mix,mjy,mkzh,ter_follow,psafile,errstat,errmsg) ! in rip_cape.f90
+        threadsafe 
+        use wrf_constants, only: celkel,g,ezero,eslcon1,eslcon2,eps,rd,cp,gamma,cpmd,rgasmd,gammamd,tlclc1,tlclc2,tlclc3,tlclc4,thtecon1,thtecon2,thtecon3
+        real(kind=8) dimension(mix,mjy,mkzh),intent(in) :: prs
+        real(kind=8) dimension(mix,mjy,mkzh),intent(in),depend(mkzh,mix,mjy) :: tmk
+        real(kind=8) dimension(mix,mjy,mkzh),intent(in),depend(mkzh,mix,mjy) :: qvp
+        real(kind=8) dimension(mix,mjy,mkzh),intent(in),depend(mkzh,mix,mjy) :: ght
+        real(kind=8) dimension(mix,mjy),intent(in),depend(mix,mjy) :: ter
+        real(kind=8) dimension(mix,mjy),intent(in),depend(mix,mjy) :: sfp
+        real(kind=8) dimension(mix,mjy,mkzh),intent(out,in),depend(mkzh,mix,mjy) :: cape
+        real(kind=8) dimension(mix,mjy,mkzh),intent(out,in),depend(mkzh,mix,mjy) :: cin
+        real(kind=8) dimension(mkzh,mix,mjy),intent(inout),depend(mkzh,mix,mjy) :: prsf
+        real(kind=8) dimension(mkzh,mix,mjy),intent(inout),depend(mkzh,mix,mjy) :: prs_new
+        real(kind=8) dimension(mkzh,mix,mjy),intent(inout),depend(mkzh,mix,mjy) :: tmk_new
+        real(kind=8) dimension(mkzh,mix,mjy),intent(inout),depend(mkzh,mix,mjy) :: qvp_new
+        real(kind=8) dimension(mkzh,mix,mjy),intent(inout),depend(mkzh,mix,mjy) :: ght_new
+        real(kind=8) intent(in) :: cmsg
+        integer, optional,intent(in),check(shape(prs, 0) == mix),depend(prs) :: mix=shape(prs, 0)
+        integer, optional,intent(in),check(shape(prs, 1) == mjy),depend(prs) :: mjy=shape(prs, 1)
+        integer, optional,intent(in),check(shape(prs, 2) == mkzh),depend(prs) :: mkzh=shape(prs, 2)
+        integer intent(in) :: ter_follow
+        character*(*) intent(in) :: psafile
+        integer intent(inout) :: errstat
+        character*(*) intent(inout) :: errmsg
+    end subroutine dcapecalc2d
+    subroutine deqthecalc(qvp,tmk,prs,eth,miy,mjx,mkzh) ! in eqthecalc.f90
+        threadsafe 
+        use wrf_constants, only: eps,gamma,gammamd,tlclc1,tlclc2,tlclc3,tlclc4,thtecon1,thtecon2,thtecon3
+        real(kind=8) dimension(miy,mjx,mkzh),intent(in) :: qvp
+        real(kind=8) dimension(miy,mjx,mkzh),intent(in),depend(mjx,miy,mkzh) :: tmk
+        real(kind=8) dimension(miy,mjx,mkzh),intent(in),depend(mjx,miy,mkzh) :: prs
+        real(kind=8) dimension(miy,mjx,mkzh),intent(out,in),depend(mjx,miy,mkzh) :: eth
+        integer, optional,intent(in),check(shape(qvp, 0) == miy),depend(qvp) :: miy=shape(qvp, 0)
+        integer, optional,intent(in),check(shape(qvp, 1) == mjx),depend(qvp) :: mjx=shape(qvp, 1)
+        integer, optional,intent(in),check(shape(qvp, 2) == mkzh),depend(qvp) :: mkzh=shape(qvp, 2)
+    end subroutine deqthecalc
+    end interface
+
+    interface
+    module omp_constants ! in omp.f90
+        use omp_lib
+        integer, parameter,optional :: fomp_sched_kind=4
+        integer, parameter,optional :: fomp_lock_kind=8
+        integer, parameter,optional :: fomp_nest_lock_kind=8
+        integer(kind=4), parameter,optional :: fomp_sched_static=1
+        integer(kind=4), parameter,optional :: fomp_sched_dynamic=2
+        integer(kind=4), parameter,optional :: fomp_sched_guided=3
+        integer(kind=4), parameter,optional :: fomp_sched_auto=4
+    end module omp_constants
+    
+    function fomp_enabled() ! in omp.f90
+        threadsafe 
+        logical :: fomp_enabled
+    end function fomp_enabled
+    subroutine fomp_set_num_threads(num_threads) ! in omp.f90
+        threadsafe 
+        use omp_lib
+        integer intent(in) :: num_threads
+    end subroutine fomp_set_num_threads
+    function fomp_get_num_threads() ! in omp.f90
+        threadsafe 
+        use omp_lib
+        integer :: fomp_get_num_threads
+    end function fomp_get_num_threads
+    function fomp_get_max_threads() ! in omp.f90
+        threadsafe 
+        use omp_lib
+        integer :: fomp_get_max_threads
+    end function fomp_get_max_threads
+    function fomp_get_thread_num() ! in omp.f90
+        threadsafe 
+        use omp_lib
+        integer :: fomp_get_thread_num
+    end function fomp_get_thread_num
+    function fomp_get_num_procs() ! in omp.f90
+        threadsafe 
+        use omp_lib
+        integer :: fomp_get_num_procs
+    end function fomp_get_num_procs
+    function fomp_in_parallel() ! in omp.f90
+        threadsafe 
+        use omp_lib
+        logical :: fomp_in_parallel
+    end function fomp_in_parallel
+    subroutine fomp_set_dynamic(dynamic_threads) ! in omp.f90
+        threadsafe 
+        use omp_lib
+        logical intent(in) :: dynamic_threads
+    end subroutine fomp_set_dynamic
+    function fomp_get_dynamic() ! in omp.f90
+        threadsafe 
+        use omp_lib
+        logical :: fomp_get_dynamic
+    end function fomp_get_dynamic
+    subroutine fomp_set_nested(nested) ! in omp.f90
+        threadsafe 
+        use omp_lib
+        logical intent(in) :: nested
+    end subroutine fomp_set_nested
+    function fomp_get_nested() ! in omp.f90
+        threadsafe 
+        use omp_lib
+        logical :: fomp_get_nested
+    end function fomp_get_nested
+    subroutine fomp_set_schedule(kind,modifier) ! in omp.f90
+        threadsafe 
+        use omp_lib
+        use omp_constants, only: fomp_sched_kind
+        integer(kind=fomp_sched_kind) intent(in) :: kind
+        integer intent(in) :: modifier
+    end subroutine fomp_set_schedule
+    subroutine fomp_get_schedule(kind,modifier) ! in omp.f90
+        threadsafe 
+        use omp_lib
+        use omp_constants, only: fomp_sched_kind
+        integer(kind=fomp_sched_kind) intent(out) :: kind
+        integer intent(out) :: modifier
+    end subroutine fomp_get_schedule
+    function fomp_get_thread_limit() ! in omp.f90
+        threadsafe 
+        use omp_lib
+        integer :: fomp_get_thread_limit
+    end function fomp_get_thread_limit
+    subroutine fomp_set_max_active_levels(max_levels) ! in omp.f90
+        threadsafe 
+        use omp_lib
+        integer intent(in) :: max_levels
+    end subroutine fomp_set_max_active_levels
+    function fomp_get_max_active_levels() ! in omp.f90
+        threadsafe 
+        use omp_lib
+        integer :: fomp_get_max_active_levels
+    end function fomp_get_max_active_levels
+    function fomp_get_level() ! in omp.f90
+        threadsafe 
+        use omp_lib
+        integer :: fomp_get_level
+    end function fomp_get_level
+    function fomp_get_ancestor_thread_num(level) ! in omp.f90
+        threadsafe 
+        use omp_lib
+        integer intent(in) :: level
+        integer :: fomp_get_ancestor_thread_num
+    end function fomp_get_ancestor_thread_num
+    function fomp_get_team_size(level) ! in omp.f90
+        threadsafe 
+        use omp_lib
+        integer intent(in) :: level
+        integer :: fomp_get_team_size
+    end function fomp_get_team_size
+    function fomp_get_active_level() ! in omp.f90
+        threadsafe 
+        use omp_lib
+        integer :: fomp_get_active_level
+    end function fomp_get_active_level
+    function fomp_in_final() ! in omp.f90
+        threadsafe 
+        use omp_lib
+        logical :: fomp_in_final
+    end function fomp_in_final
+    subroutine fomp_init_lock(svar) ! in omp.f90
+        threadsafe 
+        use omp_lib
+        use omp_constants, only: fomp_lock_kind
+        integer(kind=fomp_lock_kind) intent(out) :: svar
+    end subroutine fomp_init_lock
+    subroutine fomp_init_nest_lock(nvar) ! in omp.f90
+        threadsafe 
+        use omp_lib
+        use omp_constants, only: fomp_nest_lock_kind
+        integer(kind=fomp_nest_lock_kind) intent(out) :: nvar
+    end subroutine fomp_init_nest_lock
+    subroutine fomp_destroy_lock(svar) ! in omp.f90
+        threadsafe 
+        use omp_lib
+        use omp_constants, only: fomp_lock_kind
+        integer(kind=fomp_lock_kind) intent(inout) :: svar
+    end subroutine fomp_destroy_lock
+    subroutine fomp_destroy_nest_lock(nvar) ! in omp.f90
+        threadsafe 
+        use omp_lib
+        use omp_constants, only: fomp_nest_lock_kind
+        integer(kind=fomp_nest_lock_kind) intent(inout) :: nvar
+    end subroutine fomp_destroy_nest_lock
+    subroutine fomp_set_lock(svar) ! in omp.f90
+        threadsafe 
+        use omp_lib
+        use omp_constants, only: fomp_lock_kind
+        integer(kind=fomp_lock_kind) intent(inout) :: svar
+    end subroutine fomp_set_lock
+    subroutine fomp_set_nest_lock(nvar) ! in omp.f90
+        threadsafe 
+        use omp_lib
+        use omp_constants, only: fomp_nest_lock_kind
+        integer(kind=fomp_nest_lock_kind) intent(inout) :: nvar
+    end subroutine fomp_set_nest_lock
+    subroutine fomp_unset_lock(svar) ! in omp.f90
+        threadsafe 
+        use omp_lib
+        use omp_constants, only: fomp_lock_kind
+        integer(kind=fomp_lock_kind) intent(inout) :: svar
+    end subroutine fomp_unset_lock
+    subroutine fomp_unset_nest_lock(nvar) ! in omp.f90
+        threadsafe 
+        use omp_lib
+        use omp_constants, only: fomp_nest_lock_kind
+        integer(kind=fomp_nest_lock_kind) intent(inout) :: nvar
+    end subroutine fomp_unset_nest_lock
+    function fomp_test_lock(svar) ! in omp.f90
+        threadsafe 
+        use omp_lib
+        use omp_constants, only: fomp_lock_kind
+        integer(kind=fomp_lock_kind) intent(inout) :: svar
+        logical :: fomp_test_lock
+    end function fomp_test_lock
+    function fomp_test_nest_lock(nvar) ! in omp.f90
+        threadsafe 
+        use omp_lib
+        use omp_constants, only: fomp_nest_lock_kind
+        integer(kind=fomp_nest_lock_kind) intent(inout) :: nvar
+        integer :: fomp_test_nest_lock
+    end function fomp_test_nest_lock
+    function fomp_get_wtime() ! in omp.f90
+        threadsafe 
+        use omp_lib
+        real(kind=8) :: fomp_get_wtime
+    end function fomp_get_wtime
+    function fomp_get_wtick() ! in omp.f90
+        threadsafe 
+        use omp_lib
+        real(kind=8) :: fomp_get_wtick
+    end function fomp_get_wtick
+    end interface
+
+    interface
+    module wrf_constants ! in wrf_constants.f90
+        integer, parameter,optional :: errlen=512
+        integer, parameter,optional :: algerr=64
+        real(kind=8), parameter,optional :: wrf_earth_radius=6370000.d0
+        real(kind=8), parameter,optional :: t_base=300.0d0
+        real(kind=8), parameter,optional :: pi=3.1415926535897932384626433d0
+        real(kind=8), parameter,optional,depend(pi) :: rad_per_deg=pi/180.d0
+        real(kind=8), parameter,optional,depend(pi) :: deg_per_rad=180.d0/pi
+        real(kind=8), parameter,optional :: default_fill=9.969209968386869e+36
+        integer(kind=1), parameter,optional :: default_fill_int8=-127
+        integer(kind=2), parameter,optional :: default_fill_int16=-32767
+        integer(kind=4), parameter,optional :: default_fill_int32=-2147483647
+        integer(kind=8), parameter,optional :: default_fill_int64=int(-9223372036854775806d0, kind=8)
+        real(kind=4), parameter,optional :: default_fill_float=9.969209968386869e+36
+        real(kind=8), parameter,optional :: default_fill_double=9.9692099683868690d36
+        character(len=1), parameter,optional :: default_fill_char=achar(0)
+        real(kind=8), parameter,optional :: p1000mb=100000.d0
+        real(kind=8), parameter,optional :: rd=287.d0
+        real(kind=8), parameter,optional :: rv=461.6d0
+        real(kind=8), parameter,optional :: cp=1004.5d0
+        real(kind=8), parameter,optional :: g=9.81d0
+        real(kind=8), parameter,optional :: ussalr=0.0065d0
+        real(kind=8), parameter,optional :: celkel=273.15d0
+        real(kind=8), parameter,optional :: celkel_triple=273.16d0
+        real(kind=8), parameter,optional :: ezero=6.112d0
+        real(kind=8), parameter,optional :: eslcon1=17.67d0
+        real(kind=8), parameter,optional :: eslcon2=29.65d0
+        real(kind=8), parameter,optional :: eps=0.622d0
+        real(kind=8), parameter,optional,depend(rd,cp) :: gamma=1.0
+        real(kind=8), parameter,optional :: cpmd=.887d0
+        real(kind=8), parameter,optional :: rgasmd=.608d0
+        real(kind=8), parameter,optional,depend(cpmd,rgasmd) :: gammamd=0
+        real(kind=8), parameter,optional :: tlclc1=2840.d0
+        real(kind=8), parameter,optional :: tlclc2=3.5d0
+        real(kind=8), parameter,optional :: tlclc3=4.805d0
+        real(kind=8), parameter,optional :: tlclc4=55.d0
+        real(kind=8), parameter,optional :: thtecon1=3376.d0
+        real(kind=8), parameter,optional :: thtecon2=2.54d0
+        real(kind=8), parameter,optional :: thtecon3=.81d0
+        real(kind=8), parameter,optional :: abscoefi=.272d0
+        real(kind=8), parameter,optional :: abscoef=.145d0
+        real(kind=8), parameter,optional :: gamma_seven=720.d0
+        real(kind=8), parameter,optional :: rhowat=1000.d0
+        real(kind=8), parameter,optional,depend(rhowat) :: rho_r=4
+        real(kind=8), parameter,optional :: rho_s=100.d0
+        real(kind=8), parameter,optional :: rho_g=400.d0
+        real(kind=8), parameter,optional :: alpha=0.224d0
+        real(kind=8), parameter,optional,depend(rd,g) :: sclht=rd*256.d0/g
+        real(kind=8), parameter,optional,depend(rd,g,ussalr) :: expon=4.0
+        real(kind=8), parameter,optional,depend(expon) :: exponi=0.25
+    end module wrf_constants
+    end interface
+end python module _wrf
+
+
+! This file was auto-generated with f2py (version:2.1.0).
+! See:
+! https://web.archive.org/web/20140822061353/http://cens.ioc.ee/projects/f2py2e

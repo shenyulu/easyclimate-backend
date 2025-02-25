@@ -1,0 +1,62 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module _wrf_constants ! in 
+    interface  ! in :_wrf_constants
+    module wrf_constants ! in wrf_constants.f90
+        integer, parameter,optional :: errlen=512
+        integer, parameter,optional :: algerr=64
+        real(kind=8), parameter,optional :: wrf_earth_radius=6370000.d0
+        real(kind=8), parameter,optional :: t_base=300.0d0
+        real(kind=8), parameter,optional :: pi=3.1415926535897932384626433d0
+        real(kind=8), parameter,optional,depend(pi) :: rad_per_deg=pi/180.d0
+        real(kind=8), parameter,optional,depend(pi) :: deg_per_rad=180.d0/pi
+        real(kind=8), parameter,optional :: default_fill=9.969209968386869e+36
+        integer(kind=1), parameter,optional :: default_fill_int8=-127
+        integer(kind=2), parameter,optional :: default_fill_int16=-32767
+        integer(kind=4), parameter,optional :: default_fill_int32=-2147483647
+        integer(kind=8), parameter,optional :: default_fill_int64=int(-9223372036854775806d0, kind=8)
+        real(kind=4), parameter,optional :: default_fill_float=9.969209968386869e+36
+        real(kind=8), parameter,optional :: default_fill_double=9.9692099683868690d36
+        character(len=1), parameter,optional :: default_fill_char=achar(0)
+        real(kind=8), parameter,optional :: p1000mb=100000.d0
+        real(kind=8), parameter,optional :: rd=287.d0
+        real(kind=8), parameter,optional :: rv=461.6d0
+        real(kind=8), parameter,optional :: cp=1004.5d0
+        real(kind=8), parameter,optional :: g=9.81d0
+        real(kind=8), parameter,optional :: ussalr=0.0065d0
+        real(kind=8), parameter,optional :: celkel=273.15d0
+        real(kind=8), parameter,optional :: celkel_triple=273.16d0
+        real(kind=8), parameter,optional :: ezero=6.112d0
+        real(kind=8), parameter,optional :: eslcon1=17.67d0
+        real(kind=8), parameter,optional :: eslcon2=29.65d0
+        real(kind=8), parameter,optional :: eps=0.622d0
+        real(kind=8), parameter,optional,depend(rd,cp) :: gamma=1.0
+        real(kind=8), parameter,optional :: cpmd=.887d0
+        real(kind=8), parameter,optional :: rgasmd=.608d0
+        real(kind=8), parameter,optional,depend(cpmd,rgasmd) :: gammamd=0
+        real(kind=8), parameter,optional :: tlclc1=2840.d0
+        real(kind=8), parameter,optional :: tlclc2=3.5d0
+        real(kind=8), parameter,optional :: tlclc3=4.805d0
+        real(kind=8), parameter,optional :: tlclc4=55.d0
+        real(kind=8), parameter,optional :: thtecon1=3376.d0
+        real(kind=8), parameter,optional :: thtecon2=2.54d0
+        real(kind=8), parameter,optional :: thtecon3=.81d0
+        real(kind=8), parameter,optional :: abscoefi=.272d0
+        real(kind=8), parameter,optional :: abscoef=.145d0
+        real(kind=8), parameter,optional :: gamma_seven=720.d0
+        real(kind=8), parameter,optional :: rhowat=1000.d0
+        real(kind=8), parameter,optional,depend(rhowat) :: rho_r=4
+        real(kind=8), parameter,optional :: rho_s=100.d0
+        real(kind=8), parameter,optional :: rho_g=400.d0
+        real(kind=8), parameter,optional :: alpha=0.224d0
+        real(kind=8), parameter,optional,depend(rd,g) :: sclht=rd*256.d0/g
+        real(kind=8), parameter,optional,depend(rd,g,ussalr) :: expon=4.0
+        real(kind=8), parameter,optional,depend(expon) :: exponi=0.25
+    end module wrf_constants
+    end interface
+end python module _wrf_constants
+
+! This file was auto-generated with f2py (version:2.1.0).
+! See:
+! https://web.archive.org/web/20140822061353/http://cens.ioc.ee/projects/f2py2e

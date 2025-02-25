@@ -1,0 +1,17 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module _ecl_redfit_x ! in 
+    interface  ! in :_ecl_redfit_x
+
+        subroutine run_redfit_x(cfgfile) ! in :_ecl_redfit_x:.\redfit_x.f90
+            use iso_c_binding
+            character(kind=c_char) dimension(80),intent(in) :: cfgfile
+        end subroutine run_redfit_x
+
+    end interface 
+end python module _ecl_redfit_x
+
+! This file was auto-generated with f2py (version:1.24.3).
+! See:
+! https://web.archive.org/web/20140822061353/http://cens.ioc.ee/projects/f2py2e

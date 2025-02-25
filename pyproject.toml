@@ -1,0 +1,42 @@
+[build-system]
+build-backend = 'mesonpy'
+requires = ['meson-python', 'meson >= 1.1.0', 'numpy']
+
+[project]
+name = "easyclimate-backend"
+
+license = {file = "LICENSE"}
+
+description = "Easyclimate Package for Fortran Dependencies"
+authors = [
+    {name = "shenyulu"},
+]
+requires-python = ">=3.10"
+readme = "README.md"
+classifiers = [
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+    'Programming Language :: Python :: 3.13',
+    'Programming Language :: Python :: 3 :: Only',
+    'Topic :: Scientific/Engineering',
+    'Operating System :: Microsoft :: Windows',
+    'Operating System :: POSIX',
+    'Operating System :: Unix',
+]
+version = "2025.3.0"
+dependencies = [
+    'numpy >= 1.24.3',
+    'intel-fortran-rt',
+    'dpcpp-cpp-rt',
+    'wrapt'
+]
+
+[project.urls]
+homepage = "https://github.com/shenyulu/easyclimate-backend"
+documentation = "https://github.com/shenyulu/easyclimate-backend"
+source = "https://github.com/shenyulu/easyclimate-backend"
+download = "https://pypi.org/project/easyclimate-backend/#files"
+tracker = "https://github.com/shenyulu/easyclimate-backend/issues"

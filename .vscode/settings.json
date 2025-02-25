@@ -1,0 +1,5 @@
+{
+    "C_Cpp.default.configurationProvider": "mesonbuild.mesonbuild",
+    "C_Cpp.default.compileCommands": "g:\\EASYclimate\\easyclimate-backend\\builddir/compile_commands.json",
+    "fortran.fortls.disabled": true
+}

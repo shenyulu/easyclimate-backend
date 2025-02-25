@@ -1,0 +1,90 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module human_index_mod_old ! in 
+    interface  ! in :human_index_mod_old
+        subroutine apptemp(tc_1,vap_pres,u10_m,app_temp) ! in :HumanIndexModOld:HumanIndexModOld.F90
+            real intent(in) :: tc_1
+            real intent(in) :: vap_pres
+            real intent(in) :: u10_m
+            real intent(out) :: app_temp
+        end subroutine apptemp
+        subroutine swbgt(tc_2,vap_pres,s_wbgt) ! in :HumanIndexModOld:HumanIndexModOld.F90
+            real intent(in) :: tc_2
+            real intent(in) :: vap_pres
+            real intent(out) :: s_wbgt
+        end subroutine swbgt
+        subroutine hmdex(tc_3,vap_pres,humidex) ! in :HumanIndexModOld:HumanIndexModOld.F90
+            real intent(in) :: tc_3
+            real intent(in) :: vap_pres
+            real intent(out) :: humidex
+        end subroutine hmdex
+        subroutine dis_coi(tc_4,wb_t,discoi) ! in :HumanIndexModOld:HumanIndexModOld.F90
+            real intent(in) :: tc_4
+            real intent(in) :: wb_t
+            real intent(out) :: discoi
+        end subroutine dis_coi
+        subroutine dis_cois(tc_5,relhum,wbt_s,discois) ! in :HumanIndexModOld:HumanIndexModOld.F90
+            real intent(in) :: tc_5
+            real intent(in) :: relhum
+            real intent(in) :: wbt_s
+            real intent(out) :: discois
+        end subroutine dis_cois
+        subroutine wet_bulb(tin_1,vape,pin,relhum,qin,teq,epott,wb_it) ! in :HumanIndexModOld:HumanIndexModOld.F90
+            real intent(in) :: tin_1
+            real intent(in) :: vape
+            real intent(in) :: pin
+            real intent(in) :: relhum
+            real intent(in) :: qin
+            real intent(out) :: teq
+            real intent(out) :: epott
+            real intent(out) :: wb_it
+        end subroutine wet_bulb
+        subroutine wet_bulbs(tc_6,rh,wbt) ! in :HumanIndexModOld:HumanIndexModOld.F90
+            real intent(in) :: tc_6
+            real intent(in) :: rh
+            real intent(out) :: wbt
+        end subroutine wet_bulbs
+        subroutine heatindex(tc_7,rh,hi) ! in :HumanIndexModOld:HumanIndexModOld.F90
+            real intent(in) :: tc_7
+            real intent(in) :: rh
+            real intent(out) :: hi
+        end subroutine heatindex
+        subroutine thindex(tc_8,wb_t,thic,thip) ! in :HumanIndexModOld:HumanIndexModOld.F90
+            real intent(in) :: tc_8
+            real intent(in) :: wb_t
+            real intent(out) :: thic
+            real intent(out) :: thip
+        end subroutine thindex
+        subroutine swampcooleff(tc_9,wb_t,tswmp80,tswmp65) ! in :HumanIndexModOld:HumanIndexModOld.F90
+            real intent(in) :: tc_9
+            real intent(in) :: wb_t
+            real intent(out) :: tswmp80
+            real intent(out) :: tswmp65
+        end subroutine swampcooleff
+        subroutine ktoc(t_k,t_c) ! in :HumanIndexModOld:HumanIndexModOld.F90
+            real intent(in) :: t_k
+            real intent(out) :: t_c
+        end subroutine ktoc
+        subroutine vaporpres(rh,e,erh) ! in :HumanIndexModOld:HumanIndexModOld.F90
+            real intent(in) :: rh
+            real intent(in) :: e
+            real intent(out) :: erh
+        end subroutine vaporpres
+        subroutine qsat_2(t_k,p_t,es_mb,de_mbdt,dlnes_mbdt,rs,rsdt,foftk,fdt) ! in :HumanIndexModOld:HumanIndexModOld.F90
+            real intent(in) :: t_k
+            real intent(in) :: p_t
+            real intent(out) :: es_mb
+            real intent(out) :: de_mbdt
+            real intent(out) :: dlnes_mbdt
+            real intent(out) :: rs
+            real intent(out) :: rsdt
+            real intent(out) :: foftk
+            real intent(out) :: fdt
+        end subroutine qsat_2
+    end interface 
+end python module human_index_mod_old
+
+! This file was auto-generated with f2py (version:2.2.0).
+! See:
+! https://web.archive.org/web/20140822061353/http://cens.ioc.ee/projects/f2py2e

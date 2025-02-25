@@ -1,0 +1,4 @@
+meson-python
+build
+ninja
+numpy==2.1.0
