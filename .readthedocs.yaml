@@ -15,5 +15,6 @@ build:
     - optipng
   jobs:
     pre_build:
+      - mkdir ./docs/build/html/src
       - cp -r ./docs/source/src/raw ./docs/build/html/src
 
