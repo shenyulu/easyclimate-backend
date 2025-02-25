@@ -37,7 +37,7 @@ jobs:
         run: |
           # make -C docs clean
           # make -C docs html
-          ./build_docs.sh
+          ./docs/build_docs.sh
 
       - name: Init new repo in dist folder and commit generated files
         run: |
