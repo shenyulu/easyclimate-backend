@@ -1,4 +1,4 @@
-# Manual build guide
+# Manual local build guide
 # 
 # meson setup builddir --buildtype=release
 # meson compile -C builddir 

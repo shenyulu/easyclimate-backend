@@ -7,7 +7,7 @@ name = "easyclimate-backend"
 
 license = {file = "LICENSE"}
 
-description = "Easyclimate Package for Fortran Dependencies"
+description = "The backend of easyclimate"
 authors = [
     {name = "shenyulu"},
 ]
