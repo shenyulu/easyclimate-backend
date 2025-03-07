@@ -86,6 +86,7 @@ Document Contents
 
    ./src/changelog
    ./src/contributing
+   ./src/softlist
 
 Contribute
 ----------
