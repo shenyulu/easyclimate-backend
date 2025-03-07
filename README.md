@@ -19,11 +19,8 @@
 <center>English / <a href = "README_zh_CN.md">简体中文</a> / <a href = "README_ja_JP.md">日本語</a></center>
 </div>
 
-Easyclimate-backend is the powerhouse behind the Easyclimate front-end package, providing a suite of high-performance, 
-low-level functions for climate data analysis. Implemented in languages like ``Fortran`` and ``C``, 
-these functions ensure that your climate data processing is both efficient and accurate.
 
-## What is easyclimate-backend?
+## 🤗 What is easyclimate-backend?
 
 The easyclimate-backend is designed to handle the heavy lifting for Easyclimate, 
 allowing the front-end package to offer a user-friendly interface for climate analysis. By leveraging the speed and efficiency of ``Fortran`` and ``C``, 
@@ -37,7 +34,7 @@ The easyclimate-backend makes sure that even the most computationally intensive 
 >   There may be non-backward compatible changes as we experiment with new design ideas and implement new features. 
 >   This is not a finished product, use with caution.
 
-## How to install?
+## 😯 How to install?
 
 The `easyclimate-backend` package can be installed using Python package installer [pip](https://pip.pypa.io/en/stable/getting-started/).
 
@@ -45,13 +42,13 @@ The `easyclimate-backend` package can be installed using Python package installe
 pip install easyclimate-backend
 ```
 
-## Requires
+## ✨ Requires
 
 - python >= 3.10
 - Numpy = 2.1.0 (Required only for building the wheel; the built wheel is compatible with NumPy 1.24.3 and above, including 2.x versions)
 - intel-fortran-rt
 - dpcpp-cpp-rt
 
-## Open Source Software Statement
+## 🪐 Open Source Software Statement
 
 Please refer to the [document](https://easyclimate-backend.readthedocs.io/en/latest/src/softlist.html).
