@@ -22,7 +22,7 @@
 
 ## 🤗 What is easyclimate-backend?
 
-The easyclimate-backend is designed to handle the heavy lifting for Easyclimate, 
+The easyclimate-backend is designed to handle the heavy lifting for [easyclimate](https://github.com/shenyulu/easyclimate), 
 allowing the front-end package to offer a user-friendly interface for climate analysis. By leveraging the speed and efficiency of ``Fortran`` and ``C``, 
 The easyclimate-backend makes sure that even the most computationally intensive tasks are managed seamlessly.
 
