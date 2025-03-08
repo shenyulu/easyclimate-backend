@@ -1,4 +1,3 @@
-! This is the original cloud fraction routine, but it has problems so don't use.
 ! NCLFORTSTART
 SUBROUTINE DCLOUDFRAC(pres, rh, lowc, midc, highc, nz, ns, ew)
     IMPLICIT NONE

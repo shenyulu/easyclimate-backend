@@ -31,10 +31,10 @@ fc = meson.get_compiler('fortran')
 is_windows = build_machine.system() == 'windows'
 
 if is_windows
-  omp_flags = ['/Qopenmp']
+  omp_flags = ['/Qopenmp', '/heap-arrays']
   omp_dep = fc.find_library('libiomp5md', required: true)
 else
-  omp_flags = ['-qopenmp']
+  omp_flags = ['-qopenmp', '-heap-arrays']
   # `dirs` is necessary in the Linux
   omp_dep = fc.find_library('libiomp5', dirs: '/opt/intel/oneapi/compiler/latest/lib', required: true)
 endif
