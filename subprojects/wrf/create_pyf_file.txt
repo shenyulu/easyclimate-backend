@@ -1,1 +1,3 @@
 f2py -h _wrf.pyf calc_uh.f90 wrf_bint3d.f wrf_cloud_fracf.f90 wrf_fctt.f90 wrf_pvo.f90 wrf_pw.f90 wrf_relhl.f90 wrf_rip_phys_routines.f90 wrf_user_dbz.f90 wrf_user_latlon_routines.f90 wrf_user.f90 wrf_vinterp.f90 wrf_wind.f90 rip_cape.f90 eqthecalc.f90
+
+ifx -E -fpp -Qopenmp .\ompgen.F90 > omp.f90

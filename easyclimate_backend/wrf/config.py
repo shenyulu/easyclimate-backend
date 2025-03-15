@@ -229,13 +229,14 @@ def omp_enabled():
 
     """
 
-    # return True if fomp_enabled() else False
-    return False
+    return True if fomp_enabled() else False
+    # return False
 
 
 # Set OpenMP to use 1 thread, static scheduler, and no dynamic
 # Note: Using the raw extension functions here to prevent possible
 # circular import problems in the future.
-# fomp_set_num_threads(1)
+fomp_set_num_threads(1)
 # fomp_set_schedule(omp_constants.fomp_sched_static, 0)
-# fomp_set_dynamic(False)
+fomp_set_schedule(1, 0) # see wrf/constants.py
+fomp_set_dynamic(False)

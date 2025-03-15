@@ -36,7 +36,7 @@ FFTPACK5 tutorial
 
    <iframe src="raw/fftpack/FFTPACK5 Tutorial.pdf" width="100%" height="500px"></iframe>
 
-:download:`Download FFTPACK5 tutorial <raw/fftpack/FFTPACK5 Tutorial.pdf>`.
+(:download:`Download FFTPACK5 tutorial <raw/fftpack/FFTPACK5 Tutorial.pdf>`).
 
 FFTPACK abstract
 ::::::::::::::::::::::::::::::
@@ -45,7 +45,7 @@ FFTPACK abstract
 
    <iframe src="raw/fftpack/FFTPACK Abstract.pdf" width="100%" height="500px"></iframe>
 
-:download:`Download FFTPACK abstract <raw/fftpack/FFTPACK Abstract.pdf>`.
+(:download:`Download FFTPACK abstract <raw/fftpack/FFTPACK Abstract.pdf>`).
 
 FFTPack tutorial
 ::::::::::::::::::::::::::::::
@@ -54,7 +54,7 @@ FFTPack tutorial
 
    <iframe src="raw/fftpack/FFTPack_Tutorial.pdf" width="100%" height="500px"></iframe>
 
-:download:`Download FFTPack tutorial <raw/fftpack/FFTPack_Tutorial.pdf>`.
+(:download:`Download FFTPack tutorial <raw/fftpack/FFTPack_Tutorial.pdf>`).
 
 FFTPACK5 documentation
 ::::::::::::::::::::::::::::::
@@ -63,7 +63,7 @@ FFTPACK5 documentation
 
    <iframe src="raw/fftpack/FFTPACK5 DOCUMENTATION.pdf" width="100%" height="500px"></iframe>
 
-:download:`Download FFTPACK5 documentation <raw/fftpack/FFTPACK5 DOCUMENTATION.pdf>`.
+(:download:`Download FFTPACK5 documentation <raw/fftpack/FFTPACK5 DOCUMENTATION.pdf>`).
 
 Mathematical Principles
 -----------------------

@@ -1,6 +1,6 @@
 .. _softlist:
 
-Open Source Software Statement
+Open Source Licenses 🤗
 ======================================
 
 .. list-table:: 
@@ -30,9 +30,24 @@ Open Source Software Statement
    * - `FFTPack <https://github.com/NCAR/NCAR-Classic-Libraries-for-Geophysics/tree/main/FFTPack>`_ (In `NCAR-Classic-Libraries-for-Geophysics <https://github.com/NCAR/NCAR-Classic-Libraries-for-Geophysics>`_)
      - 5.1
      - `View license <https://github.com/NCAR/NCAR-Classic-Libraries-for-Geophysics/blob/main/FFTPack/LICENSE>`_
-   * - REDFIT-X
+   * - `REDFIT-X <https://www.marum.de/Prof.-Dr.-michael-schulz/Michael-Schulz-Software.html>`_ (:download:`Download Mirror Version 1.1 [August 2016] <raw/redfit/redfit-x-11.zip>`)
      - 1.1
      - `View license <https://www.marum.de/Prof.-Dr.-michael-schulz/Michael-Schulz-Software.html>`_
-   * - REDFIT
+   * - `REDFIT <https://www.marum.de/Prof.-Dr.-michael-schulz/Michael-Schulz-Software.html>`_ (:download:`Download Mirror Version 3.8e [November 2010] <raw/redfit/redfit38e.zip>`)
      - 3.8e
      - `View license <https://www.marum.de/Prof.-Dr.-michael-schulz/Michael-Schulz-Software.html>`_
+   * - `HumanIndexMod_2020 <https://github.com/jrbuzan/HumanIndexMod_2020>`_
+     - None
+     - `GPL-3.0 license <https://github.com/jrbuzan/HumanIndexMod_2020/blob/main/LICENSE>`_
+   * - `wavelets <https://github.com/ct6502/wavelets>`_ and `A Practical Guide to Wavelet Analysis <http://paos.colorado.edu/research/wavelets/>`__
+     - None
+     - `MIT license <https://github.com/ct6502/wavelets/blob/main/LICENSE>`_   
+   * - `ConTrack <https://github.com/steidani/ConTrack>`_
+     - 0.3.0
+     - `MIT license <https://github.com/steidani/ConTrack/blob/master/LICENSE>`_
+   * - `fast-barnes-py <https://github.com/MeteoSwiss/fast-barnes-py>`_
+     - 2.0.0
+     - `BSD-3-Clause license <https://github.com/MeteoSwiss/fast-barnes-py/blob/main/LICENSE>`_
+   * - `pybarnes <https://github.com/LinOuyang/pybarnes>`_
+     - 0.2.0
+     - `BSD-3-Clause license <https://github.com/MeteoSwiss/fast-barnes-py/blob/main/LICENSE>`_

@@ -62,8 +62,8 @@ $targetenvPath = (Join-Path $targetPath venv_py313)
 # 删除文件至回收站
 # https://stackoverflow.com/questions/502002/how-do-i-move-a-file-to-the-recycle-bin-using-powershell
 deactivate
-Write-Output "正在清理文件..."
-Write-Output "Cleaning files..."
+Write-Output "正在清理文件至回收站... （你可以在回收站中彻底删除临时文件）"
+Write-Output "Cleaning up files to the Recycle Bin... (Tips: You can delete temporary files completely in the Recycle Bin)"
 Add-Type -AssemblyName Microsoft.VisualBasic
 [Microsoft.VisualBasic.FileIO.FileSystem]::DeleteDirectory($targetPath,'OnlyErrorDialogs','SendToRecycleBin')
 Add-Type -AssemblyName Microsoft.VisualBasic
