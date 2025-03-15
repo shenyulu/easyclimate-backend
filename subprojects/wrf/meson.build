@@ -1,6 +1,6 @@
 project('_wrf', 'c',
   version : '1.0.0',
-  license: 'BSD-3',
+  license: 'Apache-2.0',
   meson_version: '>=1.1.0',
   default_options : ['warning_level=2'],
 )
@@ -30,11 +30,12 @@ inc_np = include_directories(incdir_numpy, incdir_f2py)
 fc = meson.get_compiler('fortran')
 is_windows = build_machine.system() == 'windows'
 
+# Flags
 if is_windows
-  omp_flags = ['/Qopenmp']
+  omp_flags = ['/Qopenmp', '/heap-arrays']
   omp_dep = fc.find_library('libiomp5md', required: true)
 else
-  omp_flags = ['-qopenmp']
+  omp_flags = ['-qopenmp', '-heap-arrays']
   # `dirs` is necessary in the Linux
   omp_dep = fc.find_library('libiomp5', dirs: '/opt/intel/oneapi/compiler/latest/lib', required: true)
 endif

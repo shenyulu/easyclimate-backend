@@ -7,7 +7,7 @@ name = "easyclimate-backend"
 
 license = {file = "LICENSE"}
 
-description = "Easyclimate Package for Fortran Dependencies"
+description = "The backend of easyclimate"
 authors = [
     {name = "shenyulu"},
 ]
@@ -26,13 +26,13 @@ classifiers = [
     'Operating System :: POSIX',
     'Operating System :: Unix',
 ]
-version = "2025.3.0"
 dependencies = [
     'numpy >= 1.24.3',
     'intel-fortran-rt',
     'dpcpp-cpp-rt',
     'wrapt'
 ]
+dynamic = ["version"]
 
 [project.urls]
 homepage = "https://github.com/shenyulu/easyclimate-backend"
@@ -40,3 +40,11 @@ documentation = "https://github.com/shenyulu/easyclimate-backend"
 source = "https://github.com/shenyulu/easyclimate-backend"
 download = "https://pypi.org/project/easyclimate-backend/#files"
 tracker = "https://github.com/shenyulu/easyclimate-backend/issues"
+
+[tool.setuptools.dynamic]
+version = {attr = "easyclimate_backend.__version__"}
+
+[tool.setuptools_scm]
+
+[tool.setuptools.packages.find]
+where = ["./"]

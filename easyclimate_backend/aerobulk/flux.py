@@ -1,7 +1,7 @@
 import warnings
 
-import aerobulk.aerobulk.mod_aerobulk_wrap_noskin as aeronoskin
-import aerobulk.aerobulk.mod_aerobulk_wrap_skin as aeroskin
+from . import mod_aerobulk_wrap_noskin as aeronoskin
+from . import mod_aerobulk_wrap_skin as aeroskin
 import numpy as np
 import xarray as xr
 

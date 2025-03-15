@@ -1,5 +1,6 @@
 project('aerobulk', 'c',
   version : '1.0.0',
+  license: 'GPL-3.0',
   meson_version: '>=1.1.0',
   default_options : ['warning_level=2'],
 )

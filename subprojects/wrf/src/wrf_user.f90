@@ -634,7 +634,7 @@ SUBROUTINE FILTER2D(a, b, nx, ny, it, missing, cenweight)
 
     !REAL(KIND=8), PARAMETER :: COEF = .125
     INTEGER :: i, j, iter
-    REAL(KIND=4) :: cenmult, coef
+    REAL(KIND=8) :: cenmult, coef
 
     cenmult = (cenweight) / 2.
     coef = 1.0 / (4. + cenweight)

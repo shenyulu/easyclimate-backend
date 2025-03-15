@@ -15,7 +15,7 @@ these functions ensure that your climate data processing is both efficient and a
    :align: center
 
 What is Easyclimate-backend?
-----------------------------
+--------------------------------------
 
 The easyclimate-backend is designed to handle the heavy lifting for Easyclimate, 
 allowing the front-end package to offer a user-friendly interface for climate analysis. By leveraging the speed and efficiency of ``Fortran`` and ``C``, 
@@ -30,7 +30,7 @@ The easyclimate-backend makes sure that even the most computationally intensive 
    This is not a finished product, use with caution.
 
 Key Features
-------------
+----------------------
 
 - **Aerobulk** 🌊: For bulk aerodynamic calculations, essential for understanding air-sea interactions.
 - **FFTpack** 📈: Fast Fourier Transform operations for frequency domain analysis of time series data.
@@ -41,7 +41,7 @@ Key Features
 - **WRF-Python** ⛈️: Utilities for working with output from the Weather Research and Forecasting (WRF) model.
 
 Installation
-------------
+----------------------
 
 Installing the easyclimate-backend is straightforward. Since it's available on PyPI, you can install it using pip:
 
@@ -52,7 +52,7 @@ Installing the easyclimate-backend is straightforward. Since it's available on P
 No need for Conda; it's simple and direct.
 
 Getting Started
----------------
+-------------------------
 
 To get started, check out our `Getting Started <getting_started.html>`_ guide. It will walk you through the basics of using Easyclimate-backend with Easyclimate.
 
@@ -86,13 +86,14 @@ Document Contents
 
    ./src/changelog
    ./src/contributing
+   ./src/softlist
 
 Contribute
-----------
+--------------------
 
 We're always looking for contributions to improve Easyclimate-backend. Please see our `Contributing <contributing.html>`_ guide for details on how you can help.
 
 Changelog
----------
+-------------------
 
 Stay up-to-date with the latest changes and improvements by checking our `Changelog <changelog.html>`_.
