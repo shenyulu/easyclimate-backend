@@ -4,7 +4,7 @@
 # meson compile -C builddir 
 
 project('easyclimate-backend', 'c',
-  version : '2025.3.0',
+  version : run_command('python', 'get_version.py', check: true).stdout().strip(),
   license: 'BSD-3',
   meson_version: '>=1.1.0',
   default_options : ['warning_level=2'],

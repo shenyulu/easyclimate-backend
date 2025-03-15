@@ -4,9 +4,17 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 import time
+import os
+import sys
 # get year
 localtime = time.localtime(time.time())
 str_year = str(localtime[0])
+
+# autodoc required
+sys.path.insert(
+    0, os.path.abspath("../../")
+)  # Source code dir relative to this file
+import easyclimate_backend
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -14,7 +22,7 @@ str_year = str(localtime[0])
 project = 'Easyclimate-backend'
 copyright = f'2022-{str_year}, Easyclimate contributors'
 author = 'shenyulu'
-release = '2025.3.0'
+release = "v" + easyclimate_backend.__version__
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
