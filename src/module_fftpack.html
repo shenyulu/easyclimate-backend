@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" data-content_root="../">
+<head>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>FFTPACK &mdash; Easyclimate-backend v2025.3.1 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../_static/dist/fontawesome.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/dist/theme.css?v=310cf088" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+            <link rel="index" title="Index" href="../genindex.html" />
+            <link rel="search" title="Search" href="../search.html" />
+            <link rel="top" title="Easyclimate-backend v2025.3.1 documentation" href="#" />
+            <link rel="next" title="Changelog 😁" href="changelog.html" />
+            <link rel="prev" title="Pyspharm" href="module_pyspharm.html" />
+    </head>
+<body>
+    <script type="text/javascript" src="../_static/dist/blocking.js"></script>
+    <header class="container-fluid bg-primary">
+        <a class="btn btn-sm btn-light skip-to-content-link" href="#main">Skip to content</a>
+        <div class="container-fluid">
+            <div class="navbar navbar-expand-lg navbar-dark font-weight-bold">
+                    <a href="../index.html"
+                        title="ecl_logo"
+                        class="logo navbar-brand"
+                    >
+                        <img src="../_static/logo.svg" width="50" height="59" alt="ecl_logo"
+                            class="logo-img"
+                        />
+                        The backend of Easyclimate
+                    </a>
+                
+                
+                    <div class="collapse navbar-collapse justify-content-end">
+                        <ul class="navbar-nav">
+                            
+                                
+                                
+                                <li class="nav-item"><a class="nav-link"  href="https://easyclimate.readthedocs.io/">Easyclimate docs</a></li>
+                            
+                                
+                                
+                                <li class="nav-item"><a class="nav-link"  href="https://github.com/shenyulu/easyclimate"> Easyclimate repository</a></li>
+                            
+                                
+                                
+                                <li class="nav-item"><a class="nav-link"  href="https://github.com/shenyulu/easyclimate-backend"> Easyclimate-backend repository</a></li>
+                            
+                        </ul>
+                    </div>
+                
+                <button class="navbar-toggler btn btn-primary d-lg-none" type="button" data-toggle="collapse" data-target="#collapseSidebar" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="sr-only">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-12 col-lg-3 sidebar-container">
+                <div id="collapseSidebar" class="collapse sticky-top d-lg-block pt-5 pr-lg-4">
+<div id="searchbox" class="searchbox mb-6 px-1" role="search">
+    <form id="search-form" action="../search.html" autocomplete="off" method="get" role="search">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text border-right-0 bg-white py-3 pl-3 pr-2"><span class="fas fa-search"></span></div>
+            </div>
+            <input class="form-control py-3 pr-3 pl-1 h-100 border-left-0" type="search" name="q" placeholder="Search documentation" aria-label="Search documentation" id="searchinput" />
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div><div class="site-toc">
+    <nav class="toc mt-3" aria-label="Main menu">
+        <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building from source</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="building_windows.html">Building on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_linux.html">Building on Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_manylinux.html">Building manylinux wheels in Docker</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="module_pyspharm.html">Pyspharm</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">FFTPACK</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog 😁</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing 😸</a></li>
+<li class="toctree-l1"><a class="reference internal" href="softlist.html">Open Source Licenses 🤗</a></li>
+</ul>
+
+    </nav>
+    <template data-toggle-item-template>
+        <button class="btn btn-sm btn-link toctree-expand" type="button">
+            <span class="sr-only">Toggle menu contents</span>
+        </button>
+    </template>
+</div>
+                    <div class="d-lg-none border-bottom">
+                        
+                    </div>
+                </div>
+            </aside>
+            <div class="col-12 col-lg-9 pt-5">
+                <header class="row align-items-baseline">
+                    <div class="col">
+                        <nav aria-label="breadcrumb">
+    <ol class="breadcrumb m-0 p-0 bg-transparent">
+        <li class="breadcrumb-item"><a href="../index.html">Docs</a></li>
+        <li class="breadcrumb-item active" aria-current="page">FFTPACK</li>
+    </ol>
+</nav>
+                    </div>
+                    <div class="col-sm-12 col-lg-auto mt-3 mt-lg-3">
+                        <noscript>
+                            <p>JavaScript is required to toggle light/dark mode..</p>
+                        </noscript>
+                        <button id="wagtail-theme" class="btn btn-sm btn-light text-decoration-none" type="button">
+                            <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
+                            <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
+                        </button>
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/shenyulu/easyclimate-backend/blob/main/docs/src/module_fftpack.rst" rel="nofollow">
+        <span class="btn-icon"><span class="fab fa-github"></span></span>
+        <span class="btn-text">Edit on GitHub</span>
+    </a>
+    <a class="btn btn-sm btn-light text-decoration-none" href="../_sources/src/module_fftpack.rst.txt" rel="nofollow">
+        <span class="btn-icon"><span class="fas fa-code"></span></span>
+        <span class="btn-text">View source</span>
+    </a>
+                        
+                    </div>
+                </header>
+                <div class="row" >
+                    <div class="col-12">
+                        <hr class="w-100 my-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
+                        <main role="main" id="main">
+    <section id="fftpack">
+<span id="module-fftpack"></span><h1>FFTPACK<a class="headerlink" href="#fftpack" title="Link to this heading">¶</a></h1>
+<section id="overview-and-background">
+<h2>Overview and Background<a class="headerlink" href="#overview-and-background" title="Link to this heading">¶</a></h2>
+<p>FFTPACK is a Fortran library designed for performing fast Fourier transforms (FFT) and related transformations. Initially developed by Paul Swarztrauber and Dick Valent at the National Center for Atmospheric Research (NCAR), FFTPACK version 5.1 is widely recognized for its efficiency in scientific computing, particularly in signal processing, numerical analysis, and atmospheric research. Sponsored by the National Science Foundation, this library provides subroutines for transforming real and complex data, including one-dimensional (1D), two-dimensional (2D), and multiple-sequence transforms.</p>
+<p>The Python module <cite>_fftpack</cite>, generated via F2PY, serves as an interface to FFTPACK’s Fortran subroutines, enabling seamless integration into Python environments like NumPy. This documentation assumes the module is imported as <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">_fftpack</span></code> and focuses on its practical usage in Python, including initialization, forward, and backward transforms for various data types.</p>
+<p>Key Features:</p>
+<ul class="simple">
+<li><p><strong>Supported Transforms</strong>: Complex FFT, Real FFT, Cosine Transform, Sine Transform, Quarter-Wave Cosine, and Quarter-Wave Sine transforms.</p></li>
+<li><p><strong>Dimensions</strong>: 1D, 2D, and multiple-sequence transforms.</p></li>
+<li><p><strong>Efficiency</strong>: Optimized for sequences whose lengths are products of small primes.</p></li>
+<li><p><strong>Normalization</strong>: All transforms are normalized, ensuring reversibility within algorithmic constraints.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/NCAR/NCAR-Classic-Libraries-for-Geophysics">https://github.com/NCAR/NCAR-Classic-Libraries-for-Geophysics</a></p></li>
+<li><p><a class="reference external" href="https://ncar-hpc-docs.readthedocs.io/en/latest/environment-and-software/ncar-classic-libraries-for-geophysics/">https://ncar-hpc-docs.readthedocs.io/en/latest/environment-and-software/ncar-classic-libraries-for-geophysics/</a></p></li>
+</ul>
+</div>
+</section>
+<section id="official-documentation">
+<h2>Official documentation<a class="headerlink" href="#official-documentation" title="Link to this heading">¶</a></h2>
+<iframe src="raw/fftpack/FFTPACK5.1.html" width="100%" height="500px"></iframe><section id="fftpack5-tutorial">
+<h3>FFTPACK5 tutorial<a class="headerlink" href="#fftpack5-tutorial" title="Link to this heading">¶</a></h3>
+<iframe src="raw/fftpack/FFTPACK5 Tutorial.pdf" width="100%" height="500px"></iframe><p>(<a class="reference download internal" download="" href="../_downloads/4c3685b809f3c21a0bf54631065220a1/FFTPACK5%20Tutorial.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">FFTPACK5</span> <span class="pre">tutorial</span></code></a>).</p>
+</section>
+<section id="fftpack-abstract">
+<h3>FFTPACK abstract<a class="headerlink" href="#fftpack-abstract" title="Link to this heading">¶</a></h3>
+<iframe src="raw/fftpack/FFTPACK Abstract.pdf" width="100%" height="500px"></iframe><p>(<a class="reference download internal" download="" href="../_downloads/a118575c69a2b77cb363833f9d0e1bfa/FFTPACK%20Abstract.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">FFTPACK</span> <span class="pre">abstract</span></code></a>).</p>
+</section>
+<section id="fftpack-tutorial">
+<h3>FFTPack tutorial<a class="headerlink" href="#fftpack-tutorial" title="Link to this heading">¶</a></h3>
+<iframe src="raw/fftpack/FFTPack_Tutorial.pdf" width="100%" height="500px"></iframe><p>(<a class="reference download internal" download="" href="../_downloads/181140a4a02c76e7a69691da6fea1856/FFTPack_Tutorial.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">FFTPack</span> <span class="pre">tutorial</span></code></a>).</p>
+</section>
+<section id="fftpack5-documentation">
+<h3>FFTPACK5 documentation<a class="headerlink" href="#fftpack5-documentation" title="Link to this heading">¶</a></h3>
+<iframe src="raw/fftpack/FFTPACK5 DOCUMENTATION.pdf" width="100%" height="500px"></iframe><p>(<a class="reference download internal" download="" href="../_downloads/aa53a54df6519f48a67b6b442e46b825/FFTPACK5%20DOCUMENTATION.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">FFTPACK5</span> <span class="pre">documentation</span></code></a>).</p>
+</section>
+</section>
+<section id="mathematical-principles">
+<h2>Mathematical Principles<a class="headerlink" href="#mathematical-principles" title="Link to this heading">¶</a></h2>
+<p>FFTPACK leverages the Fast Fourier Transform (FFT) algorithm, which reduces the computational complexity of the Discrete Fourier Transform (DFT)
+from <span class="math notranslate nohighlight">\(O(N^2)\)</span> to <span class="math notranslate nohighlight">\(O(N log N)\)</span>. The core idea exploits the periodicity and symmetry of trigonometric functions.
+Below is a brief overview of the mathematical foundation for key transforms:</p>
+<section id="complex-fftpack">
+<h3>1. Complex FFTPACK<a class="headerlink" href="#complex-fftpack" title="Link to this heading">¶</a></h3>
+<ul>
+<li><dl>
+<dt><strong>Forward Transform</strong>: Converts a time-domain sequence to the frequency domain:</dt><dd><div class="math notranslate nohighlight">
+\[X(k) = \sum_{n=0}^{N-1} x(n) e^{-i 2\pi kn / N}\]</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><strong>Backward Transform</strong>: Reverts to the time domain:</dt><dd><div class="math notranslate nohighlight">
+\[x(n) = \sum_{k=0}^{N-1} X(k) e^{i 2\pi kn / N}\]</div>
+</dd>
+</dl>
+</li>
+<li><p>Normalization ensures that applying forward followed by backward transforms recovers the original sequence (up to roundoff error).</p></li>
+</ul>
+</section>
+<section id="real-fft">
+<h3>2. Real FFT<a class="headerlink" href="#real-fft" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Optimized for real-valued inputs, exploiting conjugate symmetry to store only half the frequency components.</p></li>
+<li><p>Forward: <span class="math notranslate nohighlight">\(X(k) = \sum_{n=0}^{N-1} x(n) \cos(2\pi kn / N) - i \sin(2\pi kn / N)\)</span></p></li>
+</ul>
+</section>
+<section id="cosine-and-sine-transforms">
+<h3>3. Cosine and Sine Transforms<a class="headerlink" href="#cosine-and-sine-transforms" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Used for even (cosine) and odd (sine) symmetry data, respectively.</p></li>
+<li><p>Cosine: <span class="math notranslate nohighlight">\(X(k) = \sum_{n=0}^{N-1} x(n) \cos(\pi kn / (N-1))\)</span></p></li>
+<li><p>Sine: <span class="math notranslate nohighlight">\(X(k) = \sum_{n=1}^{N} x(n) \sin(\pi kn / (N+1))\)</span></p></li>
+</ul>
+</section>
+<section id="quarter-wave-transforms">
+<h3>4. Quarter-Wave Transforms<a class="headerlink" href="#quarter-wave-transforms" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Specialized for odd wave numbers, useful in boundary value problems:</dt><dd><ul>
+<li><p>Quarter-Cosine: <span class="math notranslate nohighlight">\(X(k) = \sum_{n=0}^{N-1} x(n) \cos((2n+1)k\pi / (2N))\)</span></p></li>
+<li><p>Quarter-Sine: <span class="math notranslate nohighlight">\(X(k) = \sum_{n=1}^{N} x(n) \sin((2n-1)k\pi / (2N))\)</span></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>For detailed derivations, refer to Swarztrauber’s works: <em>Vectorizing the Fast Fourier Transforms</em> (1982) and <em>Fast Fourier Transforms Algorithms for Vector Computers</em> (1984).</p>
+</section>
+</section>
+<section id="usage-in-python">
+<h2>Usage in Python<a class="headerlink" href="#usage-in-python" title="Link to this heading">¶</a></h2>
+<p>The <cite>_fftpack</cite> module requires NumPy for array operations. All subroutines follow a triplet structure: initialization (suffix <cite>i</cite>), forward transform (suffix <cite>f</cite>), and backward transform (suffix <cite>b</cite>). Below are detailed usage instructions and examples.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">easyclimate_backend</span><span class="w"> </span><span class="kn">import</span> <span class="n">_fftpack</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<section id="complex-transforms">
+<h3>1. Complex Transforms<a class="headerlink" href="#complex-transforms" title="Link to this heading">¶</a></h3>
+<section id="one-dimensional-complex-fft">
+<h4>1.1 One-Dimensional Complex FFT<a class="headerlink" href="#one-dimensional-complex-fft" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Initialization</strong>: <code class="docutils literal notranslate"><span class="pre">cfft1i</span></code>
+- Prepares the work array <cite>wsave</cite>.
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">lensav</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="mi">4</span>
+<span class="n">wsave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lensav</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">cfft1i</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">wsave</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Backward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">cfft1b</span></code> (Frequency to Time)
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">complex64</span><span class="p">)</span>
+<span class="n">lenc</span> <span class="o">=</span> <span class="n">n</span>
+<span class="n">lenwrk</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span>
+<span class="n">work</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lenwrk</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">cfft1b</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">lenc</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Forward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">cfft1f</span></code> (Time to Frequency)
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">complex64</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">cfft1f</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">lenc</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="two-dimensional-complex-fft">
+<h4>1.2 Two-Dimensional Complex FFT<a class="headerlink" href="#two-dimensional-complex-fft" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Initialization</strong>: <code class="docutils literal notranslate"><span class="pre">cfft2i</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">16</span>
+<span class="n">lensav</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">m</span><span class="p">)</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="mi">8</span>
+<span class="n">wsave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lensav</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">cfft2i</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">wsave</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Backward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">cfft2b</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">complex64</span><span class="p">)</span>
+<span class="n">ldim</span> <span class="o">=</span> <span class="n">l</span>
+<span class="n">lenwrk</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">l</span> <span class="o">*</span> <span class="n">m</span>
+<span class="n">work</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lenwrk</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">cfft2b</span><span class="p">(</span><span class="n">ldim</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Forward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">cfft2f</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">complex64</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">cfft2f</span><span class="p">(</span><span class="n">ldim</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="multiple-complex-fft">
+<h4>1.3 Multiple Complex FFT<a class="headerlink" href="#multiple-complex-fft" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Initialization</strong>: <code class="docutils literal notranslate"><span class="pre">cfftmi</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">lensav</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="mi">4</span>
+<span class="n">wsave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lensav</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">cfftmi</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">wsave</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Backward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">cfftmb</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lot</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">lot</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">complex64</span><span class="p">)</span>
+<span class="n">lenc</span> <span class="o">=</span> <span class="n">lot</span> <span class="o">*</span> <span class="n">n</span>
+<span class="n">lenwrk</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">lot</span> <span class="o">*</span> <span class="n">n</span>
+<span class="n">work</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lenwrk</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">cfftmb</span><span class="p">(</span><span class="n">lot</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">lenc</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Forward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">cfftmf</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">lot</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">complex64</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">cfftmf</span><span class="p">(</span><span class="n">lot</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">lenc</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="real-transforms">
+<h3>2. Real Transforms<a class="headerlink" href="#real-transforms" title="Link to this heading">¶</a></h3>
+<section id="one-dimensional-real-fft">
+<h4>2.1 One-Dimensional Real FFT<a class="headerlink" href="#one-dimensional-real-fft" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Initialization</strong>: <code class="docutils literal notranslate"><span class="pre">rfft1i</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">lensav</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="mi">4</span>
+<span class="n">wsave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lensav</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">rfft1i</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">wsave</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Backward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">rfft1b</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">lenr</span> <span class="o">=</span> <span class="n">n</span>
+<span class="n">lenwrk</span> <span class="o">=</span> <span class="n">n</span>
+<span class="n">work</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lenwrk</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">rfft1b</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">lenr</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Forward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">rfft1f</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">rfft1f</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">lenr</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="two-dimensional-real-fft">
+<h4>2.2 Two-Dimensional Real FFT<a class="headerlink" href="#two-dimensional-real-fft" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Initialization</strong>: <code class="docutils literal notranslate"><span class="pre">rfft2i</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">16</span>
+<span class="n">lensav</span> <span class="o">=</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">m</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="mi">12</span>
+<span class="n">wsave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lensav</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">rfft2i</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">wsave</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Backward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">rfft2b</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ldim</span> <span class="o">=</span> <span class="n">l</span>
+<span class="n">lenwrk</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">m</span>
+<span class="n">work</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lenwrk</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">rfft2b</span><span class="p">(</span><span class="n">ldim</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Forward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">rfft2f</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">rfft2f</span><span class="p">(</span><span class="n">ldim</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="multiple-real-fft">
+<h4>2.3 Multiple Real FFT<a class="headerlink" href="#multiple-real-fft" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Initialization</strong>: <code class="docutils literal notranslate"><span class="pre">rfftmi</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">lensav</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="mi">4</span>
+<span class="n">wsave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lensav</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">rfftmi</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">wsave</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Backward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">rfftmb</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lot</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">lot</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">lenr</span> <span class="o">=</span> <span class="n">lot</span> <span class="o">*</span> <span class="n">n</span>
+<span class="n">lenwrk</span> <span class="o">=</span> <span class="n">lot</span> <span class="o">*</span> <span class="n">n</span>
+<span class="n">work</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lenwrk</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">rfftmb</span><span class="p">(</span><span class="n">lot</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">lenr</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Forward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">rfftmf</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">lot</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">rfftmf</span><span class="p">(</span><span class="n">lot</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">lenr</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="cosine-transforms">
+<h3>3. Cosine Transforms<a class="headerlink" href="#cosine-transforms" title="Link to this heading">¶</a></h3>
+<section id="one-dimensional-cosine-transform">
+<h4>3.1 One-Dimensional Cosine Transform<a class="headerlink" href="#one-dimensional-cosine-transform" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Initialization</strong>: <code class="docutils literal notranslate"><span class="pre">cost1i</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">lensav</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="mi">4</span>
+<span class="n">wsave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lensav</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">cost1i</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">wsave</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Backward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">cost1b</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">lenx</span> <span class="o">=</span> <span class="n">n</span>
+<span class="n">lenwrk</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">work</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lenwrk</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">cost1b</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lenx</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Forward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">cost1f</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">cost1f</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lenx</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="multiple-cosine-transform">
+<h4>3.2 Multiple Cosine Transform<a class="headerlink" href="#multiple-cosine-transform" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Initialization</strong>: <code class="docutils literal notranslate"><span class="pre">costmi</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">lensav</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="mi">4</span>
+<span class="n">wsave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lensav</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">costmi</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">wsave</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Backward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">costmb</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lot</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">lot</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">lenx</span> <span class="o">=</span> <span class="n">lot</span> <span class="o">*</span> <span class="n">n</span>
+<span class="n">lenwrk</span> <span class="o">=</span> <span class="n">lot</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">work</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lenwrk</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">costmb</span><span class="p">(</span><span class="n">lot</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lenx</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Forward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">costmf</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">lot</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">costmf</span><span class="p">(</span><span class="n">lot</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lenx</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="sine-transforms">
+<h3>4. Sine Transforms<a class="headerlink" href="#sine-transforms" title="Link to this heading">¶</a></h3>
+<section id="one-dimensional-sine-transform">
+<h4>4.1 One-Dimensional Sine Transform<a class="headerlink" href="#one-dimensional-sine-transform" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Initialization</strong>: <code class="docutils literal notranslate"><span class="pre">sint1i</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">lensav</span> <span class="o">=</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">n</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="mi">4</span>
+<span class="n">wsave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lensav</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">sint1i</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">wsave</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Backward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">sint1b</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">lenx</span> <span class="o">=</span> <span class="n">n</span>
+<span class="n">lenwrk</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="n">work</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lenwrk</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">sint1b</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lenx</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Forward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">sint1f</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">sint1f</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lenx</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="multiple-sine-transform">
+<h4>4.2 Multiple Sine Transform<a class="headerlink" href="#multiple-sine-transform" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Initialization</strong>: <code class="docutils literal notranslate"><span class="pre">sintmi</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">lensav</span> <span class="o">=</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">n</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="mi">4</span>
+<span class="n">wsave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lensav</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">sintmi</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">wsave</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Backward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">sintmb</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lot</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">lot</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">lenx</span> <span class="o">=</span> <span class="n">lot</span> <span class="o">*</span> <span class="n">n</span>
+<span class="n">lenwrk</span> <span class="o">=</span> <span class="n">lot</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">work</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lenwrk</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">sintmb</span><span class="p">(</span><span class="n">lot</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lenx</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Forward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">sintmf</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">lot</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">sintmf</span><span class="p">(</span><span class="n">lot</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lenx</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="quarter-wave-cosine-transforms">
+<h3>5. Quarter-Wave Cosine Transforms<a class="headerlink" href="#quarter-wave-cosine-transforms" title="Link to this heading">¶</a></h3>
+<section id="one-dimensional-quarter-cosine-transform">
+<h4>5.1 One-Dimensional Quarter-Cosine Transform<a class="headerlink" href="#one-dimensional-quarter-cosine-transform" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Initialization</strong>: <code class="docutils literal notranslate"><span class="pre">cosq1i</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">lensav</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="mi">4</span>
+<span class="n">wsave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lensav</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">cosq1i</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">wsave</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Backward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">cosq1b</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">lenx</span> <span class="o">=</span> <span class="n">n</span>
+<span class="n">lenwrk</span> <span class="o">=</span> <span class="n">n</span>
+<span class="n">work</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lenwrk</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">cosq1b</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lenx</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Forward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">cosq1f</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">cosq1f</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lenx</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="multiple-quarter-cosine-transform">
+<h4>5.2 Multiple Quarter-Cosine Transform<a class="headerlink" href="#multiple-quarter-cosine-transform" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Initialization</strong>: <code class="docutils literal notranslate"><span class="pre">cosqmi</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">lensav</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="mi">4</span>
+<span class="n">wsave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lensav</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">cosqmi</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">wsave</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Backward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">cosqmb</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lot</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">lot</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">lenx</span> <span class="o">=</span> <span class="n">lot</span> <span class="o">*</span> <span class="n">n</span>
+<span class="n">lenwrk</span> <span class="o">=</span> <span class="n">lot</span> <span class="o">*</span> <span class="n">n</span>
+<span class="n">work</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lenwrk</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">cosqmb</span><span class="p">(</span><span class="n">lot</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lenx</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Forward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">cosqmf</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">lot</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">cosqmf</span><span class="p">(</span><span class="n">lot</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lenx</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="quarter-wave-sine-transforms">
+<h3>6. Quarter-Wave Sine Transforms<a class="headerlink" href="#quarter-wave-sine-transforms" title="Link to this heading">¶</a></h3>
+<section id="one-dimensional-quarter-sine-transform">
+<h4>6.1 One-Dimensional Quarter-Sine Transform<a class="headerlink" href="#one-dimensional-quarter-sine-transform" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Initialization</strong>: <code class="docutils literal notranslate"><span class="pre">sinq1i</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">lensav</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="mi">4</span>
+<span class="n">wsave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lensav</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">sinq1i</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">wsave</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Backward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">sinq1b</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">lenx</span> <span class="o">=</span> <span class="n">n</span>
+<span class="n">lenwrk</span> <span class="o">=</span> <span class="n">n</span>
+<span class="n">work</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lenwrk</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">sinq1b</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lenx</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Forward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">sinq1f</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">sinq1f</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lenx</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="multiple-quarter-sine-transform">
+<h4>6.2 Multiple Quarter-Sine Transform<a class="headerlink" href="#multiple-quarter-sine-transform" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Initialization</strong>: <code class="docutils literal notranslate"><span class="pre">sinqmi</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">lensav</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="mi">4</span>
+<span class="n">wsave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lensav</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">sinqmi</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">wsave</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Backward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">sinqmb</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lot</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">lot</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">lenx</span> <span class="o">=</span> <span class="n">lot</span> <span class="o">*</span> <span class="n">n</span>
+<span class="n">lenwrk</span> <span class="o">=</span> <span class="n">lot</span> <span class="o">*</span> <span class="n">n</span>
+<span class="n">work</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lenwrk</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">sinqmb</span><span class="p">(</span><span class="n">lot</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lenx</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Forward Transform</strong>: <code class="docutils literal notranslate"><span class="pre">sinqmf</span></code>
+- Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">lot</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">ier</span> <span class="o">=</span> <span class="n">_fftpack</span><span class="o">.</span><span class="n">sinqmf</span><span class="p">(</span><span class="n">lot</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lenx</span><span class="p">,</span> <span class="n">wsave</span><span class="p">,</span> <span class="n">lensav</span><span class="p">,</span> <span class="n">work</span><span class="p">,</span> <span class="n">lenwrk</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="notes-and-best-practices">
+<h2>Notes and Best Practices<a class="headerlink" href="#notes-and-best-practices" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Work Array (`wsave`)</strong>: Must be initialized using the corresponding <cite>i</cite> subroutine before any transform. Reusable for the same sequence length.</p></li>
+<li><p><strong>Data Types</strong>: Use <cite>np.float32</cite> for real arrays and <cite>np.complex64</cite> for complex arrays to match FFTPACK’s single-precision requirements.</p></li>
+<li><p><strong>Error Handling</strong>: Check the <cite>ier</cite> return value; <cite>0</cite> indicates success, while non-zero values signal issues like insufficient array sizes.</p></li>
+<li><p><strong>Performance</strong>: Transforms are most efficient when sequence lengths are products of small primes (e.g., 2, 3, 5).</p></li>
+<li><p><strong>Array Dimensions</strong>: Ensure input arrays match the expected sizes (<cite>lenc</cite>, <cite>lenr</cite>, <cite>lensav</cite>, <cite>lenwrk</cite>) as specified in the examples.</p></li>
+</ul>
+</section>
+</section>
+
+</main>
+                        <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
+    <a class="float-left" href="module_pyspharm.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>Pyspharm
+    </a>
+    <a class="float-right" href="changelog.html" title="Next">
+        Changelog 😁 <span aria-hidden="true">&nbsp;→</span>
+    </a>
+</nav>
+                    </div>
+                    
+                    <nav class="col-12 col-lg-3 pb-4">
+                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
+                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
+                            <ul>
+<li><a class="reference internal" href="#">FFTPACK</a><ul>
+<li><a class="reference internal" href="#overview-and-background">Overview and Background</a></li>
+<li><a class="reference internal" href="#official-documentation">Official documentation</a><ul>
+<li><a class="reference internal" href="#fftpack5-tutorial">FFTPACK5 tutorial</a></li>
+<li><a class="reference internal" href="#fftpack-abstract">FFTPACK abstract</a></li>
+<li><a class="reference internal" href="#fftpack-tutorial">FFTPack tutorial</a></li>
+<li><a class="reference internal" href="#fftpack5-documentation">FFTPACK5 documentation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mathematical-principles">Mathematical Principles</a><ul>
+<li><a class="reference internal" href="#complex-fftpack">1. Complex FFTPACK</a></li>
+<li><a class="reference internal" href="#real-fft">2. Real FFT</a></li>
+<li><a class="reference internal" href="#cosine-and-sine-transforms">3. Cosine and Sine Transforms</a></li>
+<li><a class="reference internal" href="#quarter-wave-transforms">4. Quarter-Wave Transforms</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#usage-in-python">Usage in Python</a><ul>
+<li><a class="reference internal" href="#complex-transforms">1. Complex Transforms</a><ul>
+<li><a class="reference internal" href="#one-dimensional-complex-fft">1.1 One-Dimensional Complex FFT</a></li>
+<li><a class="reference internal" href="#two-dimensional-complex-fft">1.2 Two-Dimensional Complex FFT</a></li>
+<li><a class="reference internal" href="#multiple-complex-fft">1.3 Multiple Complex FFT</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#real-transforms">2. Real Transforms</a><ul>
+<li><a class="reference internal" href="#one-dimensional-real-fft">2.1 One-Dimensional Real FFT</a></li>
+<li><a class="reference internal" href="#two-dimensional-real-fft">2.2 Two-Dimensional Real FFT</a></li>
+<li><a class="reference internal" href="#multiple-real-fft">2.3 Multiple Real FFT</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cosine-transforms">3. Cosine Transforms</a><ul>
+<li><a class="reference internal" href="#one-dimensional-cosine-transform">3.1 One-Dimensional Cosine Transform</a></li>
+<li><a class="reference internal" href="#multiple-cosine-transform">3.2 Multiple Cosine Transform</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sine-transforms">4. Sine Transforms</a><ul>
+<li><a class="reference internal" href="#one-dimensional-sine-transform">4.1 One-Dimensional Sine Transform</a></li>
+<li><a class="reference internal" href="#multiple-sine-transform">4.2 Multiple Sine Transform</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#quarter-wave-cosine-transforms">5. Quarter-Wave Cosine Transforms</a><ul>
+<li><a class="reference internal" href="#one-dimensional-quarter-cosine-transform">5.1 One-Dimensional Quarter-Cosine Transform</a></li>
+<li><a class="reference internal" href="#multiple-quarter-cosine-transform">5.2 Multiple Quarter-Cosine Transform</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#quarter-wave-sine-transforms">6. Quarter-Wave Sine Transforms</a><ul>
+<li><a class="reference internal" href="#one-dimensional-quarter-sine-transform">6.1 One-Dimensional Quarter-Sine Transform</a></li>
+<li><a class="reference internal" href="#multiple-quarter-sine-transform">6.2 Multiple Quarter-Sine Transform</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#notes-and-best-practices">Notes and Best Practices</a></li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </nav>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid bg-primary text-light">
+        <div class="container">
+            <div class="row">
+        <div class="col p-4">
+            
+                <nav aria-label="Footer">
+                    <ul class="nav justify-content-center mb-2">
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://pypi.org/project/easyclimate/">PyPI (easyclimate)</a></li>
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://pypi.org/project/easyclimate-backend/">PyPI (easyclimate-backend)</a></li>
+                        
+                    </ul>
+                </nav>
+            
+            <div class="text-center">
+                    &copy; Copyright 2022-2025, Easyclimate contributors
+            </div>
+            <div class="text-center text-white-50 font-italic mt-3">
+                <small>Last updated: Mar 16, 2025</small>
+            </div>
+        </div>
+    </div>
+        </div>
+    </footer>
+        <script src="../_static/documentation_options.js?v=04de5eff"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script type="text/javascript" src="../_static/dist/theme.js"></script>
+        <script type="text/javascript" src="../_static/dist/vendor.js"></script>
+        <script type="text/javascript" src="../_static/searchtools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() { Search.loadIndex("../searchindex.js"); });
+        </script>
+        <script type="text/javascript" id="searchindexloader"></script>
+    </body>
+</html>
