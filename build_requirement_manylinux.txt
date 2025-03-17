@@ -4,4 +4,4 @@ build
 ninja
 patchelf
 auditwheel
-numpy==2.1.0
+numpy==2.2.4
