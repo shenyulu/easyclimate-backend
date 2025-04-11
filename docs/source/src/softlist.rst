@@ -50,7 +50,7 @@ Open Source Licenses 🤗
      - `BSD-3-Clause license <https://github.com/MeteoSwiss/fast-barnes-py/blob/main/LICENSE>`_
    * - `pybarnes <https://github.com/LinOuyang/pybarnes>`_
      - 0.2.0
-     - `None <https://github.com/MeteoSwiss/fast-barnes-py/blob/main/LICENSE>`_
+     - `View license <https://github.com/LinOuyang/pybarnes>`_
    * - `mjoindices <https://github.com/cghoffmann/mjoindices>`_
      - 1.4.1
      - `GPL-3.0 license <https://github.com/cghoffmann/mjoindices/blob/master/LICENSE>`_
