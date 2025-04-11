@@ -16,7 +16,7 @@
 [![文档状态](https://readthedocs.org/projects/easyclimate-backend/badge/?version=latest)](https://easyclimate-backend.readthedocs.io/en/latest/?badge=latest)
 
 <div align="center">
-<center><a href = "README.md">English</a> / 简体中文 / <a href = "README_ja_JP.md">日本語</a></center>
+<center><a href = "../README.md">English</a> / 简体中文 / <a href = "README_ja_JP.md">日本語</a></center>
 </div>
 
 ## 🤗 什么是 easyclimate-backend?

@@ -5,7 +5,7 @@ $targetPath = (Join-Path $env:TEMP "tmp_ecl")
 # Basic parameters
 # 基本参数
 $localpath = (Get-Location).Path
-${repository_python_build_requirement} = Join-Path $localpath 'build_requirement_windows.txt'
+${repository_python_build_requirement} = Join-Path $localpath 'scripts' 'build_requirement_windows.txt'
 $deploy_win = 'deploy_win'
 
 # Extract file
@@ -53,10 +53,10 @@ $targetenvPath = (Join-Path $targetPath venv_py313)
 
 # Compile
 # 编译
-& (Join-Path '.\'$deploy_win "activate_py310env.ps1") && & python -m pip install -r ${repository_python_build_requirement} && & .\build_wheel_windows.ps1
-& (Join-Path '.\'$deploy_win "activate_py311env.ps1") && & python -m pip install -r ${repository_python_build_requirement} && & .\build_wheel_windows.ps1
-& (Join-Path '.\'$deploy_win "activate_py312env.ps1") && & python -m pip install -r ${repository_python_build_requirement} && & .\build_wheel_windows.ps1
-& (Join-Path '.\'$deploy_win "activate_py313env.ps1") && & python -m pip install -r ${repository_python_build_requirement} && & .\build_wheel_windows.ps1
+& (Join-Path '.\'$deploy_win "activate_py310env.ps1") && & python -m pip install -r ${repository_python_build_requirement} && & .\scripts\build_wheel_windows.ps1
+& (Join-Path '.\'$deploy_win "activate_py311env.ps1") && & python -m pip install -r ${repository_python_build_requirement} && & .\scripts\build_wheel_windows.ps1
+& (Join-Path '.\'$deploy_win "activate_py312env.ps1") && & python -m pip install -r ${repository_python_build_requirement} && & .\scripts\build_wheel_windows.ps1
+& (Join-Path '.\'$deploy_win "activate_py313env.ps1") && & python -m pip install -r ${repository_python_build_requirement} && & .\scripts\build_wheel_windows.ps1
 
 # Delete files to Recycle bin
 # 删除文件至回收站

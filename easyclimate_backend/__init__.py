@@ -1,2 +1,1 @@
-# Version number
-__version__ = "2025.3.1"
+from .version import __version__
