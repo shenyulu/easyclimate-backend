@@ -29,6 +29,7 @@ subproject('fftpack')
 subproject('heat_stress')
 subproject('wrf')
 subproject('aerobulk')
+subproject('wet_bulb')
 
 install_subdir(
     'easyclimate_backend',

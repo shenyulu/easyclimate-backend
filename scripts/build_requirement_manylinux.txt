@@ -1,7 +1,8 @@
-meson-python
+meson-python==0.17.1
+meson==1.6.0
 setuptools
-build
-ninja
+build==1.2.2.post1
+ninja==1.11.1.2
 patchelf
 auditwheel
 numpy==2.1.0
