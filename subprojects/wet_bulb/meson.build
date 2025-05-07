@@ -11,6 +11,16 @@ py_mod = import('python')
 py = py_mod.find_installation(pure: false)
 py_dep = py.dependency()
 
+#  Intel Short Vector Math Library (SVML)
+is_windows = build_machine.system() == 'windows'
+
+if is_windows
+  svml_lib = meson.get_compiler('c').find_library('svml_dispmd')
+else
+  svml_path = '/opt/intel/oneapi/compiler/latest/lib'
+  svml_lib = meson.get_compiler('c').find_library('svml', dirs: svml_path)
+endif
+
 incdir_numpy = run_command(py,
   ['-c', 'import os; os.chdir(".."); import numpy; print(numpy.get_include())'],
   check : true
@@ -37,7 +47,7 @@ py.extension_module('_wet_bulb_temperature',
   srcs_local + _wet_bulb_temperature_source,
   incdir_f2py / 'fortranobject.c',
   include_directories: inc_np,
-  dependencies : py_dep,
+  dependencies : [py_dep, svml_lib],
   install : true,
   install_dir: py.get_install_dir() / 'easyclimate_backend' / 'wet_bulb'
 )

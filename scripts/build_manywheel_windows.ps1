@@ -1,3 +1,7 @@
+# Check Intel Fortran Compiler status
+# 检查 Intel Fortran 编译器状态
+ifx /QV
+
 # python interpreter register directory
 # python解释器暂存目录
 $targetPath = (Join-Path $env:TEMP "tmp_ecl")
@@ -7,6 +11,12 @@ $targetPath = (Join-Path $env:TEMP "tmp_ecl")
 $localpath = (Get-Location).Path
 ${repository_python_build_requirement} = Join-Path $localpath 'scripts' 'build_requirement_windows.txt'
 $deploy_win = 'deploy_win'
+
+# Remove target directory if it exists
+# 如果目标目录存在则删除
+if (Test-Path $targetPath) {
+    Remove-Item -Path $targetPath -Recurse -Force
+}
 
 # Extract file
 # 解压文件
