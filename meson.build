@@ -29,6 +29,7 @@ subproject('heat_stress')
 subproject('wrf')
 subproject('aerobulk')
 subproject('wet_bulb')
+subproject('vinth2p')
 
 install_subdir(
     'easyclimate_backend',
