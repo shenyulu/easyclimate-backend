@@ -68,3 +68,26 @@ py.extension_module('_vinth2p_ecmwf',
   install : true,
   install_dir: py.get_install_dir() / 'easyclimate_backend' / 'vinth2p'
 )
+
+# ----------------------------------------------
+# vintp2p_ecmwf
+# ----------------------------------------------
+
+# Fortran source files
+srcs_local = ['src/vintp2p_ecmwf.f']
+
+# https://github.com/numpy/numpy/issues/25199
+spherepack_source = custom_target('_vintp2p_ecmwfmodule.c',
+  input : ['_vintp2p_ecmwf.pyf'],
+  output : ['_vintp2p_ecmwfmodule.c', '_vintp2p_ecmwf-f2pywrappers.f'],
+  command : [py, '-m', 'numpy.f2py', '@INPUT@', '--lower', '--build-dir', 'subprojects/vinth2p']
+)
+
+py.extension_module('_vintp2p_ecmwf',
+  srcs_local + spherepack_source,
+  incdir_f2py / 'fortranobject.c',
+  include_directories: inc_np,
+  dependencies : [py_dep],
+  install : true,
+  install_dir: py.get_install_dir() / 'easyclimate_backend' / 'vinth2p'
+)
