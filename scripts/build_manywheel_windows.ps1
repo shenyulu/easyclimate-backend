@@ -33,7 +33,11 @@ pyenv update
 
 # Install python
 # 安装python
-pyenv install 3.10.11 3.11.9 3.12.9 3.13.2
+pyenv install 3.10.11
+pyenv install 3.11.9
+pyenv install 3.12.9
+pyenv install 3.13.2
+# pyenv install 3.14.0a5
 
 # Install dependencies and create virtual environments
 # 安装依赖，创建虚拟环境
@@ -61,12 +65,19 @@ $targetenvPath = (Join-Path $targetPath venv_py313)
 & $pythonPath_313 -m virtualenv $targetenvPath
 '& ' + (Join-Path $targetenvPath "Scripts" "activate.ps1") | Out-File -FilePath (Join-Path $localpath $deploy_win "activate_py313env.ps1")
 
+# $pythonPath_314 = Join-Path  $Env:PYENV  "versions" "3.14.0a5" "python.exe"
+# & $pythonPath_314 -m pip install virtualenv
+# $targetenvPath = (Join-Path $targetPath venv_py314)
+# & $pythonPath_314 -m virtualenv $targetenvPath
+# '& ' + (Join-Path $targetenvPath "Scripts" "activate.ps1") | Out-File -FilePath (Join-Path $localpath $deploy_win "activate_py314env.ps1")
+
 # Compile
 # 编译
 & (Join-Path '.\'$deploy_win "activate_py310env.ps1") && & python -m pip install -r ${repository_python_build_requirement} && & .\scripts\build_wheel_windows.ps1
 & (Join-Path '.\'$deploy_win "activate_py311env.ps1") && & python -m pip install -r ${repository_python_build_requirement} && & .\scripts\build_wheel_windows.ps1
 & (Join-Path '.\'$deploy_win "activate_py312env.ps1") && & python -m pip install -r ${repository_python_build_requirement} && & .\scripts\build_wheel_windows.ps1
 & (Join-Path '.\'$deploy_win "activate_py313env.ps1") && & python -m pip install -r ${repository_python_build_requirement} && & .\scripts\build_wheel_windows.ps1
+# & (Join-Path '.\'$deploy_win "activate_py314env.ps1") && & python -m pip install -r ${repository_python_build_requirement} && & .\scripts\build_wheel_windows.ps1
 
 # Delete files to Recycle bin
 # 删除文件至回收站
@@ -84,3 +95,5 @@ Add-Type -AssemblyName Microsoft.VisualBasic
 [Microsoft.VisualBasic.FileIO.FileSystem]::DeleteFile((Join-Path $localpath $deploy_win "activate_py312env.ps1"),'OnlyErrorDialogs','SendToRecycleBin')
 Add-Type -AssemblyName Microsoft.VisualBasic
 [Microsoft.VisualBasic.FileIO.FileSystem]::DeleteFile((Join-Path $localpath $deploy_win "activate_py313env.ps1"),'OnlyErrorDialogs','SendToRecycleBin')
+Add-Type -AssemblyName Microsoft.VisualBasic
+[Microsoft.VisualBasic.FileIO.FileSystem]::DeleteFile((Join-Path $localpath $deploy_win "activate_py314env.ps1"),'OnlyErrorDialogs','SendToRecycleBin')
