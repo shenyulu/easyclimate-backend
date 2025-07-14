@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" data-content_root="../">
+<head>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>Building on Linux &mdash; Easyclimate-backend v2025.8.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../_static/dist/fontawesome.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/dist/theme.css?v=310cf088" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+            <link rel="index" title="Index" href="../genindex.html" />
+            <link rel="search" title="Search" href="../search.html" />
+            <link rel="top" title="Easyclimate-backend v2025.8.0 documentation" href="#" />
+            <link rel="next" title="Building manylinux wheels in Docker" href="building_manylinux.html" />
+            <link rel="prev" title="Building on Windows" href="building_windows.html" />
+    </head>
+<body>
+    <script type="text/javascript" src="../_static/dist/blocking.js"></script>
+    <header class="container-fluid bg-primary">
+        <a class="btn btn-sm btn-light skip-to-content-link" href="#main">Skip to content</a>
+        <div class="container-fluid">
+            <div class="navbar navbar-expand-lg navbar-dark font-weight-bold">
+                    <a href="../index.html"
+                        title="ecl_logo"
+                        class="logo navbar-brand"
+                    >
+                        <img src="../_static/logo.svg" width="50" height="59" alt="ecl_logo"
+                            class="logo-img"
+                        />
+                        The backend of Easyclimate
+                    </a>
+                
+                
+                    <div class="collapse navbar-collapse justify-content-end">
+                        <ul class="navbar-nav">
+                            
+                                
+                                
+                                <li class="nav-item"><a class="nav-link"  href="https://easyclimate.readthedocs.io/">Easyclimate docs</a></li>
+                            
+                                
+                                
+                                <li class="nav-item"><a class="nav-link"  href="https://github.com/shenyulu/easyclimate"> Easyclimate repository</a></li>
+                            
+                                
+                                
+                                <li class="nav-item"><a class="nav-link"  href="https://github.com/shenyulu/easyclimate-backend"> Easyclimate-backend repository</a></li>
+                            
+                        </ul>
+                    </div>
+                
+                <button class="navbar-toggler btn btn-primary d-lg-none" type="button" data-toggle="collapse" data-target="#collapseSidebar" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="sr-only">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-12 col-lg-3 sidebar-container">
+                <div id="collapseSidebar" class="collapse sticky-top d-lg-block pt-5 pr-lg-4">
+<div id="searchbox" class="searchbox mb-6 px-1" role="search">
+    <form id="search-form" action="../search.html" autocomplete="off" method="get" role="search">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text border-right-0 bg-white py-3 pl-3 pr-2"><span class="fas fa-search"></span></div>
+            </div>
+            <input class="form-control py-3 pr-3 pl-1 h-100 border-left-0" type="search" name="q" placeholder="Search documentation" aria-label="Search documentation" id="searchinput" />
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div><div class="site-toc">
+    <nav class="toc mt-3" aria-label="Main menu">
+        <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building from source</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="building_windows.html">Building on Windows</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Building on Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_manylinux.html">Building manylinux wheels in Docker</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="module_pyspharm.html">Pyspharm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module_fftpack.html">FFTPACK</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog 😁</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing 😸</a></li>
+<li class="toctree-l1"><a class="reference internal" href="softlist.html">Open Source Licenses 🤗</a></li>
+</ul>
+
+    </nav>
+    <template data-toggle-item-template>
+        <button class="btn btn-sm btn-link toctree-expand" type="button">
+            <span class="sr-only">Toggle menu contents</span>
+        </button>
+    </template>
+</div>
+                    <div class="d-lg-none border-bottom">
+                        
+                    </div>
+                </div>
+            </aside>
+            <div class="col-12 col-lg-9 pt-5">
+                <header class="row align-items-baseline">
+                    <div class="col">
+                        <nav aria-label="breadcrumb">
+    <ol class="breadcrumb m-0 p-0 bg-transparent">
+        <li class="breadcrumb-item"><a href="../index.html">Docs</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Building on Linux</li>
+    </ol>
+</nav>
+                    </div>
+                    <div class="col-sm-12 col-lg-auto mt-3 mt-lg-3">
+                        <noscript>
+                            <p>JavaScript is required to toggle light/dark mode..</p>
+                        </noscript>
+                        <button id="wagtail-theme" class="btn btn-sm btn-light text-decoration-none" type="button">
+                            <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
+                            <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
+                        </button>
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/shenyulu/easyclimate-backend/blob/main/docs/src/building_linux.rst" rel="nofollow">
+        <span class="btn-icon"><span class="fab fa-github"></span></span>
+        <span class="btn-text">Edit on GitHub</span>
+    </a>
+    <a class="btn btn-sm btn-light text-decoration-none" href="../_sources/src/building_linux.rst.txt" rel="nofollow">
+        <span class="btn-icon"><span class="fas fa-code"></span></span>
+        <span class="btn-text">View source</span>
+    </a>
+                        
+                    </div>
+                </header>
+                <div class="row" >
+                    <div class="col-12">
+                        <hr class="w-100 my-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
+                        <main role="main" id="main">
+    <section id="building-on-linux">
+<span id="building-linux-wheels"></span><h1>Building on Linux<a class="headerlink" href="#building-on-linux" title="Link to this heading">¶</a></h1>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Python</strong> &gt;= 3.10</p></li>
+<li><p><strong>NumPy</strong> == 2.1.0 (Required only for building the wheel; the built wheel is compatible with NumPy 1.24.3 and above, including 2.x versions)</p></li>
+<li><p><strong>intel-fortran-rt</strong></p></li>
+<li><p><strong>dpcpp-cpp-rt</strong></p></li>
+</ul>
+</section>
+<section id="step-by-step-instructions">
+<h2>Step-by-Step Instructions<a class="headerlink" href="#step-by-step-instructions" title="Link to this heading">¶</a></h2>
+<section id="install-intel-hpc-toolkit">
+<h3>1. Install Intel® HPC Toolkit<a class="headerlink" href="#install-intel-hpc-toolkit" title="Link to this heading">¶</a></h3>
+<p>Download and install the <a class="reference external" href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html">Intel® HPC Toolkit</a> from the official website.</p>
+<section id="install-with-the-gui-installer">
+<h4>(1) Install with the GUI Installer<a class="headerlink" href="#install-with-the-gui-installer" title="Link to this heading">¶</a></h4>
+<ol class="arabic simple">
+<li><p>From the console, locate the downloaded install file.</p></li>
+<li><p>To launch the GUI installer:</p></li>
+</ol>
+<ul class="simple">
+<li><p>As root:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>sh<span class="w"> </span>./intel-oneapi-hpc-toolkit-2025.0.1.47_offline.sh
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>As the current user:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sh<span class="w"> </span>./intel-oneapi-hpc-toolkit-2025.0.1.47_offline.sh
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Follow the instructions in the installer.</p></li>
+</ol>
+</section>
+<section id="command-line-installation-instructions">
+<h4>(2) Command-Line Installation Instructions<a class="headerlink" href="#command-line-installation-instructions" title="Link to this heading">¶</a></h4>
+<p>Read the documentation for <a class="reference external" href="https://www.intel.com/content/www/us/en/developer/articles/technical/oneapi-command-line-installation.html">Command Line Installation Parameters</a>,
+and decide which parameters to use. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>sh<span class="w"> </span>./intel-oneapi-hpc-toolkit-2025.0.1.47_offline.sh<span class="w"> </span>-a<span class="w"> </span>--silent<span class="w"> </span>--cli<span class="w"> </span>--eula<span class="w"> </span>accept
+</pre></div>
+</div>
+<p>This indicates a silent install (<code class="docutils literal notranslate"><span class="pre">--silent</span></code>) using a command-line interface (<code class="docutils literal notranslate"><span class="pre">--cli</span></code>) and accepting the End User License Agreement (<code class="docutils literal notranslate"><span class="pre">--eula</span> <span class="pre">accept</span></code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must accept the End User License Agreement by adding <code class="docutils literal notranslate"><span class="pre">--eula</span> <span class="pre">accept</span></code> to the command.</p>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Download and run the installer:</p></li>
+</ol>
+<p>Download the install script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://registrationcenter-download.intel.com/akdlm/IRC_NAS/b7f71cf2-8157-4393-abae-8cea815509f7/intel-oneapi-hpc-toolkit-2025.0.1.47_offline.sh
+</pre></div>
+</div>
+<p>Run the install script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>sh<span class="w"> </span>./intel-oneapi-hpc-toolkit-2025.0.1.47_offline.sh<span class="w"> </span>-a<span class="w"> </span>--silent<span class="w"> </span>--cli<span class="w"> </span>--eula<span class="w"> </span>accept
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configure-the-system-after-installation">
+<h3>2. Configure the System After Installation<a class="headerlink" href="#configure-the-system-after-installation" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Open a terminal session.</p></li>
+<li><p>Install CMake, pkg-config, and GNU development tools:</p></li>
+</ol>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Ubuntu</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">update</span></code>
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">-y</span> <span class="pre">install</span> <span class="pre">cmake</span> <span class="pre">pkg-config</span> <span class="pre">build-essential</span></code></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Red Hat and Fedora</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">update</span></code>
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">-y</span> <span class="pre">install</span> <span class="pre">cmake</span> <span class="pre">pkgconfig</span></code>
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">groupinstall</span> <span class="pre">&quot;Development</span> <span class="pre">Tools&quot;</span></code></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>SUSE</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">zypper</span> <span class="pre">update</span></code>
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">zypper</span> <span class="pre">--non-interactive</span> <span class="pre">install</span> <span class="pre">cmake</span> <span class="pre">pkg-config</span></code>
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">zypper</span> <span class="pre">--non-interactive</span> <span class="pre">install</span> <span class="pre">pattern</span> <span class="pre">devel_C_C++</span></code></p>
+</dd>
+</dl>
+</li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>Verify the installation:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>which<span class="w"> </span>cmake<span class="w"> </span>pkg-config<span class="w"> </span>make<span class="w"> </span>gcc<span class="w"> </span>g++
+</pre></div>
+</div>
+<p>You should see one or more of these locations:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/usr/bin/cmake<span class="w"> </span>/usr/bin/pkg-config<span class="w"> </span>/usr/bin/make<span class="w"> </span>/usr/bin/gcc<span class="w"> </span>/usr/bin/g++
+</pre></div>
+</div>
+</section>
+<section id="activate-intel-oneapi-environment">
+<h3>3. Activate Intel oneAPI Environment<a class="headerlink" href="#activate-intel-oneapi-environment" title="Link to this heading">¶</a></h3>
+<p>After installation, activate the Intel oneAPI environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/intel/oneapi/setvars.sh
+</pre></div>
+</div>
+</section>
+<section id="activate-python-environment">
+<h3>4. Activate Python Environment<a class="headerlink" href="#activate-python-environment" title="Link to this heading">¶</a></h3>
+<p>Activate your <a class="reference external" href="https://www.anaconda.com/download/success">Anaconda</a> environment or a Python virtual environment (refer to <a class="reference external" href="https://docs.python.org/3/library/venv.html">venv</a>):
+<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">myenv</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">myenv</span></code> with the name of your actual environment.</p>
+</div>
+</section>
+<section id="build-the-wheel-package">
+<h3>5. Build the Wheel Package<a class="headerlink" href="#build-the-wheel-package" title="Link to this heading">¶</a></h3>
+<p>Execute the following script to build the wheel package:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./build_wheel_linux.sh
+</pre></div>
+</div>
+<p>The contents of <code class="docutils literal notranslate"><span class="pre">build_wheel_linux.sh</span></code> are as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">CC</span><span class="o">=</span>gcc
+<span class="nb">export</span><span class="w"> </span><span class="nv">FC</span><span class="o">=</span>ifx
+find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;__pycache__&quot;</span><span class="w"> </span>-exec<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="o">{}</span><span class="w"> </span>+
+<span class="c1"># https://github.com/mesonbuild/meson-python/issues/507</span>
+python<span class="w"> </span>-m<span class="w"> </span>build<span class="w"> </span>--wheel<span class="w"> </span>--no-isolation
+</pre></div>
+</div>
+</section>
+</section>
+<section id="additional-notes">
+<h2>Additional Notes<a class="headerlink" href="#additional-notes" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Environment Setup</strong>: Ensure the Intel® HPC Toolkit is properly installed and that the compiler environment is correctly configured via the Intel oneAPI command prompt.</p></li>
+<li><p><strong>NumPy Compatibility</strong>: While NumPy 2.1.0 is used during the wheel build process, the resulting wheel is compatible with NumPy 1.24.3 and higher, including 2.x versions.</p></li>
+<li><p><strong>Troubleshooting</strong>: The <code class="docutils literal notranslate"><span class="pre">build_wheel_linux.sh</span></code> script includes a workaround for a known <code class="docutils literal notranslate"><span class="pre">meson-python</span></code> issue; see the linked GitHub reference in the script comments for details.</p></li>
+</ul>
+</section>
+</section>
+
+</main>
+                        <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
+    <a class="float-left" href="building_windows.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>Building on Windows
+    </a>
+    <a class="float-right" href="building_manylinux.html" title="Next">
+        Building manylinux wheels in Docker <span aria-hidden="true">&nbsp;→</span>
+    </a>
+</nav>
+                    </div>
+                    
+                    <nav class="col-12 col-lg-3 pb-4">
+                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
+                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
+                            <ul>
+<li><a class="reference internal" href="#">Building on Linux</a><ul>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li><a class="reference internal" href="#step-by-step-instructions">Step-by-Step Instructions</a><ul>
+<li><a class="reference internal" href="#install-intel-hpc-toolkit">1. Install Intel® HPC Toolkit</a><ul>
+<li><a class="reference internal" href="#install-with-the-gui-installer">(1) Install with the GUI Installer</a></li>
+<li><a class="reference internal" href="#command-line-installation-instructions">(2) Command-Line Installation Instructions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configure-the-system-after-installation">2. Configure the System After Installation</a></li>
+<li><a class="reference internal" href="#activate-intel-oneapi-environment">3. Activate Intel oneAPI Environment</a></li>
+<li><a class="reference internal" href="#activate-python-environment">4. Activate Python Environment</a></li>
+<li><a class="reference internal" href="#build-the-wheel-package">5. Build the Wheel Package</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#additional-notes">Additional Notes</a></li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </nav>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid bg-primary text-light">
+        <div class="container">
+            <div class="row">
+        <div class="col p-4">
+            
+                <nav aria-label="Footer">
+                    <ul class="nav justify-content-center mb-2">
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://pypi.org/project/easyclimate/">PyPI (easyclimate)</a></li>
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://pypi.org/project/easyclimate-backend/">PyPI (easyclimate-backend)</a></li>
+                        
+                    </ul>
+                </nav>
+            
+            <div class="text-center">
+                    &copy; Copyright 2022-2025, Easyclimate contributors
+            </div>
+            <div class="text-center text-white-50 font-italic mt-3">
+                <small>Last updated: Jul 14, 2025</small>
+            </div>
+        </div>
+    </div>
+        </div>
+    </footer>
+        <script src="../_static/documentation_options.js?v=0a915a47"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script type="text/javascript" src="../_static/dist/theme.js"></script>
+        <script type="text/javascript" src="../_static/dist/vendor.js"></script>
+        <script type="text/javascript" src="../_static/searchtools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() { Search.loadIndex("../searchindex.js"); });
+        </script>
+        <script type="text/javascript" id="searchindexloader"></script>
+    </body>
+</html>

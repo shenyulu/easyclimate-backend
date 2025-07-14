@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" data-content_root="../">
+<head>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>Contributing 😸 &mdash; Easyclimate-backend v2025.8.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../_static/dist/fontawesome.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/dist/theme.css?v=310cf088" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+            <link rel="index" title="Index" href="../genindex.html" />
+            <link rel="search" title="Search" href="../search.html" />
+            <link rel="top" title="Easyclimate-backend v2025.8.0 documentation" href="#" />
+            <link rel="next" title="Open Source Licenses 🤗" href="softlist.html" />
+            <link rel="prev" title="Changelog 😁" href="changelog.html" />
+    </head>
+<body>
+    <script type="text/javascript" src="../_static/dist/blocking.js"></script>
+    <header class="container-fluid bg-primary">
+        <a class="btn btn-sm btn-light skip-to-content-link" href="#main">Skip to content</a>
+        <div class="container-fluid">
+            <div class="navbar navbar-expand-lg navbar-dark font-weight-bold">
+                    <a href="../index.html"
+                        title="ecl_logo"
+                        class="logo navbar-brand"
+                    >
+                        <img src="../_static/logo.svg" width="50" height="59" alt="ecl_logo"
+                            class="logo-img"
+                        />
+                        The backend of Easyclimate
+                    </a>
+                
+                
+                    <div class="collapse navbar-collapse justify-content-end">
+                        <ul class="navbar-nav">
+                            
+                                
+                                
+                                <li class="nav-item"><a class="nav-link"  href="https://easyclimate.readthedocs.io/">Easyclimate docs</a></li>
+                            
+                                
+                                
+                                <li class="nav-item"><a class="nav-link"  href="https://github.com/shenyulu/easyclimate"> Easyclimate repository</a></li>
+                            
+                                
+                                
+                                <li class="nav-item"><a class="nav-link"  href="https://github.com/shenyulu/easyclimate-backend"> Easyclimate-backend repository</a></li>
+                            
+                        </ul>
+                    </div>
+                
+                <button class="navbar-toggler btn btn-primary d-lg-none" type="button" data-toggle="collapse" data-target="#collapseSidebar" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="sr-only">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-12 col-lg-3 sidebar-container">
+                <div id="collapseSidebar" class="collapse sticky-top d-lg-block pt-5 pr-lg-4">
+<div id="searchbox" class="searchbox mb-6 px-1" role="search">
+    <form id="search-form" action="../search.html" autocomplete="off" method="get" role="search">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text border-right-0 bg-white py-3 pl-3 pr-2"><span class="fas fa-search"></span></div>
+            </div>
+            <input class="form-control py-3 pr-3 pl-1 h-100 border-left-0" type="search" name="q" placeholder="Search documentation" aria-label="Search documentation" id="searchinput" />
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div><div class="site-toc">
+    <nav class="toc mt-3" aria-label="Main menu">
+        <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building from source</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="building_windows.html">Building on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_linux.html">Building on Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_manylinux.html">Building manylinux wheels in Docker</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="module_pyspharm.html">Pyspharm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module_fftpack.html">FFTPACK</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog 😁</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing 😸</a></li>
+<li class="toctree-l1"><a class="reference internal" href="softlist.html">Open Source Licenses 🤗</a></li>
+</ul>
+
+    </nav>
+    <template data-toggle-item-template>
+        <button class="btn btn-sm btn-link toctree-expand" type="button">
+            <span class="sr-only">Toggle menu contents</span>
+        </button>
+    </template>
+</div>
+                    <div class="d-lg-none border-bottom">
+                        
+                    </div>
+                </div>
+            </aside>
+            <div class="col-12 col-lg-9 pt-5">
+                <header class="row align-items-baseline">
+                    <div class="col">
+                        <nav aria-label="breadcrumb">
+    <ol class="breadcrumb m-0 p-0 bg-transparent">
+        <li class="breadcrumb-item"><a href="../index.html">Docs</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Contributing 😸</li>
+    </ol>
+</nav>
+                    </div>
+                    <div class="col-sm-12 col-lg-auto mt-3 mt-lg-3">
+                        <noscript>
+                            <p>JavaScript is required to toggle light/dark mode..</p>
+                        </noscript>
+                        <button id="wagtail-theme" class="btn btn-sm btn-light text-decoration-none" type="button">
+                            <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
+                            <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
+                        </button>
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/shenyulu/easyclimate-backend/blob/main/docs/src/contributing.rst" rel="nofollow">
+        <span class="btn-icon"><span class="fab fa-github"></span></span>
+        <span class="btn-text">Edit on GitHub</span>
+    </a>
+    <a class="btn btn-sm btn-light text-decoration-none" href="../_sources/src/contributing.rst.txt" rel="nofollow">
+        <span class="btn-icon"><span class="fas fa-code"></span></span>
+        <span class="btn-text">View source</span>
+    </a>
+                        
+                    </div>
+                </header>
+                <div class="row" >
+                    <div class="col-12">
+                        <hr class="w-100 my-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
+                        <main role="main" id="main">
+    <section id="contributing">
+<span id="id1"></span><h1>Contributing 😸<a class="headerlink" href="#contributing" title="Link to this heading">¶</a></h1>
+<p>First off, thanks for taking the time to contribute! ❤️</p>
+<p>All types of contributions are encouraged and valued. See the <a class="reference internal" href="#id2">Table of Contents</a> for different ways to help and details about how this project handles them. Please make sure to read the relevant section before making your contribution. It will make it a lot easier for us maintainers and smooth out the experience for all involved. The community looks forward to your contributions. 🎉</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>And if you like the project, but just don’t have time to contribute, that’s fine. There are other easy ways to support the project and show your appreciation, which we would also be very happy about:</p>
+<ul class="simple">
+<li><p>Star the project</p></li>
+<li><p>Tweet about it</p></li>
+<li><p>Refer this project in your project’s readme</p></li>
+<li><p>Mention the project at local meetups and tell your friends/colleagues</p></li>
+</ul>
+</div>
+<section id="table-of-contents">
+<span id="id2"></span><h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#code-of-conduct">Code of Conduct</a></p></li>
+<li><p><a class="reference internal" href="#i-have-a-question">I Have a Question</a></p></li>
+<li><p><a class="reference internal" href="#i-want-to-contribute">I Want To Contribute</a>
+- <a class="reference internal" href="#reporting-bugs">Reporting Bugs</a>
+- <a class="reference internal" href="#suggesting-enhancements">Suggesting Enhancements</a>
+- <a href="#id6"><span class="problematic" id="id7">`Your First Code Contribution`_</span></a>
+- <a href="#id8"><span class="problematic" id="id9">`Improving The Documentation`_</span></a></p></li>
+<li><p><a href="#id10"><span class="problematic" id="id11">`Styleguides`_</span></a>
+- <a href="#id12"><span class="problematic" id="id13">`Commit Messages`_</span></a></p></li>
+<li><p><a href="#id14"><span class="problematic" id="id15">`Join The Project Team`_</span></a></p></li>
+</ul>
+</section>
+<section id="code-of-conduct">
+<h2>Code of Conduct<a class="headerlink" href="#code-of-conduct" title="Link to this heading">¶</a></h2>
+<p>This project and everyone participating in it is governed by the <a class="reference external" href="https://github.com/shenyulu/easyclimateblob/master/CODE_OF_CONDUCT.md">easyclimate Code of Conduct</a>.
+By participating, you are expected to uphold this code. Please report unacceptable behavior
+to <cite>shenyulumail&#64;foxmail.com</cite>.</p>
+</section>
+<section id="i-have-a-question">
+<h2>I Have a Question<a class="headerlink" href="#i-have-a-question" title="Link to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to ask a question, we assume that you have read the available <a class="reference external" href="https://shenyulu.github.io/easyclimate/">Documentation</a>.</p>
+</div>
+<p>Before you ask a question, it is best to search for existing <a class="reference external" href="https://github.com/shenyulu/easyclimate/issues">Issues</a> that might help you. In case you have found a suitable issue and still need clarification, you can write your question in this issue. It is also advisable to search the internet for answers first.</p>
+<p>If you then still feel the need to ask a question and need clarification, we recommend the following:</p>
+<ul class="simple">
+<li><p>Open an <a class="reference external" href="https://github.com/shenyulu/easyclimate/issues/new">Issue</a>.</p></li>
+<li><p>Provide as much context as you can about what you’re running into.</p></li>
+<li><p>Provide project and platform versions (nodejs, npm, etc), depending on what seems relevant.</p></li>
+</ul>
+<p>We will then take care of the issue as soon as possible.</p>
+</section>
+<section id="i-want-to-contribute">
+<h2>I Want To Contribute<a class="headerlink" href="#i-want-to-contribute" title="Link to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Legal Notice</strong>:
+When contributing to this project, you must agree that you have authored 100% of the content, that you have the necessary rights to the content and that the content you contribute may be provided under the project license.</p>
+</div>
+<section id="reporting-bugs">
+<h3>Reporting Bugs<a class="headerlink" href="#reporting-bugs" title="Link to this heading">¶</a></h3>
+<section id="before-submitting-a-bug-report">
+<h4>Before Submitting a Bug Report<a class="headerlink" href="#before-submitting-a-bug-report" title="Link to this heading">¶</a></h4>
+<p>A good bug report shouldn’t leave others needing to chase you up for more information. Therefore, we ask you to investigate carefully, collect information and describe the issue in detail in your report. Please complete the following steps in advance to help us fix any potential bug as fast as possible.</p>
+<ul class="simple">
+<li><p>Make sure that you are using the latest version.</p></li>
+<li><p>Determine if your bug is really a bug and not an error on your side e.g. using incompatible environment components/versions (Make sure that you have read the <a class="reference external" href="https://shenyulu.github.io/easyclimate/">documentation</a>. If you are looking for support, you might want to check <code class="docutils literal notranslate"><span class="pre">this</span> <span class="pre">section</span></code>).</p></li>
+<li><p>To see if other users have experienced (and potentially already solved) the same issue you are having, check if there is not already a bug report existing for your bug or error in the <a class="reference external" href="https://github.com/shenyulu/easyclimateissues?q=label%3Abug">bug tracker</a>.</p></li>
+<li><p>Also make sure to search the internet (including Stack Overflow) to see if users outside of the GitHub community have discussed the issue.</p></li>
+<li><p>Collect information about the bug:
+- Stack trace (Traceback)
+- OS, Platform and Version (Windows, Linux, macOS, x86, ARM)
+- Version of the interpreter, compiler, SDK, runtime environment, package manager, depending on what seems relevant.
+- Possibly your input and the output
+- Can you reliably reproduce the issue? And can you also reproduce it with older versions?</p></li>
+</ul>
+</section>
+<section id="how-do-i-submit-a-good-bug-report">
+<h4>How Do I Submit a Good Bug Report?<a class="headerlink" href="#how-do-i-submit-a-good-bug-report" title="Link to this heading">¶</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must never report security related issues, vulnerabilities or bugs including sensitive information to the issue tracker, or elsewhere in public. Instead sensitive bugs must be sent by email to <cite>shenyulumail&#64;foxmail.com</cite>.</p>
+</div>
+<p>We use GitHub issues to track bugs and errors. If you run into an issue with the project:</p>
+<ul class="simple">
+<li><p>Open an <a class="reference external" href="https://github.com/shenyulu/easyclimate/issues/new">Issue</a>. (Since we can’t be sure at this point whether it is a bug or not, we ask you not to talk about a bug yet and not to label the issue.)</p></li>
+<li><p>Explain the behavior you would expect and the actual behavior.</p></li>
+<li><p>Please provide as much context as possible and describe the <em>reproduction steps</em> that someone else can follow to recreate the issue on their own. This usually includes your code. For good bug reports you should isolate the problem and create a reduced test case.</p></li>
+<li><p>Provide the information you collected in the previous section.</p></li>
+</ul>
+<p>Once it’s filed:</p>
+<ul class="simple">
+<li><p>The project team will label the issue accordingly.</p></li>
+<li><p>A team member will try to reproduce the issue with your provided steps. If there are no reproduction steps or no obvious way to reproduce the issue, the team will ask you for those steps and mark the issue as <code class="docutils literal notranslate"><span class="pre">needs-repro</span></code>. Bugs with the <code class="docutils literal notranslate"><span class="pre">needs-repro</span></code> tag will not be addressed until they are reproduced.</p></li>
+<li><p>If the team is able to reproduce the issue, it will be marked <code class="docutils literal notranslate"><span class="pre">needs-fix</span></code>, as well as possibly other tags (such as <code class="docutils literal notranslate"><span class="pre">critical</span></code>), and the issue will be left to be <code class="docutils literal notranslate"><span class="pre">implemented</span> <span class="pre">by</span> <span class="pre">someone</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<section id="suggesting-enhancements">
+<h3>Suggesting Enhancements<a class="headerlink" href="#suggesting-enhancements" title="Link to this heading">¶</a></h3>
+<p>This section guides you through submitting an enhancement suggestion for easyclimate, <strong>including completely new features and minor improvements to existing functionality</strong>. Following these guidelines will help maintainers and the community to understand your suggestion and find related suggestions.</p>
+<section id="before-submitting-an-enhancement">
+<h4>Before Submitting an Enhancement<a class="headerlink" href="#before-submitting-an-enhancement" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>Make sure that you are using the latest version.</p></li>
+<li><p>Read the <a class="reference external" href="https://shenyulu.github.io/easyclimate/">documentation</a> carefully and find out if the functionality is already covered, maybe by an individual configuration.</p></li>
+<li><p>Perform a <a class="reference external" href="https://github.com/shenyulu/easyclimate/issues">search</a> to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.</p></li>
+<li><p>Find out whether your idea fits with the scope and aims of the project. It’s up to you to make a strong case to convince the project’s developers of the merits of this feature. Keep in mind that we want features that will be useful to the majority of our users and not just a small subset. If you’re just targeting a minority of users, consider writing an add-on/plugin library.</p></li>
+</ul>
+</section>
+<section id="how-do-i-submit-a-good-enhancement-suggestion">
+<h4>How Do I Submit a Good Enhancement Suggestion?<a class="headerlink" href="#how-do-i-submit-a-good-enhancement-suggestion" title="Link to this heading">¶</a></h4>
+<p>Enhancement suggestions are tracked as <a class="reference external" href="https://github.com/shenyulu/easyclimate/issues">GitHub issues</a>.</p>
+<ul class="simple">
+<li><p>Use a <strong>clear and descriptive title</strong> for the issue to identify the suggestion.</p></li>
+<li><p>Provide a <strong>step-by-step description of the suggested enhancement</strong> in as many details as possible.</p></li>
+<li><p><strong>Describe the current behavior</strong> and <strong>explain which behavior you expected to see instead</strong> and why. At this point you can also tell which alternatives do not work for you.</p></li>
+<li><p>You may want to <strong>include screenshots and animated GIFs</strong> which help you demonstrate the steps or point out the part which the suggestion is related to.</p></li>
+<li><p><strong>Explain why this enhancement would be useful</strong> to most easyclimate users. You may also want to point out the other projects that solved it better and which could serve as inspiration.</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+
+</main>
+                        <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
+    <a class="float-left" href="changelog.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>Changelog 😁
+    </a>
+    <a class="float-right" href="softlist.html" title="Next">
+        Open Source Licenses 🤗 <span aria-hidden="true">&nbsp;→</span>
+    </a>
+</nav>
+                    </div>
+                    
+                    <nav class="col-12 col-lg-3 pb-4">
+                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
+                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
+                            <ul>
+<li><a class="reference internal" href="#">Contributing 😸</a><ul>
+<li><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li><a class="reference internal" href="#code-of-conduct">Code of Conduct</a></li>
+<li><a class="reference internal" href="#i-have-a-question">I Have a Question</a></li>
+<li><a class="reference internal" href="#i-want-to-contribute">I Want To Contribute</a><ul>
+<li><a class="reference internal" href="#reporting-bugs">Reporting Bugs</a><ul>
+<li><a class="reference internal" href="#before-submitting-a-bug-report">Before Submitting a Bug Report</a></li>
+<li><a class="reference internal" href="#how-do-i-submit-a-good-bug-report">How Do I Submit a Good Bug Report?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#suggesting-enhancements">Suggesting Enhancements</a><ul>
+<li><a class="reference internal" href="#before-submitting-an-enhancement">Before Submitting an Enhancement</a></li>
+<li><a class="reference internal" href="#how-do-i-submit-a-good-enhancement-suggestion">How Do I Submit a Good Enhancement Suggestion?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </nav>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid bg-primary text-light">
+        <div class="container">
+            <div class="row">
+        <div class="col p-4">
+            
+                <nav aria-label="Footer">
+                    <ul class="nav justify-content-center mb-2">
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://pypi.org/project/easyclimate/">PyPI (easyclimate)</a></li>
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://pypi.org/project/easyclimate-backend/">PyPI (easyclimate-backend)</a></li>
+                        
+                    </ul>
+                </nav>
+            
+            <div class="text-center">
+                    &copy; Copyright 2022-2025, Easyclimate contributors
+            </div>
+            <div class="text-center text-white-50 font-italic mt-3">
+                <small>Last updated: Jul 14, 2025</small>
+            </div>
+        </div>
+    </div>
+        </div>
+    </footer>
+        <script src="../_static/documentation_options.js?v=0a915a47"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script type="text/javascript" src="../_static/dist/theme.js"></script>
+        <script type="text/javascript" src="../_static/dist/vendor.js"></script>
+        <script type="text/javascript" src="../_static/searchtools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() { Search.loadIndex("../searchindex.js"); });
+        </script>
+        <script type="text/javascript" id="searchindexloader"></script>
+    </body>
+</html>
