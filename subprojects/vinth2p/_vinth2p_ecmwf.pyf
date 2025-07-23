@@ -1,0 +1,23 @@
+python module _vinth2p_ecmwf
+    interface
+        subroutine vinth2pecmwf(dati, dato, hbcofa, hbcofb, p0, plevi, plevo, intyp, &
+                                ilev, psfc, spvl, kxtrp, imax, nlat, nlevi, nlevip1, &
+                                nlevo, varflg, tbot, phis) &
+                                bind(c, name='vinth2pecmwf')
+            use iso_c_binding
+            implicit none
+            real(c_double), dimension(imax,nlat,nlevi), intent(in) :: dati
+            real(c_double), dimension(imax,nlat,nlevo), intent(out) :: dato
+            real(c_double), dimension(nlevip1), intent(in) :: hbcofa, hbcofb
+            real(c_double), intent(in) :: p0
+            real(c_double), dimension(nlevip1), intent(inout) :: plevi
+            real(c_double), dimension(nlevo), intent(in) :: plevo
+            integer(c_int), intent(in) :: intyp, ilev, kxtrp
+            real(c_double), dimension(imax,nlat), intent(in) :: psfc
+            real(c_double), intent(in) :: spvl
+            integer(c_int), intent(in) :: imax, nlat, nlevi, nlevip1, nlevo
+            integer(c_int), intent(in) :: varflg
+            real(c_double), dimension(imax,nlat), intent(in) :: tbot, phis
+        end subroutine vinth2pecmwf
+    end interface
+end python module _vinth2p_ecmwf

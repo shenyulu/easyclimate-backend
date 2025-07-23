@@ -450,7 +450,7 @@
      iram = iram /1024         ! [GB]
      memunit = "GB"
   end if
-  write(*,'(1x,a14,1x,i4,1x,a2//)') "Required RAM =", iram, memunit
+  ! write(*,'(1x,a14,1x,i4,1x,a2//)') "Required RAM =", iram, memunit
 !
 ! setup workspace for input data
 ! ------------------------------
@@ -543,7 +543,7 @@
   grravg(:) = 0.0
   rnsim = real(nsim)
   do i = 1, nsim
-     if ((mod(i,50) .eq. 0) .or. (i .eq. 1)) write(*,*) 'ISim =', i
+    !  if ((mod(i,50) .eq. 0) .or. (i .eq. 1)) write(*,*) 'ISim =', i
 !
 !    setup AR(1) time series and estimate its spectrum
 !    -------------------------------------------------
@@ -955,12 +955,12 @@
 !
 ! diagnostic output to stdout
 ! ---------------------------
-  write (*,*) "   N =", np
-  write (*,*) "t(1) = ", t1
-  write (*,*) "t(N) = ", tdum
-  write (*,*) "<dt> = ", avgdt
-  write (*,*) "Nout =", nout
-  write (*,*)
+  ! write (*,*) "   N =", np
+  ! write (*,*) "t(1) = ", t1
+  ! write (*,*) "t(N) = ", tdum
+  ! write (*,*) "<dt> = ", avgdt
+  ! write (*,*) "Nout =", nout
+  ! write (*,*)
 !
   end subroutine setdim
 !

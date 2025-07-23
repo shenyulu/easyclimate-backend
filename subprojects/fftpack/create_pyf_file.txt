@@ -1,1 +1,0 @@
-f2py -h _fftpack.pyf cfft1i.f cfft1b.f cfft1f.f cfft2i.f cfft2b.f cfft2f.f cfftmi.f cfftmb.f cfftmf.f rfft1i.f rfft1b.f rfft1f.f rfft2i.f rfft2b.f rfft2f.f rfftmi.f rfftmb.f rfftmf.f cost1i.f cost1b.f cost1f.f costmi.f costmb.f costmf.f sint1i.f sint1b.f sint1f.f cosq1i.f cosq1b.f cosq1f.f cosqmi.f cosqmb.f cosqmf.f sinq1i.f sinq1b.f sinq1f.f sinqmi.f sinqmb.f sinqmf.f

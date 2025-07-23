@@ -27,9 +27,6 @@ Open Source Licenses 🤗
    * - `windspharm <https://github.com/ajdawson/windspharm>`_
      - 2.0.0
      - `MIT license <https://github.com/ajdawson/windspharm#MIT-1-ov-file>`_
-   * - `FFTPack <https://github.com/NCAR/NCAR-Classic-Libraries-for-Geophysics/tree/main/FFTPack>`_ (In `NCAR-Classic-Libraries-for-Geophysics <https://github.com/NCAR/NCAR-Classic-Libraries-for-Geophysics>`_)
-     - 5.1
-     - `View license <https://github.com/NCAR/NCAR-Classic-Libraries-for-Geophysics/blob/main/FFTPack/LICENSE>`_
    * - `REDFIT-X <https://www.marum.de/Prof.-Dr.-michael-schulz/Michael-Schulz-Software.html>`_ (:download:`Download Mirror Version 1.1 [August 2016] <raw/redfit/redfit-x-11.zip>`)
      - 1.1
      - `View license <https://www.marum.de/Prof.-Dr.-michael-schulz/Michael-Schulz-Software.html>`_
