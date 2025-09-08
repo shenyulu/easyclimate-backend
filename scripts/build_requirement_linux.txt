@@ -1,5 +1,5 @@
 meson-python==0.17.1
 meson==1.6.0
 build==1.2.2.post1
-ninja==1.11.1.2
+ninja==1.11.1.4
 patchelf
