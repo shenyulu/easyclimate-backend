@@ -78,7 +78,6 @@ Document Contents
    :caption: Modules
 
    ./src/module_pyspharm
-   ./src/module_fftpack
 
 .. toctree::
    :maxdepth: 1
