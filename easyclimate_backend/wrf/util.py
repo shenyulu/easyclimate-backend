@@ -41,6 +41,8 @@ from .projection import getproj
 if xarray_enabled():
     from xarray import DataArray
 
+import copy
+from netCDF4 import Dataset
 
 _COORD_PAIR_MAP = {"XLAT": ("XLAT", "XLONG"),
                    "XLONG": ("XLAT", "XLONG"),
@@ -118,8 +120,25 @@ def is_multi_time_req(timeidx):
     return timeidx is None
 
 
+# def is_multi_file(wrfin):
+#     """Return True if the input argument is an iterable.
+
+#     Args:
+
+#         wrfin (:class:`netCDF4.Dataset`, :class:`Nio.NioFile`, or an \
+#             iterable): WRF-ARW NetCDF
+#             data as a :class:`netCDF4.Dataset`, :class:`Nio.NioFile`
+#             or an iterable sequence of the aforementioned types.
+
+#     Returns:
+
+#         :obj:`bool`: True if the input is an iterable.  False if the input
+#         is a single NetCDF file object.
+
+#     """
+#     return (isinstance(wrfin, Iterable) and not isstr(wrfin))
 def is_multi_file(wrfin):
-    """Return True if the input argument is an iterable.
+    """Return True if the input argument is an iterable sequence of files.
 
     Args:
 
@@ -130,11 +149,26 @@ def is_multi_file(wrfin):
 
     Returns:
 
-        :obj:`bool`: True if the input is an iterable.  False if the input
-        is a single NetCDF file object.
-
+        :obj:`bool`: True if the input is an iterable sequence of file-like
+        objects. False if the input is a single NetCDF file object.
     """
+    # Special-case common single-file types so they are NOT treated as
+    # "multi-file" iterables. This avoids iterability checks that can
+    # trigger recursion or incorrect behavior.
+    try:
+        from netCDF4 import Dataset as _NetCDF4Dataset
+    except Exception:
+        _NetCDF4Dataset = None
+
+    # If pyNIO or other readers are used, you may also want to check their
+    # file types here (additionally).
+    # For now, treat netCDF4.Dataset explicitly as a single-file object.
+    if _NetCDF4Dataset is not None and isinstance(wrfin, _NetCDF4Dataset):
+        return False
+
+    # Fallback: original logic, but keep it last.
     return (isinstance(wrfin, Iterable) and not isstr(wrfin))
+
 
 
 def has_time_coord(wrfnc):
@@ -341,26 +375,50 @@ class IterWrapper(Iterable):
         """
         self._wrapped = wrapped
 
+    # def __iter__(self):
+    #     """Return an iterator to the start of the sequence.
+
+    #     Returns:
+
+    #     An iterator to the start of the sequence.
+
+    #     """
+    #     if isinstance(self._wrapped, GeneratorType):
+
+    #         gen_copy = _generator_copy(self._wrapped)
+    #         # If a tuple comes back, then this is a generator expression,
+    #         # so store the first tee'd item, then return the other
+    #         if isinstance(gen_copy, tuple):
+    #             self._wrapped = gen_copy[0]
+    #             return gen_copy[1]
+
+    #         return gen_copy
+    #     else:
+    #         # obj_copy = copy(self._wrapped)
+    #         try:
+    #             obj_copy = copy.copy(self._wrapped)
+    #         except NotImplementedError:
+    #             obj_copy = self._wrapped  # 对于不可复制对象，直接使用引用
+    #         return obj_copy.__iter__()
     def __iter__(self):
-        """Return an iterator to the start of the sequence.
-
-        Returns:
-
-        An iterator to the start of the sequence.
-
-        """
+        """Return an iterator to the start of the sequence."""
         if isinstance(self._wrapped, GeneratorType):
-
             gen_copy = _generator_copy(self._wrapped)
-            # If a tuple comes back, then this is a generator expression,
-            # so store the first tee'd item, then return the other
             if isinstance(gen_copy, tuple):
                 self._wrapped = gen_copy[0]
                 return gen_copy[1]
-
             return gen_copy
         else:
-            obj_copy = copy(self._wrapped)
+            try:
+                obj_copy = copy.copy(self._wrapped)
+            except NotImplementedError:
+                obj_copy = self._wrapped  # 不可复制对象，直接使用引用
+
+            # ✅ 新增判断：如果是 netCDF4.Dataset，则返回单元素迭代器
+            if isinstance(obj_copy, Dataset):
+                return iter([obj_copy])
+
+            # 其他情况保持不变
             return obj_copy.__iter__()
 
 
