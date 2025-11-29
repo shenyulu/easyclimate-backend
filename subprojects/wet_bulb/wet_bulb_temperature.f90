@@ -32,7 +32,11 @@ contains
   ! 
   real function e_s(T)
     real, intent(in) :: T
-    e_s = 6.112 * exp(17.67 * T / (T + 243.5))
+    real :: t_k
+    real :: a = 17.2693882
+    real :: b = 35.86
+    t_k = T + 273.16
+    e_s = 6.1078 * exp(a * (t_k - 273.16) / (t_k - b))
   end function e_s
 
   ! 

@@ -1,0 +1,15 @@
+python module _vibeta_dp
+    interface
+        subroutine DVIBETA(p, x, nlev, xmsg, linlog, psfc, xsfc, pbot, ptop, &
+                           plvcrt, vint, ier) &
+                           bind(c, name='vibeta')
+            use iso_c_binding
+            implicit none
+            real(c_double), dimension(nlev), intent(in) :: p, x
+            integer(c_int), intent(in) :: nlev, linlog
+            real(c_double), intent(in) :: xmsg, psfc, xsfc, pbot, ptop, plvcrt
+            real(c_double), intent(out) :: vint
+            integer(c_int), intent(out) :: ier
+        end subroutine DVIBETA
+    end interface
+end python module _vibeta_dp

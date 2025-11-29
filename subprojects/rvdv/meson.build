@@ -1,0 +1,57 @@
+project('_vibeta', 'c',
+  version : '1.0.0',
+  meson_version: '>=1.1.0',
+  default_options : ['warning_level=2'],
+)
+
+add_languages('fortran')
+
+py_mod = import('python')
+
+py = py_mod.find_installation(pure: false)
+py_dep = py.dependency()
+
+#  Intel Short Vector Math Library (SVML)
+is_windows = build_machine.system() == 'windows'
+
+if is_windows
+  svml_lib = meson.get_compiler('c').find_library('svml_dispmd')
+else
+  svml_path = '/opt/intel/oneapi/compiler/latest/lib'
+  svml_lib = meson.get_compiler('c').find_library('svml', dirs: svml_path)
+endif
+
+incdir_numpy = run_command(py,
+  ['-c', 'import os; os.chdir(".."); import numpy; print(numpy.get_include())'],
+  check : true
+).stdout().strip()
+
+incdir_f2py = run_command(py,
+    ['-c', 'import os; os.chdir(".."); import numpy.f2py; print(numpy.f2py.get_include())'],
+    check : true
+).stdout().strip()
+
+inc_np = include_directories(incdir_numpy, incdir_f2py)
+
+# ----------------------------------------------
+# rvdv
+# ----------------------------------------------
+
+# Fortran source files
+srcs_local = ['src/rvdv.f']
+
+# https://github.com/numpy/numpy/issues/25199
+spherepack_source = custom_target('_rvdvmodule.c',
+  input : ['_rvdv.pyf'],
+  output : ['_rvdvmodule.c', '_rvdv-f2pywrappers.f'],
+  command : [py, '-m', 'numpy.f2py', '@INPUT@', '--lower', '--build-dir', 'subprojects/rvdv']
+)
+
+py.extension_module('_rvdv',
+  srcs_local + spherepack_source,
+  incdir_f2py / 'fortranobject.c',
+  include_directories: inc_np,
+  dependencies : [py_dep, svml_lib],
+  install : true,
+  install_dir: py.get_install_dir() / 'easyclimate_backend' / 'rvdv'
+)

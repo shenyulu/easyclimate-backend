@@ -1,0 +1,32 @@
+python module _rvdv
+    interface
+        subroutine dvrfidf(u, v, glat, glon, mlon, nlat, xmsg, iopt, rv, ier) &
+                         bind(c, name='DVRFIDF')
+            use iso_c_binding
+            implicit none
+            real(c_double), dimension(mlon,nlat), intent(in) :: u, v
+            real(c_double), dimension(nlat), intent(in) :: glat
+            real(c_double), dimension(mlon), intent(in) :: glon
+            real(c_double), intent(in) :: xmsg
+            integer(c_int), intent(in) :: iopt
+            real(c_double), dimension(mlon,nlat), intent(out) :: rv
+            integer(c_int), intent(out) :: ier
+            integer(c_int), intent(in) :: mlon, nlat
+        end subroutine dvrfidf
+    end interface
+    interface
+        subroutine ddvfidf(u, v, glat, glon, mlon, nlat, xmsg, iopt, dv, ier) &
+                         bind(c, name='DDVFIDF')
+            use iso_c_binding
+            implicit none
+            real(c_double), dimension(mlon,nlat), intent(in) :: u, v
+            real(c_double), dimension(nlat), intent(in) :: glat
+            real(c_double), dimension(mlon), intent(in) :: glon
+            real(c_double), intent(in) :: xmsg
+            integer(c_int), intent(in) :: iopt
+            real(c_double), dimension(mlon,nlat), intent(out) :: dv
+            integer(c_int), intent(out) :: ier
+            integer(c_int), intent(in) :: mlon, nlat
+        end subroutine ddvfidf
+    end interface
+end python module _rvdv

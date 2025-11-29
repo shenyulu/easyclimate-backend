@@ -30,6 +30,8 @@ subproject('wrf')
 subproject('aerobulk')
 subproject('wet_bulb')
 subproject('vinth2p')
+subproject('vibeta')
+subproject('rvdv')
 
 install_subdir(
     'easyclimate_backend',
