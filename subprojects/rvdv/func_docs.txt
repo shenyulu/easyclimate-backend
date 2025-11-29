@@ -1,0 +1,49 @@
+rv,ier = dvrfidf(u,v,glat,glon,xmsg,iopt,[mlon,nlat])
+
+Wrapper for ``dvrfidf``.
+
+Parameters
+----------
+u : input rank-2 array('d') with bounds (mlon,nlat)
+v : input rank-2 array('d') with bounds (mlon,nlat)
+glat : input rank-1 array('d') with bounds (nlat)
+glon : input rank-1 array('d') with bounds (mlon)
+xmsg : input float
+iopt : input int
+
+Other Parameters
+----------------
+mlon : input int, optional
+    Default: shape(u, 0)
+nlat : input int, optional
+    Default: shape(u, 1)
+
+Returns
+-------
+rv : rank-2 array('d') with bounds (mlon,nlat)
+ier : int
+
+dv,ier = ddvfidf(u,v,glat,glon,xmsg,iopt,[mlon,nlat])
+
+Wrapper for ``ddvfidf``.
+
+Parameters
+----------
+u : input rank-2 array('d') with bounds (mlon,nlat)
+v : input rank-2 array('d') with bounds (mlon,nlat)
+glat : input rank-1 array('d') with bounds (nlat)
+glon : input rank-1 array('d') with bounds (mlon)
+xmsg : input float
+iopt : input int
+
+Other Parameters
+----------------
+mlon : input int, optional
+    Default: shape(u, 0)
+nlat : input int, optional
+    Default: shape(u, 1)
+
+Returns
+-------
+dv : rank-2 array('d') with bounds (mlon,nlat)
+ier : int
