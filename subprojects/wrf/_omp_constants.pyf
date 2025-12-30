@@ -1,0 +1,6 @@
+python module _omp_constants
+    interface
+        module omp_constants
+        end module omp_constants
+    end interface
+end python module _omp_constants
