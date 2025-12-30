@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" data-content_root="../">
+<head>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>Installation &mdash; Easyclimate-backend v2026.1.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../_static/dist/fontawesome.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/dist/theme.css?v=310cf088" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+            <link rel="index" title="Index" href="../genindex.html" />
+            <link rel="search" title="Search" href="../search.html" />
+            <link rel="top" title="Easyclimate-backend v2026.1.0 documentation" href="#" />
+            <link rel="next" title="Building on Windows" href="building_windows.html" />
+            <link rel="prev" title="Welcome to Easyclimate-backend’s documentation! 🚀" href="../index.html" />
+    </head>
+<body>
+    <script type="text/javascript" src="../_static/dist/blocking.js"></script>
+    <header class="container-fluid bg-primary">
+        <a class="btn btn-sm btn-light skip-to-content-link" href="#main">Skip to content</a>
+        <div class="container-fluid">
+            <div class="navbar navbar-expand-lg navbar-dark font-weight-bold">
+                    <a href="../index.html"
+                        title="ecl_logo"
+                        class="logo navbar-brand"
+                    >
+                        <img src="../_static/logo.svg" width="50" height="59" alt="ecl_logo"
+                            class="logo-img"
+                        />
+                        The backend of Easyclimate
+                    </a>
+                
+                
+                    <div class="collapse navbar-collapse justify-content-end">
+                        <ul class="navbar-nav">
+                            
+                                
+                                
+                                <li class="nav-item"><a class="nav-link"  href="https://easyclimate.readthedocs.io/">Easyclimate docs</a></li>
+                            
+                                
+                                
+                                <li class="nav-item"><a class="nav-link"  href="https://github.com/shenyulu/easyclimate"> Easyclimate repository</a></li>
+                            
+                                
+                                
+                                <li class="nav-item"><a class="nav-link"  href="https://github.com/shenyulu/easyclimate-backend"> Easyclimate-backend repository</a></li>
+                            
+                        </ul>
+                    </div>
+                
+                <button class="navbar-toggler btn btn-primary d-lg-none" type="button" data-toggle="collapse" data-target="#collapseSidebar" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="sr-only">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-12 col-lg-3 sidebar-container">
+                <div id="collapseSidebar" class="collapse sticky-top d-lg-block pt-5 pr-lg-4">
+<div id="searchbox" class="searchbox mb-6 px-1" role="search">
+    <form id="search-form" action="../search.html" autocomplete="off" method="get" role="search">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text border-right-0 bg-white py-3 pl-3 pr-2"><span class="fas fa-search"></span></div>
+            </div>
+            <input class="form-control py-3 pr-3 pl-1 h-100 border-left-0" type="search" name="q" placeholder="Search documentation" aria-label="Search documentation" id="searchinput" />
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div><div class="site-toc">
+    <nav class="toc mt-3" aria-label="Main menu">
+        <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building from source</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="building_windows.html">Building on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_linux.html">Building on Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_manylinux.html">Building manylinux wheels in Docker</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="module_pyspharm.html">Pyspharm</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog 😁</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing 😸</a></li>
+<li class="toctree-l1"><a class="reference internal" href="softlist.html">Open Source Licenses 🤗</a></li>
+</ul>
+
+    </nav>
+    <template data-toggle-item-template>
+        <button class="btn btn-sm btn-link toctree-expand" type="button">
+            <span class="sr-only">Toggle menu contents</span>
+        </button>
+    </template>
+</div>
+                    <div class="d-lg-none border-bottom">
+                        
+                    </div>
+                </div>
+            </aside>
+            <div class="col-12 col-lg-9 pt-5">
+                <header class="row align-items-baseline">
+                    <div class="col">
+                        <nav aria-label="breadcrumb">
+    <ol class="breadcrumb m-0 p-0 bg-transparent">
+        <li class="breadcrumb-item"><a href="../index.html">Docs</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Installation</li>
+    </ol>
+</nav>
+                    </div>
+                    <div class="col-sm-12 col-lg-auto mt-3 mt-lg-3">
+                        <noscript>
+                            <p>JavaScript is required to toggle light/dark mode..</p>
+                        </noscript>
+                        <button id="wagtail-theme" class="btn btn-sm btn-light text-decoration-none" type="button">
+                            <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
+                            <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
+                        </button>
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/shenyulu/easyclimate-backend/blob/main/docs/src/install.rst" rel="nofollow">
+        <span class="btn-icon"><span class="fab fa-github"></span></span>
+        <span class="btn-text">Edit on GitHub</span>
+    </a>
+    <a class="btn btn-sm btn-light text-decoration-none" href="../_sources/src/install.rst.txt" rel="nofollow">
+        <span class="btn-icon"><span class="fas fa-code"></span></span>
+        <span class="btn-text">View source</span>
+    </a>
+                        
+                    </div>
+                </header>
+                <div class="row" >
+                    <div class="col-12">
+                        <hr class="w-100 my-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
+                        <main role="main" id="main">
+    <section id="installation">
+<span id="install"></span><h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
+<p>This document provides step-by-step instructions for installing the <code class="docutils literal notranslate"><span class="pre">easyclimate-backend</span></code> package, a lightweight and efficient tool designed for climate data processing. The installation process leverages the Python Package Index (PyPI) and the <code class="docutils literal notranslate"><span class="pre">pip</span></code> package manager to ensure you obtain the latest stable version of the software.</p>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
+<p>Before proceeding with the installation, ensure the following requirements are met:</p>
+<ul>
+<li><p><strong>Python Version</strong>: Python 3.6 or higher is installed on your system. Verify this by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>--version
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>--version
+</pre></div>
+</div>
+</li>
+<li><p><strong>pip</strong>: The Python package manager <code class="docutils literal notranslate"><span class="pre">pip</span></code> is installed and up-to-date. Check the version with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>--version
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">pip</span></code> is outdated, update it using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+</pre></div>
+</div>
+</li>
+<li><p><strong>Internet Connection</strong>: Required to download the package from PyPI.</p></li>
+<li><p><strong>Permissions</strong>: Ensure you have sufficient permissions to install packages in your Python environment. Use administrator or sudo privileges if necessary.</p></li>
+</ul>
+</section>
+<section id="installation-steps">
+<h2>Installation Steps<a class="headerlink" href="#installation-steps" title="Link to this heading">¶</a></h2>
+<p>Follow these steps to install <code class="docutils literal notranslate"><span class="pre">easyclimate-backend</span></code> using <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
+<ol class="arabic">
+<li><p><strong>Open a Terminal or Command Prompt</strong>
+Launch your system’s terminal (e.g., Command Prompt on Windows, Terminal on macOS/Linux).</p></li>
+<li><p><strong>Install the Package</strong>
+Run the following command to download and install the latest version of <code class="docutils literal notranslate"><span class="pre">easyclimate-backend</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>easyclimate-backend
+</pre></div>
+</div>
+<p>This command fetches the package and its dependencies from PyPI and installs them into your Python environment.</p>
+</li>
+<li><p><strong>Verify the Installation</strong>
+To confirm that <code class="docutils literal notranslate"><span class="pre">easyclimate-backend</span></code> was installed successfully, check the installed version by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>show<span class="w"> </span>easyclimate-backend
+</pre></div>
+</div>
+<p>This will display metadata such as the package name, version, and installation location.</p>
+</li>
+</ol>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">¶</a></h2>
+<p>If you encounter issues during installation, consider the following:</p>
+<ul>
+<li><p><strong>Permission Denied</strong>: If you see a permissions error, prepend <code class="docutils literal notranslate"><span class="pre">sudo</span></code> (on Linux/macOS) or run the terminal as an administrator (on Windows):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>easyclimate-backend
+</pre></div>
+</div>
+</li>
+<li><p><strong>Network Issues</strong>: Ensure your internet connection is stable. If PyPI is unreachable, retry or use a mirror (consult <code class="docutils literal notranslate"><span class="pre">pip</span></code> documentation for details).</p></li>
+<li><p><strong>Virtual Environment</strong>: If working in a virtual environment (recommended for isolated setups), activate it first:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w">  </span><span class="c1"># Linux/macOS</span>
+venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate<span class="w">     </span><span class="c1"># Windows</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="post-installation">
+<h2>Post-Installation<a class="headerlink" href="#post-installation" title="Link to this heading">¶</a></h2>
+<p>Once installed, <code class="docutils literal notranslate"><span class="pre">easyclimate-backend</span></code> is ready to use. Import it in your Python scripts as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">easyclimate_backend</span>
+</pre></div>
+</div>
+<p>Refer to the package’s official documentation for usage instructions, API references, and examples.</p>
+</section>
+<section id="support">
+<h2>Support<a class="headerlink" href="#support" title="Link to this heading">¶</a></h2>
+<p>For further assistance, contact the package maintainers via the official repository (e.g., GitHub) or check the PyPI page for additional resources.</p>
+</section>
+</section>
+
+</main>
+                        <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
+    <a class="float-left" href="../index.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>Welcome to Easyclimate-backend’s documentation! 🚀
+    </a>
+    <a class="float-right" href="building_windows.html" title="Next">
+        Building on Windows <span aria-hidden="true">&nbsp;→</span>
+    </a>
+</nav>
+                    </div>
+                    
+                    <nav class="col-12 col-lg-3 pb-4">
+                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
+                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
+                            <ul>
+<li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#installation-steps">Installation Steps</a></li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li><a class="reference internal" href="#post-installation">Post-Installation</a></li>
+<li><a class="reference internal" href="#support">Support</a></li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </nav>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid bg-primary text-light">
+        <div class="container">
+            <div class="row">
+        <div class="col p-4">
+            
+                <nav aria-label="Footer">
+                    <ul class="nav justify-content-center mb-2">
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://pypi.org/project/easyclimate/">PyPI (easyclimate)</a></li>
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://pypi.org/project/easyclimate-backend/">PyPI (easyclimate-backend)</a></li>
+                        
+                    </ul>
+                </nav>
+            
+            <div class="text-center">
+                    &copy; Copyright 2022-2025, Easyclimate contributors
+            </div>
+            <div class="text-center text-white-50 font-italic mt-3">
+                <small>Last updated: Dec 30, 2025</small>
+            </div>
+        </div>
+    </div>
+        </div>
+    </footer>
+        <script src="../_static/documentation_options.js?v=9fed09df"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script type="text/javascript" src="../_static/dist/theme.js"></script>
+        <script type="text/javascript" src="../_static/dist/vendor.js"></script>
+        <script type="text/javascript" src="../_static/searchtools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() { Search.loadIndex("../searchindex.js"); });
+        </script>
+        <script type="text/javascript" id="searchindexloader"></script>
+    </body>
+</html>

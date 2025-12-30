@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" data-content_root="../">
+<head>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>Pyspharm &mdash; Easyclimate-backend v2026.1.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../_static/dist/fontawesome.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/dist/theme.css?v=310cf088" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+            <link rel="index" title="Index" href="../genindex.html" />
+            <link rel="search" title="Search" href="../search.html" />
+            <link rel="top" title="Easyclimate-backend v2026.1.0 documentation" href="#" />
+            <link rel="next" title="Changelog 😁" href="changelog.html" />
+            <link rel="prev" title="Building manylinux wheels in Docker" href="building_manylinux.html" />
+    </head>
+<body>
+    <script type="text/javascript" src="../_static/dist/blocking.js"></script>
+    <header class="container-fluid bg-primary">
+        <a class="btn btn-sm btn-light skip-to-content-link" href="#main">Skip to content</a>
+        <div class="container-fluid">
+            <div class="navbar navbar-expand-lg navbar-dark font-weight-bold">
+                    <a href="../index.html"
+                        title="ecl_logo"
+                        class="logo navbar-brand"
+                    >
+                        <img src="../_static/logo.svg" width="50" height="59" alt="ecl_logo"
+                            class="logo-img"
+                        />
+                        The backend of Easyclimate
+                    </a>
+                
+                
+                    <div class="collapse navbar-collapse justify-content-end">
+                        <ul class="navbar-nav">
+                            
+                                
+                                
+                                <li class="nav-item"><a class="nav-link"  href="https://easyclimate.readthedocs.io/">Easyclimate docs</a></li>
+                            
+                                
+                                
+                                <li class="nav-item"><a class="nav-link"  href="https://github.com/shenyulu/easyclimate"> Easyclimate repository</a></li>
+                            
+                                
+                                
+                                <li class="nav-item"><a class="nav-link"  href="https://github.com/shenyulu/easyclimate-backend"> Easyclimate-backend repository</a></li>
+                            
+                        </ul>
+                    </div>
+                
+                <button class="navbar-toggler btn btn-primary d-lg-none" type="button" data-toggle="collapse" data-target="#collapseSidebar" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="sr-only">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-12 col-lg-3 sidebar-container">
+                <div id="collapseSidebar" class="collapse sticky-top d-lg-block pt-5 pr-lg-4">
+<div id="searchbox" class="searchbox mb-6 px-1" role="search">
+    <form id="search-form" action="../search.html" autocomplete="off" method="get" role="search">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text border-right-0 bg-white py-3 pl-3 pr-2"><span class="fas fa-search"></span></div>
+            </div>
+            <input class="form-control py-3 pr-3 pl-1 h-100 border-left-0" type="search" name="q" placeholder="Search documentation" aria-label="Search documentation" id="searchinput" />
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div><div class="site-toc">
+    <nav class="toc mt-3" aria-label="Main menu">
+        <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building from source</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="building_windows.html">Building on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_linux.html">Building on Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_manylinux.html">Building manylinux wheels in Docker</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Pyspharm</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog 😁</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing 😸</a></li>
+<li class="toctree-l1"><a class="reference internal" href="softlist.html">Open Source Licenses 🤗</a></li>
+</ul>
+
+    </nav>
+    <template data-toggle-item-template>
+        <button class="btn btn-sm btn-link toctree-expand" type="button">
+            <span class="sr-only">Toggle menu contents</span>
+        </button>
+    </template>
+</div>
+                    <div class="d-lg-none border-bottom">
+                        
+                    </div>
+                </div>
+            </aside>
+            <div class="col-12 col-lg-9 pt-5">
+                <header class="row align-items-baseline">
+                    <div class="col">
+                        <nav aria-label="breadcrumb">
+    <ol class="breadcrumb m-0 p-0 bg-transparent">
+        <li class="breadcrumb-item"><a href="../index.html">Docs</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Pyspharm</li>
+    </ol>
+</nav>
+                    </div>
+                    <div class="col-sm-12 col-lg-auto mt-3 mt-lg-3">
+                        <noscript>
+                            <p>JavaScript is required to toggle light/dark mode..</p>
+                        </noscript>
+                        <button id="wagtail-theme" class="btn btn-sm btn-light text-decoration-none" type="button">
+                            <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
+                            <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
+                        </button>
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/shenyulu/easyclimate-backend/blob/main/docs/src/module_pyspharm.rst" rel="nofollow">
+        <span class="btn-icon"><span class="fab fa-github"></span></span>
+        <span class="btn-text">Edit on GitHub</span>
+    </a>
+    <a class="btn btn-sm btn-light text-decoration-none" href="../_sources/src/module_pyspharm.rst.txt" rel="nofollow">
+        <span class="btn-icon"><span class="fas fa-code"></span></span>
+        <span class="btn-text">View source</span>
+    </a>
+                        
+                    </div>
+                </header>
+                <div class="row" >
+                    <div class="col-12">
+                        <hr class="w-100 my-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
+                        <main role="main" id="main">
+    <section id="pyspharm">
+<span id="module-pyspharm"></span><h1>Pyspharm<a class="headerlink" href="#pyspharm" title="Link to this heading">¶</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p>This module provides a Python interface to the NCAR SPHEREPACK library. It is designed for working with atmospheric general circulation model (GCM) data and supports various spherical harmonic transformations and interpolations.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><a class="reference external" href="https://github.com/jswhit/pyspharm">https://github.com/jswhit/pyspharm</a></p>
+</div>
+<p>You can introduce the <code class="docutils literal notranslate"><span class="pre">Pyspharm</span></code> package built into <code class="docutils literal notranslate"><span class="pre">easyclimate-backend</span></code> in the following way:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">easyclimate_backend.pyspharm</span><span class="w"> </span><span class="kn">import</span> <span class="n">spharm</span>
+</pre></div>
+</div>
+</section>
+<section id="official-documentation">
+<h2>Official documentation<a class="headerlink" href="#official-documentation" title="Link to this heading">¶</a></h2>
+<iframe src="raw/pyspharm/index.html" width="100%" height="500px"></iframe></section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
+<section id="gaussian-lats-wts">
+<h3>1. gaussian_lats_wts<a class="headerlink" href="#gaussian-lats-wts" title="Link to this heading">¶</a></h3>
+<p>Computes Gaussian latitudes (in degrees) and their corresponding quadrature weights.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">easyclimate_backend.pyspharm</span><span class="w"> </span><span class="kn">import</span> <span class="n">spharm</span>
+
+<span class="n">nlat</span> <span class="o">=</span> <span class="mi">72</span>  <span class="c1"># Number of latitude points</span>
+<span class="n">lats</span><span class="p">,</span> <span class="n">wts</span> <span class="o">=</span> <span class="n">spharm</span><span class="o">.</span><span class="n">gaussian_lats_wts</span><span class="p">(</span><span class="n">nlat</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gaussian latitudes (degrees):&quot;</span><span class="p">,</span> <span class="n">lats</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Quadrature weights:&quot;</span><span class="p">,</span> <span class="n">wts</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Gaussian latitudes are ordered from the North Pole to the South Pole.</p></li>
+<li><p>Weights are used for Gaussian integration and should be multiplied by the longitude interval (e.g., <code class="docutils literal notranslate"><span class="pre">2π/nlon</span></code>).</p></li>
+</ul>
+</div>
+</section>
+<section id="getgeodesicpts">
+<h3>2. getgeodesicpts<a class="headerlink" href="#getgeodesicpts" title="Link to this heading">¶</a></h3>
+<p>Computes the latitudes and longitudes of points on a twenty-sided (icosahedral) geodesic grid.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">easyclimate_backend.pyspharm</span><span class="w"> </span><span class="kn">import</span> <span class="n">spharm</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Number of points on each edge of a geodesic triangle</span>
+<span class="n">lats</span><span class="p">,</span> <span class="n">lons</span> <span class="o">=</span> <span class="n">spharm</span><span class="o">.</span><span class="n">getgeodesicpts</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Geodesic point latitudes (degrees):&quot;</span><span class="p">,</span> <span class="n">lats</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Geodesic point longitudes (degrees):&quot;</span><span class="p">,</span> <span class="n">lons</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Use Case</p>
+<p>Generating unstructured grid points for interpolation.</p>
+</div>
+</section>
+<section id="getspecindx">
+<h3>3. getspecindx<a class="headerlink" href="#getspecindx" title="Link to this heading">¶</a></h3>
+<p>Computes indices for zonal wavenumber (<code class="docutils literal notranslate"><span class="pre">m</span></code>) and degree (<code class="docutils literal notranslate"><span class="pre">n</span></code>) of spherical harmonic coefficients.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">easyclimate_backend.pyspharm</span><span class="w"> </span><span class="kn">import</span> <span class="n">spharm</span>
+
+<span class="n">ntrunc</span> <span class="o">=</span> <span class="mi">42</span>  <span class="c1"># Truncation wavenumber (e.g., T42)</span>
+<span class="n">indxm</span><span class="p">,</span> <span class="n">indxn</span> <span class="o">=</span> <span class="n">spharm</span><span class="o">.</span><span class="n">getspecindx</span><span class="p">(</span><span class="n">ntrunc</span><span class="p">)</span>
+
+<span class="c1"># Example: View the first 10 coefficients&#39; m and n</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Index </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: m=</span><span class="si">{</span><span class="n">indxm</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">, n=</span><span class="si">{</span><span class="n">indxn</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Purpose</p>
+<p>Resolves the physical meaning of each element in the spectral coefficient array.</p>
+</div>
+</section>
+<section id="legendre">
+<h3>4. legendre<a class="headerlink" href="#legendre" title="Link to this heading">¶</a></h3>
+<p>Computes associated Legendre functions at a specified latitude and truncation wavenumber.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">easyclimate_backend.pyspharm</span><span class="w"> </span><span class="kn">import</span> <span class="n">spharm</span>
+
+<span class="n">lat</span> <span class="o">=</span> <span class="mf">45.0</span>  <span class="c1"># Latitude (degrees)</span>
+<span class="n">ntrunc</span> <span class="o">=</span> <span class="mi">42</span>  <span class="c1"># Truncation wavenumber</span>
+<span class="n">pnm</span> <span class="o">=</span> <span class="n">spharm</span><span class="o">.</span><span class="n">legendre</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">ntrunc</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape of Legendre function values:&quot;</span><span class="p">,</span> <span class="n">pnm</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (ntrunc+1)*(ntrunc+2)/2</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Results are used for spectral interpolation (e.g., <code class="docutils literal notranslate"><span class="pre">specintrp</span></code>) or custom spectral synthesis.</p>
+</div>
+</section>
+<section id="regrid">
+<h3>5. regrid<a class="headerlink" href="#regrid" title="Link to this heading">¶</a></h3>
+<p>Regrids data from an input grid to an output grid, with optional spectral truncation or smoothing.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">easyclimate_backend.pyspharm</span><span class="w"> </span><span class="kn">import</span> <span class="n">spharm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Initialize input and output grids</span>
+<span class="n">sph_in</span> <span class="o">=</span> <span class="n">spharm</span><span class="o">.</span><span class="n">Spharmt</span><span class="p">(</span><span class="mi">144</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="n">gridtype</span><span class="o">=</span><span class="s1">&#39;gaussian&#39;</span><span class="p">)</span>  <span class="c1"># Input Gaussian grid</span>
+<span class="n">sph_out</span> <span class="o">=</span> <span class="n">spharm</span><span class="o">.</span><span class="n">Spharmt</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">gridtype</span><span class="o">=</span><span class="s1">&#39;regular&#39;</span><span class="p">)</span>   <span class="c1"># Output regular grid</span>
+
+<span class="c1"># Simulate input data (72x144)</span>
+<span class="n">data_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">72</span><span class="p">,</span> <span class="mi">144</span><span class="p">)</span>
+
+<span class="c1"># Perform regridding (automatically truncates to output grid&#39;s ntrunc)</span>
+<span class="n">data_out</span> <span class="o">=</span> <span class="n">spharm</span><span class="o">.</span><span class="n">regrid</span><span class="p">(</span><span class="n">sph_in</span><span class="p">,</span> <span class="n">sph_out</span><span class="p">,</span> <span class="n">data_in</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Output data shape:&quot;</span><span class="p">,</span> <span class="n">data_out</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (64, 128)</span>
+</pre></div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Smoothing Option</p>
+<p>Pass a <code class="docutils literal notranslate"><span class="pre">smooth</span></code> array to define smoothing factors for each wavenumber.</p>
+</div>
+</section>
+<section id="specintrp">
+<h3>6. specintrp<a class="headerlink" href="#specintrp" title="Link to this heading">¶</a></h3>
+<p>Performs spectral interpolation at arbitrary points on the sphere.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">easyclimate_backend.pyspharm</span><span class="w"> </span><span class="kn">import</span> <span class="n">spharm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Initialize Spharmt instance</span>
+<span class="n">sph</span> <span class="o">=</span> <span class="n">spharm</span><span class="o">.</span><span class="n">Spharmt</span><span class="p">(</span><span class="mi">144</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="n">gridtype</span><span class="o">=</span><span class="s1">&#39;gaussian&#39;</span><span class="p">)</span>
+
+<span class="c1"># Generate simulated spectral coefficients (assume converted via grdtospec)</span>
+<span class="n">spec_coeff</span> <span class="o">=</span> <span class="n">sph</span><span class="o">.</span><span class="n">grdtospec</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">72</span><span class="p">,</span> <span class="mi">144</span><span class="p">))</span>
+
+<span class="c1"># Compute Legendre functions at target latitude (e.g., 45°N)</span>
+<span class="n">lat_target</span> <span class="o">=</span> <span class="mf">45.0</span>
+<span class="n">pnm</span> <span class="o">=</span> <span class="n">spharm</span><span class="o">.</span><span class="n">legendre</span><span class="p">(</span><span class="n">lat_target</span><span class="p">,</span> <span class="n">sph</span><span class="o">.</span><span class="n">ntrunc</span><span class="p">)</span>
+
+<span class="c1"># Interpolate at longitude 90°E</span>
+<span class="n">lon_target</span> <span class="o">=</span> <span class="mf">90.0</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">spharm</span><span class="o">.</span><span class="n">specintrp</span><span class="p">(</span><span class="n">lon_target</span><span class="p">,</span> <span class="n">spec_coeff</span><span class="p">,</span> <span class="n">pnm</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Interpolated value at point:&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Legendre functions at the target latitude must be precomputed.</p>
+</div>
+</section>
+</section>
+<section id="spharmt-class-methods">
+<h2>7. Spharmt Class Methods<a class="headerlink" href="#spharmt-class-methods" title="Link to this heading">¶</a></h2>
+<section id="spectogrd">
+<h3>7.1 spectogrd<a class="headerlink" href="#spectogrd" title="Link to this heading">¶</a></h3>
+<p>Transforms spectral coefficients to grid data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">spec_coeff</span> <span class="o">=</span> <span class="n">sph</span><span class="o">.</span><span class="n">grdtospec</span><span class="p">(</span><span class="n">grid_data</span><span class="p">)</span>  <span class="c1"># Assume spectral coefficients are available</span>
+<span class="n">grid_reconstructed</span> <span class="o">=</span> <span class="n">sph</span><span class="o">.</span><span class="n">spectogrd</span><span class="p">(</span><span class="n">spec_coeff</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="getuv">
+<h3>7.2 getuv<a class="headerlink" href="#getuv" title="Link to this heading">¶</a></h3>
+<p>Computes wind components from vorticity and divergence.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume vort_spec and div_spec are spectral coefficients of vorticity and divergence</span>
+<span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">sph</span><span class="o">.</span><span class="n">getuv</span><span class="p">(</span><span class="n">vort_spec</span><span class="p">,</span> <span class="n">div_spec</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="getvrtdivspec">
+<h3>7.3 getvrtdivspec<a class="headerlink" href="#getvrtdivspec" title="Link to this heading">¶</a></h3>
+<p>Computes vorticity and divergence from wind components.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume u_grid and v_grid are grid wind components</span>
+<span class="n">vort_spec</span><span class="p">,</span> <span class="n">div_spec</span> <span class="o">=</span> <span class="n">sph</span><span class="o">.</span><span class="n">getvrtdivspec</span><span class="p">(</span><span class="n">u_grid</span><span class="p">,</span> <span class="n">v_grid</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="getgrad">
+<h3>7.4 getgrad<a class="headerlink" href="#getgrad" title="Link to this heading">¶</a></h3>
+<p>Computes the gradient of a scalar field.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume scalar_spec is the spectral coefficients of a scalar field (e.g., height field)</span>
+<span class="n">ug</span><span class="p">,</span> <span class="n">vg</span> <span class="o">=</span> <span class="n">sph</span><span class="o">.</span><span class="n">getgrad</span><span class="p">(</span><span class="n">scalar_spec</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="getpsichi">
+<h3>7.5 getpsichi<a class="headerlink" href="#getpsichi" title="Link to this heading">¶</a></h3>
+<p>Computes streamfunction and velocity potential from wind components.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">psi_spec</span><span class="p">,</span> <span class="n">chi_spec</span> <span class="o">=</span> <span class="n">sph</span><span class="o">.</span><span class="n">getpsichi</span><span class="p">(</span><span class="n">u_grid</span><span class="p">,</span> <span class="n">v_grid</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="specsmooth">
+<h3>7.6 specsmooth<a class="headerlink" href="#specsmooth" title="Link to this heading">¶</a></h3>
+<p>Applies spectral smoothing.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">smoothed_spec</span> <span class="o">=</span> <span class="n">sph</span><span class="o">.</span><span class="n">specsmooth</span><span class="p">(</span><span class="n">spec_coeff</span><span class="p">,</span> <span class="n">smooth_factors</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="key-notes">
+<h2>Key Notes<a class="headerlink" href="#key-notes" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Grid Orientation</strong>:</p>
+<ul class="simple">
+<li><p>Grid data latitudes are ordered from the North Pole to the South Pole by default.</p></li>
+<li><p>Longitudes start at 0°E and increase eastward.</p></li>
+</ul>
+</li>
+<li><p><strong>Spectral Coefficient Order</strong>:</p>
+<ul class="simple">
+<li><p>Spectral coefficients are arranged in a 1D array of size <code class="docutils literal notranslate"><span class="pre">(ntrunc+1)*(ntrunc+2)/2</span></code>, and their wavenumbers can be resolved using <code class="docutils literal notranslate"><span class="pre">getspecindx</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Performance Optimization</strong>:</p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">legfunc='stored'</span></code> to speed up repeated method calls, but this increases memory usage.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">¶</a></h2>
+<p>With the above functions and examples, the <code class="docutils literal notranslate"><span class="pre">spharm</span></code> module can be used for spherical harmonic analysis, synthesis, interpolation, and physical quantity calculations.</p>
+</section>
+</section>
+
+</main>
+                        <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
+    <a class="float-left" href="building_manylinux.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>Building manylinux wheels in Docker
+    </a>
+    <a class="float-right" href="changelog.html" title="Next">
+        Changelog 😁 <span aria-hidden="true">&nbsp;→</span>
+    </a>
+</nav>
+                    </div>
+                    
+                    <nav class="col-12 col-lg-3 pb-4">
+                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
+                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
+                            <ul>
+<li><a class="reference internal" href="#">Pyspharm</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#official-documentation">Official documentation</a></li>
+<li><a class="reference internal" href="#functions">Functions</a><ul>
+<li><a class="reference internal" href="#gaussian-lats-wts">1. gaussian_lats_wts</a></li>
+<li><a class="reference internal" href="#getgeodesicpts">2. getgeodesicpts</a></li>
+<li><a class="reference internal" href="#getspecindx">3. getspecindx</a></li>
+<li><a class="reference internal" href="#legendre">4. legendre</a></li>
+<li><a class="reference internal" href="#regrid">5. regrid</a></li>
+<li><a class="reference internal" href="#specintrp">6. specintrp</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#spharmt-class-methods">7. Spharmt Class Methods</a><ul>
+<li><a class="reference internal" href="#spectogrd">7.1 spectogrd</a></li>
+<li><a class="reference internal" href="#getuv">7.2 getuv</a></li>
+<li><a class="reference internal" href="#getvrtdivspec">7.3 getvrtdivspec</a></li>
+<li><a class="reference internal" href="#getgrad">7.4 getgrad</a></li>
+<li><a class="reference internal" href="#getpsichi">7.5 getpsichi</a></li>
+<li><a class="reference internal" href="#specsmooth">7.6 specsmooth</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#key-notes">Key Notes</a></li>
+<li><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </nav>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid bg-primary text-light">
+        <div class="container">
+            <div class="row">
+        <div class="col p-4">
+            
+                <nav aria-label="Footer">
+                    <ul class="nav justify-content-center mb-2">
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://pypi.org/project/easyclimate/">PyPI (easyclimate)</a></li>
+                        
+                            
+                            
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://pypi.org/project/easyclimate-backend/">PyPI (easyclimate-backend)</a></li>
+                        
+                    </ul>
+                </nav>
+            
+            <div class="text-center">
+                    &copy; Copyright 2022-2025, Easyclimate contributors
+            </div>
+            <div class="text-center text-white-50 font-italic mt-3">
+                <small>Last updated: Dec 30, 2025</small>
+            </div>
+        </div>
+    </div>
+        </div>
+    </footer>
+        <script src="../_static/documentation_options.js?v=9fed09df"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script type="text/javascript" src="../_static/dist/theme.js"></script>
+        <script type="text/javascript" src="../_static/dist/vendor.js"></script>
+        <script type="text/javascript" src="../_static/searchtools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() { Search.loadIndex("../searchindex.js"); });
+        </script>
+        <script type="text/javascript" id="searchindexloader"></script>
+    </body>
+</html>
