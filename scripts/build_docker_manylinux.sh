@@ -14,6 +14,7 @@ docker run -d --name my_container_${MANYLINUX_VERSION} my-image:${MANYLINUX_VERS
 # ------------------------------------------------
 repository_path=/root/easyclimate-backend
 repository_python_build_requirement=/root/easyclimate-backend/scripts/build_requirement_manylinux.txt
+repository_python314_build_requirement=/root/easyclimate-backend/scripts/build_requirement_3_14_manylinux.txt
 
 # Copy repo
 docker cp . my_container_${MANYLINUX_VERSION}:${repository_path}
@@ -33,7 +34,7 @@ docker exec my_container_${MANYLINUX_VERSION} bash -c "source /root/venv_py311/b
 docker exec my_container_${MANYLINUX_VERSION} /root/venv_py310/bin/python -m pip install -r ${repository_python_build_requirement}
 docker exec my_container_${MANYLINUX_VERSION} bash -c "source /root/venv_py310/bin/activate && cd ${repository_path} && source /opt/intel/oneapi/setvars.sh --force && bash ./scripts/build_wheel_manylinux.sh && cd /root"
 
-docker exec my_container_${MANYLINUX_VERSION} /root/venv_py314/bin/python -m pip install -r ${repository_python_build_requirement}
+docker exec my_container_${MANYLINUX_VERSION} /root/venv_py314/bin/python -m pip install -r ${repository_python314_build_requirement}
 docker exec my_container_${MANYLINUX_VERSION} bash -c "source /root/venv_py314/bin/activate && cd ${repository_path} && source /opt/intel/oneapi/setvars.sh --force && bash ./scripts/build_wheel_manylinux.sh && cd /root"
 
 # Copy file from the container to the host
