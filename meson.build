@@ -21,17 +21,17 @@ endif
 py_mod = import('python')
 py = py_mod.find_installation(pure: false)
 
-subproject('redfit')
-subproject('redfit_x')
-subproject('SEES')
-subproject('pyspharm')
-subproject('heat_stress')
+# subproject('redfit')
+# subproject('redfit_x')
+# subproject('SEES')
+# subproject('pyspharm')
+# subproject('heat_stress')
 subproject('wrf')
-subproject('aerobulk')
-subproject('wet_bulb')
-subproject('vinth2p')
-subproject('vibeta')
-subproject('rvdv')
+# subproject('aerobulk')
+# subproject('wet_bulb')
+# subproject('vinth2p')
+# subproject('vibeta')
+# subproject('rvdv')
 
 install_subdir(
     'easyclimate_backend',
