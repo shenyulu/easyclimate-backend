@@ -4,7 +4,7 @@ project('_spherepack', 'c',
   default_options : ['warning_level=2'],
 )
 
-add_languages('fortran')
+add_languages('fortran', native: false)
 
 py_mod = import('python')
 
