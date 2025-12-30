@@ -1,4 +1,4 @@
-<img src="https://github.com/shenyulu/easyclimate-backend/blob/main/docs/source/_static/logo1.svg?raw=true" alt="easyclimate-backend">
+<img src="https://github.com/shenyulu/easyclimate-backend/blob/main/docs/source/_static/easyclimate_backend_logo_mini.png?raw=true" alt="easyclimate-backend">
 
 <h2 align="center">easyclimate 后端</h2>
 
@@ -41,6 +41,82 @@ pip install easyclimate-backend
 - Numpy = 2.1.0（仅构建时依赖，编译后的wheel支持NumPy 1.24.3及以上版本，含2.x系列）
 - intel-fortran-rt
 - dpcpp-cpp-rt
+
+## 🔧 构建说明
+
+### 先决条件（通用）
+
+- Windows：Windows 10 或更高版本
+- Linux：glibc 2.28 或更高版本，包括：Debian 10+、Ubuntu 18.10+、Fedora 29+、CentOS/RHEL 8+。
+
+### Windows
+
+1. 安装 Intel® oneAPI HPC Toolkit
+   👉 [获取 Intel® oneAPI HPC Toolkit](https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html)
+2. 安装 `uv`：
+
+```powershell
+winget install uv
+```
+
+3. 安装 PowerShell 7
+   👉 [在 Windows 上安装 PowerShell](https://learn.microsoft.com/zh-cn/powershell/scripting/install/install-powershell-on-windows?view=powershell-7.5)
+
+4. 激活 Intel oneAPI 环境，并从项目根目录运行构建脚本：
+
+从开始菜单打开 Intel 64 版 Visual Studio 2022（或更高版本）的 Intel oneAPI 命令提示符。
+
+<img src="https://github.com/shenyulu/easyclimate-backend/blob/main/docs/source/_static/fig1.png?raw=true" alt="easyclimate-backend">
+
+此时，将打开一个 cmd 终端窗口，并打印以下信息。
+
+```
+:: initializing oneAPI environment...
+   Initializing Visual Studio command-line environment...
+   Visual Studio version 17.14.23 environment configured.
+   "C:\Program Files\Microsoft Visual Studio\2022\Community\"
+   Visual Studio command-line environment initialized for: 'x64'
+:  advisor -- latest
+:  compiler -- latest
+:  dal -- latest
+:  debugger -- latest
+:  dev-utilities -- latest
+:  dnnl -- latest
+:  dpcpp-ct -- latest
+:  dpl -- latest
+:  ipp -- latest
+:  ippcp -- latest
+:  mkl -- latest
+:  mpi -- latest
+:  ocloc -- latest
+:  pti -- latest
+:  tbb -- latest
+:  umf -- latest
+:  vtune -- latest
+:: oneAPI environment initialized ::
+```
+
+在终端中输入 "pwsh"，然后运行命令
+
+```powershell
+pwsh
+cd D:\easyclimate-backend # 用您的项目路径替换
+.\scripts\build_wheel_windows.ps1
+```
+
+4. 生成的 wheel 文件将位于 `dist/` 目录中。
+
+### Linux
+
+1. 在您的系统上安装 Docker。
+2. 在项目根目录的 Linux 主机上运行构建脚本：
+
+```bash
+cd /home/shenyulu/easyclimate-backend
+./scripts/topbuild_manywheel_linux.sh
+```
+
+生成的 wheel 也将放置在 `dist/` 目录中。
 
 ## 🪐 开源软件声明
 

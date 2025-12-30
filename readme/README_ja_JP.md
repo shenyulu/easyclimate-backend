@@ -1,4 +1,4 @@
-<img src="https://github.com/shenyulu/easyclimate-backend/blob/main/docs/source/_static/logo1.svg?raw=true" alt="easyclimate-backend">
+<img src="https://github.com/shenyulu/easyclimate-backend/blob/main/docs/source/_static/easyclimate_backend_logo_mini.png?raw=true" alt="easyclimate-backend">
 
 <h2 align="center">easyclimateのバックエンド</h2>
 
@@ -42,6 +42,82 @@ pip install easyclimate-backend
 - Numpy = 2.1.0（ビルド時のみ必須。ビルド済みwheelはNumPy 1.24.3以降（2.x系含む）に対応）
 - intel-fortran-rt
 - dpcpp-cpp-rt
+
+## 🔧 ビルド手順
+
+### 前提条件（一般）
+
+- Windows：Windows 10 以上
+- Linux：glibc 2.28 以降、以下を含む：Debian 10+、Ubuntu 18.10+、Fedora 29+、CentOS/RHEL 8+。
+
+### Windows
+
+1. Intel® oneAPI HPC Toolkit をインストール
+   👉 [Intel® oneAPI HPC Toolkit を入手](https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html)
+2. `uv` をインストール：
+
+```powershell
+winget install uv
+```
+
+3. PowerShell 7 をインストール
+   👉 [Windows に PowerShell をインストールする](https://learn.microsoft.com/ja-jp/powershell/scripting/install/install-powershell-on-windows?view=powershell-7.5)
+
+4. Intel oneAPI 環境をアクティブ化し、プロジェクトのルートからビルドスクリプトを実行：
+
+スタートメニューから、Intel 64 版 Visual Studio 2022（またはそれ以上のバージョン）の Intel oneAPI コマンド プロンプトを開きます。
+
+<img src="https://github.com/shenyulu/easyclimate-backend/blob/main/docs/source/_static/fig1.png?raw=true" alt="easyclimate-backend">
+
+この時点で、cmd ターミナルウィンドウが開き、以下の情報が表示されます。
+
+```
+:: initializing oneAPI environment...
+   Initializing Visual Studio command-line environment...
+   Visual Studio version 17.14.23 environment configured.
+   "C:\Program Files\Microsoft Visual Studio\2022\Community\"
+   Visual Studio command-line environment initialized for: 'x64'
+:  advisor -- latest
+:  compiler -- latest
+:  dal -- latest
+:  debugger -- latest
+:  dev-utilities -- latest
+:  dnnl -- latest
+:  dpcpp-ct -- latest
+:  dpl -- latest
+:  ipp -- latest
+:  ippcp -- latest
+:  mkl -- latest
+:  mpi -- latest
+:  ocloc -- latest
+:  pti -- latest
+:  tbb -- latest
+:  umf -- latest
+:  vtune -- latest
+:: oneAPI environment initialized ::
+```
+
+ターミナルで "pwsh" と入力し、次にコマンドを実行します。
+
+```powershell
+pwsh
+cd D:\easyclimate-backend # プロジェクトパスを置き換え
+.\scripts\build_wheel_windows.ps1
+```
+
+4. 生成された wheel ファイルは `dist/` ディレクトリにあります。
+
+### Linux
+
+1. システムに Docker をインストール。
+2. プロジェクトのルートにある Linux ホストでビルドスクリプトを実行：
+
+```bash
+cd /home/shenyulu/easyclimate-backend
+./scripts/topbuild_manywheel_linux.sh
+```
+
+生成された wheel も `dist/` ディレクトリに配置されます。
 
 ## 🪐 オープンソースソフトウェア声明
 
