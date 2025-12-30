@@ -1,2 +1,2 @@
 # easyclimate_backend/version.py
-__version__ = "2025.12.1"
+__version__ = "2026.1.0"
