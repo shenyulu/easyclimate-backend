@@ -10,8 +10,8 @@ Easyclimate-backend is the powerhouse behind the Easyclimate front-end package, 
 low-level functions for climate data analysis. Implemented in languages like ``Fortran`` and ``C``, 
 these functions ensure that your climate data processing is both efficient and accurate.
 
-.. figure:: ./_static/logo1.svg
-   :scale: 100%
+.. figure:: ./_static/easyclimate_backend_logo_mini.png
+   :scale: 50%
    :align: center
 
 What is Easyclimate-backend?
@@ -33,7 +33,6 @@ Key Features
 ----------------------
 
 - **Aerobulk** 🌊: For bulk aerodynamic calculations, essential for understanding air-sea interactions.
-- **FFTpack** 📈: Fast Fourier Transform operations for frequency domain analysis of time series data.
 - **Heat_Stress** 🌡️: Calculations related to heat stress indices, crucial for studying climate impacts on human health.
 - **PySpharm** 🌍: Spherical harmonic functions for analyzing data on a sphere, perfect for global climate patterns.
 - **Redfit** 📊: Tools for fitting red noise to time series data, useful in climate variability studies.

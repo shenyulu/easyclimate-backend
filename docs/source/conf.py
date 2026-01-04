@@ -67,7 +67,7 @@ html_theme = 'sphinx_wagtail_theme'
 # These are options specifically for the Wagtail Theme.
 html_theme_options = dict(
     project_name = "The backend of Easyclimate",
-    logo = "logo.svg",
+    logo = "easyclimate_backend_logo_mini.png",
     logo_width = 50,
     logo_alt = "ecl_logo",
     header_links = "Easyclimate docs|https://easyclimate.readthedocs.io/, Easyclimate repository|https://github.com/shenyulu/easyclimate, Easyclimate-backend repository|https://github.com/shenyulu/easyclimate-backend",

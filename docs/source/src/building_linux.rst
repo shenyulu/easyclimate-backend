@@ -124,17 +124,8 @@ Execute the following script to build the wheel package:
 
 .. code-block:: bash
 
-    ./build_wheel_linux.sh
-
-The contents of ``build_wheel_linux.sh`` are as follows:  
-
-.. code-block:: bash  
-
-   export CC=gcc  
-   export FC=ifx  
-   find . -type d -name "__pycache__" -exec rm -rf {} +  
-   # https://github.com/mesonbuild/meson-python/issues/507  
-   python -m build --wheel --no-isolation  
+    cd /home/shenyulu/easyclimate-backend # Replace with your project path
+    ./scripts/build_wheel_linux.sh
 
 Additional Notes
 ----------------

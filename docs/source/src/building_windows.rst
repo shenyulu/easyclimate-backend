@@ -18,8 +18,22 @@ Step-by-Step Instructions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Download and install the `Intel® HPC Toolkit <https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html>`__ from the official website.
 
-2. Launch Intel oneAPI Command Prompt
+2. Install Astral uv:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: powershell
+
+   winget install uv
+
+For more methods to install, please refer to `Installing uv <https://docs.astral.sh/uv/getting-started/installation/>`__.
+
+3. Install Powershell 7
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+👉 `Install PowerShell on Windows <https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-windows?view=powershell-7.5>`__
+
+4. Activate Intel oneAPI environment and run the build script from the project root:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 After installation, open the ``Intel oneAPI command prompt for Intel 64 for Visual Studio 2022`` (or higher versions) from the Start menu.
 
 .. figure:: ../_static/fig1.png
@@ -28,71 +42,41 @@ After installation, open the ``Intel oneAPI command prompt for Intel 64 for Visu
 
    Opening the Command Prompt
 
-3. Switch to PowerShell Mode
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+At this point, a cmd terminal window will open and the following information will be printed.
+
+.. code-block::
+
+   :: initializing oneAPI environment...
+      Initializing Visual Studio command-line environment...
+      Visual Studio version 17.14.23 environment configured.
+      "C:\Program Files\Microsoft Visual Studio\2022\Community\"
+      Visual Studio command-line environment initialized for: 'x64'
+   :  advisor -- latest
+   :  compiler -- latest
+   :  dal -- latest
+   :  debugger -- latest
+   :  dev-utilities -- latest
+   :  dnnl -- latest
+   :  dpcpp-ct -- latest
+   :  dpl -- latest
+   :  ipp -- latest
+   :  ippcp -- latest
+   :  mkl -- latest
+   :  mpi -- latest
+   :  ocloc -- latest
+   :  pti -- latest
+   :  tbb -- latest
+   :  umf -- latest
+   :  vtune -- latest
+   :: oneAPI environment initialized ::
+
+
+3. Switch to PowerShell Mode and Build the Wheel Package
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In the opened command prompt window, switch to PowerShell mode by entering the following command:
 
 .. code-block:: powershell
 
-   $ powershell
-
-4. Activate Python Environment
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Activate your `Anaconda <https://www.anaconda.com/download/success>`__ environment or a Python virtual environment (refer to `venv <https://docs.python.org/3/library/venv.html>`__):
-
-.. code-block:: powershell
-
-   $ conda activate myenv
-
-.. note::
-
-   Replace ``myenv`` with the name of your actual environment.
-
-5. Install Required Dependencies
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Install the necessary dependencies listed in the ``build_requirement_windows.txt`` file (root path) by running:
-
-.. code-block:: powershell
-
-   $ pip install -r build_requirement_windows.txt
-
-The contents of ``build_requirement_windows.txt`` are as follows:
-
-::
-
-   meson-python
-   build
-   ninja
-   numpy==2.1.0
-
-6. Build the Wheel Package
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-Execute the following PowerShell script to build the wheel package:
-
-.. code-block:: powershell
-
-   $ .\build_wheel_windows.ps1
-
-The contents of ``build_wheel_windows.ps1`` are as follows:
-
-.. code-block:: powershell
-
-   $Env:CC="cl"
-   $Env:FC="ifx"
-   Get-ChildItem -Path . -Recurse -Directory -Filter __pycache__ | Remove-Item -Recurse -Force
-
-   # https://github.com/mesonbuild/meson-python/issues/507
-   python -m build --wheel --no-isolation
-
-.. rubric:: Explanation
-
-- This script sets essential environment variables (e.g., ``CC`` and ``FC``) and removes ``__pycache__`` directories to ensure a clean build.  
-- The ``--no-isolation`` flag prevents the use of an isolated build environment, speeding up the process.  
-- The script addresses a known issue with ``meson-python``, as documented in `this GitHub issue <https://github.com/mesonbuild/meson-python/issues/507>`__.
-
-Additional Notes
-----------------
-
-- **Environment Setup**: Ensure the Intel® HPC Toolkit is properly installed and that the compiler environment is correctly configured via the Intel oneAPI command prompt.  
-- **NumPy Compatibility**: While NumPy 2.1.0 is used during the wheel build process, the resulting wheel is compatible with NumPy 1.24.3 and higher, including 2.x versions.  
-- **Troubleshooting**: The ``build_wheel_windows.ps1`` script includes a workaround for a known ``meson-python`` issue; see the linked GitHub reference in the script comments for details.
+   pwsh
+   cd D:\easyclimate-backend # Replace with your project path
+   .\scripts\build_wheel_windows.ps1

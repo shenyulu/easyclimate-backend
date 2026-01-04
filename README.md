@@ -119,7 +119,7 @@ cd D:\easyclimate-backend # Replace with your project path
 2. Run the build script on a Linux host in project root:
 
 ```bash
-cd /home/shenyulu/easyclimate-backend
+cd /home/shenyulu/easyclimate-backend # Replace with your project path
 ./scripts/topbuild_manywheel_linux.sh
 ```
 
