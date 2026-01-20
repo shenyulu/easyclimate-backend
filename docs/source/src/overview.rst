@@ -42,11 +42,11 @@ The EasyClimate ecosystem consists of several interconnected repositories:
     :align: center
     :target: https://github.com/shenyulu/easyclimate-rust
 
-    The Rust backend of easyclimate (https://github.com/shenyulu/easyclimate-rust>)
+    The Rust backend of easyclimate (https://github.com/shenyulu/easyclimate-rust)
 
 .. figure:: ../_static/easyclimate_map_logo_mini.png
     :scale: 20%
     :align: center
     :target: https://github.com/shenyulu/easyclimate-map
 
-    Easily obtain map data (https://github.com/shenyulu/easyclimate-map>)
+    Easily obtain map data (https://github.com/shenyulu/easyclimate-map)
