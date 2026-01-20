@@ -24,3 +24,29 @@ Key Features
 - **Windspharm** 💨: Functions for wind speed and direction calculations, vital for atmospheric dynamics.
 - **WRF-Python** ⛈️: Utilities for working with output from the Weather Research and Forecasting (WRF) model.
 - **NCL Functions** 🚩: Functional implementation of the NCL portion of the Fortran code.
+
+EasyClimate Related Repositories
+------------------------------------------------------------------
+
+The EasyClimate ecosystem consists of several interconnected repositories:
+
+.. figure:: _static/easyclimate_logo_mini.png
+    :scale: 20%
+    :align: center
+    :target: https://github.com/shenyulu/easyclimate
+
+    A line of code to analyze climate (https://github.com/shenyulu/easyclimate)
+
+.. figure:: _static/easyclimate_rust_logo_mini.png
+    :scale: 20%
+    :align: center
+    :target: https://github.com/shenyulu/easyclimate-rust
+
+    The Rust backend of easyclimate (https://github.com/shenyulu/easyclimate-rust>)
+
+.. figure:: _static/easyclimate_map_logo_mini.png
+    :scale: 20%
+    :align: center
+    :target: https://github.com/shenyulu/easyclimate-map
+
+    Easily obtain map data (https://github.com/shenyulu/easyclimate-map>)
