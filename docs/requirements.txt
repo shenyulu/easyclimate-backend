@@ -1,2 +1,3 @@
-sphinx-wagtail-theme
-sphinx
+shibuya
+sphinx == 8.2.3
+sphinx-copybutton == 0.5.2
