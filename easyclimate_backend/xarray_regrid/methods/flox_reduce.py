@@ -7,8 +7,8 @@ import numpy as np
 import pandas as pd
 import xarray as xr
 
-from xarray_regrid import utils
-from xarray_regrid.methods._shared import (
+from .. import utils
+from ._shared import (
     construct_intervals,
     reduce_data_to_new_domain,
     restore_properties,

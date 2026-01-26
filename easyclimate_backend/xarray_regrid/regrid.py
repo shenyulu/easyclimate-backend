@@ -4,8 +4,8 @@ from typing import Any, overload
 import numpy as np
 import xarray as xr
 
-from xarray_regrid.methods import conservative, flox_reduce, interp
-from xarray_regrid.utils import format_for_regrid
+from .methods import conservative, flox_reduce, interp
+from .utils import format_for_regrid
 
 
 @xr.register_dataarray_accessor("regrid")

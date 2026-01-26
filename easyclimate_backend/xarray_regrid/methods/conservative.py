@@ -11,7 +11,7 @@ try:
 except ImportError:
     sparse = None
 
-from xarray_regrid import utils
+from .. import utils
 
 
 @overload
