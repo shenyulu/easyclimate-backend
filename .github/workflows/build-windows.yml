@@ -1,0 +1,66 @@
+name: Build wheels (Windows)
+
+on:
+  push:
+    branches: [ "main", "dev" ]
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 1) MSVC 环境（cl/link 等）
+      - name: Enable MSVC Developer Command Prompt
+        uses: ilammy/msvc-dev-cmd@v1
+
+      # 2) 安装 uv（你的脚本依赖 uv）
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
+      # 3) 下载并静默安装 Intel oneAPI HPC Toolkit（ifx）
+      #    说明：下载很大，建议用 cache（见下一步）
+      - name: Cache oneAPI offline installer
+        uses: actions/cache@v4
+        with:
+          path: intel-oneapi-hpc-toolkit-2025.3.1.54_offline.exe
+          key: oneapi-hpc-2025.3.1.54-offline
+
+      - name: Download oneAPI HPC Toolkit (offline)
+        shell: pwsh
+        run: |
+          $exe = "intel-oneapi-hpc-toolkit-2025.3.1.54_offline.exe"
+          if (-not (Test-Path $exe)) {
+            curl.exe -L `
+              "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/36f868e9-84b3-4b4f-90ef-ca84092cae6a/intel-oneapi-hpc-toolkit-2025.3.1.54_offline.exe" `
+              --output $exe
+          }
+          Get-Item $exe | Format-List Name, Length
+
+      - name: Install oneAPI HPC Toolkit (silent)
+        shell: pwsh
+        run: |
+          $exe = "intel-oneapi-hpc-toolkit-2025.3.1.54_offline.exe"
+          Start-Process -FilePath ".\${exe}" -ArgumentList @("-a","--silent","--eula","accept") -Wait -NoNewWindow
+          if (-not (Test-Path "C:\Program Files (x86)\Intel\oneAPI\setvars.bat")) {
+            throw "oneAPI setvars.bat not found. Install may have failed."
+          }
+
+      # 4) 用 setvars.bat 注入 ifx 环境，然后跑你的 powershell 构建脚本
+      #    关键点：setvars.bat 是 cmd 脚本，必须在同一个 step 里用 cmd call
+      - name: Build wheels (PowerShell script)
+        shell: cmd
+        run: |
+          call "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
+          ifx /QV
+          pwsh -NoProfile -ExecutionPolicy Bypass -File scripts\topbuild_manywheel_windows_uv.ps1
+
+      - name: Upload wheels
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheels-windows
+          path: dist\*.whl
