@@ -50,7 +50,7 @@ jobs:
           }
           Get-Item $exe | Format-List Name, Length
 
-      - name: Install oneAPI HPC Toolkit (minimal: MPI + Fortran, silent)
+      - name: Install oneAPI HPC Toolkit #(minimal: MPI + Fortran, silent)
         shell: pwsh
         run: |
           $exe = "intel-oneapi-hpc-toolkit-2025.3.1.54_offline.exe"
