@@ -15,6 +15,9 @@ jobs:
       # 1) MSVC 环境（cl/link 等）
       - name: Enable MSVC Developer Command Prompt
         uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+          vsversion: "2022"
 
       # 2) 安装 uv（你的脚本依赖 uv）
       - name: Install uv
@@ -22,8 +25,14 @@ jobs:
         with:
           enable-cache: true
 
-      # 3) 下载并静默安装 Intel oneAPI HPC Toolkit（ifx）
-      #    说明：下载很大，建议用 cache（见下一步）
+      # （可选）缓存 oneAPI 安装目录：命中则跳过安装
+      - name: Cache Intel oneAPI installation
+        uses: actions/cache@v4
+        with:
+          path: C:\Program Files (x86)\Intel\oneAPI
+          key: oneapi-hpc-2025.3.1.54-installed
+
+      # 3) 缓存离线安装包（避免重复下载）
       - name: Cache oneAPI offline installer
         uses: actions/cache@v4
         with:
@@ -41,12 +50,33 @@ jobs:
           }
           Get-Item $exe | Format-List Name, Length
 
-      - name: Install oneAPI HPC Toolkit (silent)
+      - name: Install oneAPI HPC Toolkit (minimal: MPI + Fortran, silent)
         shell: pwsh
         run: |
           $exe = "intel-oneapi-hpc-toolkit-2025.3.1.54_offline.exe"
-          Start-Process -FilePath ".\${exe}" -ArgumentList @("-a","--silent","--eula","accept") -Wait -NoNewWindow
-          if (-not (Test-Path "C:\Program Files (x86)\Intel\oneAPI\setvars.bat")) {
+          $setvars = "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
+
+          # 已安装则跳过（配合 Cache Intel oneAPI installation）
+          if (Test-Path $setvars) {
+            Write-Host "oneAPI already installed, skip install."
+            exit 0
+          }
+
+          # 只装你本地验证过需要的组件
+          $components = @(
+            "intel.oneapi.win.mpi.devel",
+            "intel.oneapi.win.ifort-compiler"
+          )
+
+          $args = @(
+            "-s","-a","--silent","--eula","accept",
+            "-p=NEED_VS2022_INTEGRATION=0",
+            "--components"
+          ) + $components
+
+          Start-Process -FilePath ".\${exe}" -ArgumentList $args -Wait -NoNewWindow
+
+          if (-not (Test-Path $setvars)) {
             throw "oneAPI setvars.bat not found. Install may have failed."
           }
 
