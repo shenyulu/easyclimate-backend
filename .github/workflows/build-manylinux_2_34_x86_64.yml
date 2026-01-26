@@ -1,4 +1,4 @@
-name: Build manylinux wheels
+name: Build manylinux_2_34_x86_64 wheels
 
 on:
   push:
@@ -20,15 +20,15 @@ jobs:
 
       - name: Make scripts executable
         run: |
-          chmod +x scripts/topbuild_manywheel_linux.sh
           chmod +x scripts/build_docker_manylinux.sh
 
       - name: Build manylinux wheels
         run: |
-          bash scripts/topbuild_manywheel_linux.sh
+          bash ./scripts/build_docker_manylinux.sh manylinux_2_34_x86_64
 
       - name: Upload wheels
         uses: actions/upload-artifact@v4
         with:
           name: manylinux-wheels
           path: dist/*.whl
+          retention-days: 14
