@@ -64,8 +64,7 @@ jobs:
 
           # 只装你本地验证过需要的组件
           $components = @(
-            "intel.oneapi.win.mpi.devel",
-            "intel.oneapi.win.ifort-compiler"
+            "intel.oneapi.win.mpi.devel:intel.oneapi.win.ifort-compiler"
           )
 
           $args = @(
