@@ -27,7 +27,7 @@ release = "v" + easyclimate_backend.__version__
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['sphinx_wagtail_theme']
+extensions = ["sphinx_copybutton"]
 
 templates_path = ['_templates']
 exclude_patterns = []
@@ -38,7 +38,7 @@ html_show_sphinx = False
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'sphinx-wagtail-theme'
+html_theme = "shibuya"
 html_static_path = ['_static']
 
 # 
@@ -56,24 +56,5 @@ html_sidebars = {"**": [
 ]}
 # 
 
-try:
-   extensions
-except NameError:
-   extensions = []
-
-extensions.append('sphinx_wagtail_theme')
-html_theme = 'sphinx_wagtail_theme'
-
-# These are options specifically for the Wagtail Theme.
-html_theme_options = dict(
-    project_name = "The backend of Easyclimate",
-    logo = "logo.svg",
-    logo_width = 50,
-    logo_alt = "ecl_logo",
-    header_links = "Easyclimate docs|https://easyclimate.readthedocs.io/, Easyclimate repository|https://github.com/shenyulu/easyclimate, Easyclimate-backend repository|https://github.com/shenyulu/easyclimate-backend",
-    footer_links = ",".join([
-        "PyPI (easyclimate)|https://pypi.org/project/easyclimate/",
-        "PyPI (easyclimate-backend)|https://pypi.org/project/easyclimate-backend/",
-    ]),
-    github_url = "https://github.com/shenyulu/easyclimate-backend/blob/main/docs/",
-)
+# -- Options for shibuya theme -------------------------------------------------
+html_logo = "_static/easyclimate_backend_logo_mini.png"

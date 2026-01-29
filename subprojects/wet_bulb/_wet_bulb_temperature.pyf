@@ -1,18 +1,18 @@
 !    -*- f90 -*-
 ! Note: the context of this file is case sensitive.
 
-python module _wet_bulb_temperature ! in 
+python module _wet_bulb_temperature ! in
     interface  ! in :_wet_bulb_temperature
-        subroutine wet_bulb_temperature(t_dry,rh,p,tolerance,a,max_iter,t_wet) ! in wet_bulb_temperature.f90
-            real intent(in) :: t_dry
-            real intent(in) :: rh
-            real intent(in) :: p
-            real intent(in) :: tolerance
-            real intent(in) :: a
+        subroutine wet_bulb_temperature(t_dry, rh, p, tolerance, a, max_iter, t_wet) ! in wet_bulb_temperature.f90
+            real(kind=8) intent(in) :: t_dry
+            real(kind=8) intent(in) :: rh
+            real(kind=8) intent(in) :: p
+            real(kind=8) intent(in) :: tolerance
+            real(kind=8) intent(in) :: a
             integer intent(in) :: max_iter
-            real intent(out) :: t_wet
+            real(kind=8) intent(out) :: t_wet
         end subroutine wet_bulb_temperature
-    end interface 
+    end interface
 end python module _wet_bulb_temperature
 
 ! This file was auto-generated with f2py (version:2.1.3).

@@ -6,13 +6,16 @@ LABEL version="2025.8.0" maintainer="shenyulu"
 WORKDIR /root
 
 # AlmaLinux mirror
-RUN sed -e 's|^mirrorlist=|#mirrorlist=|g' -e 's|^# baseurl=https://repo.almalinux.org|baseurl=https://mirrors.aliyun.com|g' -i.bak /etc/yum.repos.d/almalinux*.repo
+# RUN sed -e 's|^mirrorlist=|#mirrorlist=|g' -e 's|^# baseurl=https://repo.almalinux.org|baseurl=https://mirrors.aliyun.com|g' -i.bak /etc/yum.repos.d/almalinux*.repo
 
 # Install AlmaLinux packages
 COPY /config /etc/yum.repos.d
 RUN yum install -y wget
-RUN yum install -y intel-oneapi-hpc-toolkit
-RUN yum clean all
+RUN yum -y install \
+    intel-oneapi-mkl-devel \
+    intel-oneapi-mpi-devel \
+    intel-oneapi-compiler-fortran \
+    && yum clean all
 
 # Build Python Environment
 RUN /opt/python/cp313-cp313/bin/python -m venv venv_py313

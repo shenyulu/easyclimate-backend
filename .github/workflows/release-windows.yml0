@@ -1,0 +1,104 @@
+name: Build & Publish wheels (Windows)
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build-windows-and-publish:
+    runs-on: windows-latest
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 1) MSVC 环境（cl/link 等）
+      - name: Enable MSVC Developer Command Prompt
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+          vsversion: "2022"
+
+      # 2) 安装 uv（你的脚本依赖 uv）
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
+      # （可选）缓存 oneAPI 安装目录：命中则跳过安装
+      - name: Cache Intel oneAPI installation
+        uses: actions/cache@v4
+        with:
+          path: C:\Program Files (x86)\Intel\oneAPI
+          key: oneapi-hpc-2025.3.1.54-installed
+
+      # 3) 缓存离线安装包（避免重复下载）
+      - name: Cache oneAPI offline installer
+        uses: actions/cache@v4
+        with:
+          path: intel-oneapi-hpc-toolkit-2025.3.1.54_offline.exe
+          key: oneapi-hpc-2025.3.1.54-offline
+
+      - name: Download oneAPI HPC Toolkit (offline)
+        shell: pwsh
+        run: |
+          $exe = "intel-oneapi-hpc-toolkit-2025.3.1.54_offline.exe"
+          if (-not (Test-Path $exe)) {
+            curl.exe -L `
+              "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/36f868e9-84b3-4b4f-90ef-ca84092cae6a/intel-oneapi-hpc-toolkit-2025.3.1.54_offline.exe" `
+              --output $exe
+          }
+          Get-Item $exe | Format-List Name, Length
+
+      - name: Install oneAPI HPC Toolkit #(minimal: MPI + Fortran, silent)
+        shell: pwsh
+        run: |
+          $exe = "intel-oneapi-hpc-toolkit-2025.3.1.54_offline.exe"
+          $setvars = "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
+
+          # 已安装则跳过（配合 Cache Intel oneAPI installation）
+          if (Test-Path $setvars) {
+            Write-Host "oneAPI already installed, skip install."
+            exit 0
+          }
+
+          # 只装你本地验证过需要的组件
+          $components = @(
+            "intel.oneapi.win.mpi.devel:intel.oneapi.win.ifort-compiler"
+          )
+
+          $args = @(
+            "-s","-a","--silent","--eula","accept",
+            "-p=NEED_VS2022_INTEGRATION=0",
+            "--components"
+          ) + $components
+
+          Start-Process -FilePath ".\${exe}" -ArgumentList $args -Wait -NoNewWindow
+
+          if (-not (Test-Path $setvars)) {
+            throw "oneAPI setvars.bat not found. Install may have failed."
+          }
+
+      # 4) 用 setvars.bat 注入 ifx 环境，然后跑你的 powershell 构建脚本
+      - name: Build wheels (PowerShell script)
+        shell: cmd
+        run: |
+          call "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
+          ifx /QV
+          pwsh -NoProfile -ExecutionPolicy Bypass -File scripts\topbuild_manywheel_windows_uv.ps1
+
+      - name: List dist
+        shell: pwsh
+        run: |
+          if (!(Test-Path dist)) { throw "dist/ not found" }
+          Get-ChildItem dist | Format-Table Name, Length
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist

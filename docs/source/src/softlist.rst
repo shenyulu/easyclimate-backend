@@ -54,3 +54,6 @@ Open Source Licenses 🤗
    * - `wk_spectra <https://github.com/mmaiergerber/wk_spectra>`_
      - 0.1.1
      - `BSD-2-Clause license <https://github.com/mmaiergerber/wk_spectra/blob/master/LICENSE>`_
+   * - `xarray-regrid <https://github.com/xarray-contrib/xarray-regrid>`_
+     - 0.4.1
+     - `Apache-2.0 license <https://github.com/xarray-contrib/xarray-regrid/blob/main/LICENSE>`_
