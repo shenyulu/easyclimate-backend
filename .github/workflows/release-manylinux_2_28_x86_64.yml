@@ -1,0 +1,38 @@
+name: Build & Publish manylinux wheels to PyPI
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write   # Trusted Publisher
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v3
+
+      - name: Make scripts executable
+        run: |
+          chmod +x scripts/build_docker_manylinux.sh
+
+      - name: Build manylinux wheels
+        run: |
+          bash ./scripts/build_docker_manylinux.sh manylinux_2_28_x86_64
+
+      - name: Check dist contents
+        run: |
+          ls -lh dist
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist

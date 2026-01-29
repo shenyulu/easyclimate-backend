@@ -1,12 +1,17 @@
-name: Build wheels (Windows)
+name: Build & Publish wheels (Windows)
 
 on:
   push:
-    branches: [ "main", "dev" ]
+    tags:
+      - "v*"
 
 jobs:
-  build-windows:
+  build-windows-and-publish:
     runs-on: windows-latest
+
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - name: Checkout
@@ -80,7 +85,6 @@ jobs:
           }
 
       # 4) 用 setvars.bat 注入 ifx 环境，然后跑你的 powershell 构建脚本
-      #    关键点：setvars.bat 是 cmd 脚本，必须在同一个 step 里用 cmd call
       - name: Build wheels (PowerShell script)
         shell: cmd
         run: |
@@ -88,9 +92,13 @@ jobs:
           ifx /QV
           pwsh -NoProfile -ExecutionPolicy Bypass -File scripts\topbuild_manywheel_windows_uv.ps1
 
-      - name: Upload wheels
-        uses: actions/upload-artifact@v4
+      - name: List dist
+        shell: pwsh
+        run: |
+          if (!(Test-Path dist)) { throw "dist/ not found" }
+          Get-ChildItem dist | Format-Table Name, Length
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          name: wheels-windows
-          path: dist\*.whl
-          retention-days: 14
+          packages-dir: dist
