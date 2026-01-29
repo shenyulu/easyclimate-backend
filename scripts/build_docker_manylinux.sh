@@ -19,7 +19,7 @@ repository_python314_build_requirement=/root/easyclimate-backend/scripts/build_r
 # Copy repo
 docker cp . my_container_${MANYLINUX_VERSION}:${repository_path}
 # PyPI mirror
-docker exec my_container_${MANYLINUX_VERSION} /root/venv_py313/bin/python -m pip config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+# docker exec my_container_${MANYLINUX_VERSION} /root/venv_py313/bin/python -m pip config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
 
 # Install Packages for Python Environment
 docker exec my_container_${MANYLINUX_VERSION} /root/venv_py313/bin/python -m pip install -r ${repository_python_build_requirement}

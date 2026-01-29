@@ -149,8 +149,8 @@ jobs:
           python-version: "3.12"
       - name: Build sdist
         run: |
-          python -m pip install -U pip build
-          python -m build --sdist
+          chmod +x scripts/build_docker_sdist.sh
+          bash ./scripts/build_docker_sdist.sh
           ls -lh dist
       - name: Upload sdist artifact
         uses: actions/upload-artifact@v4

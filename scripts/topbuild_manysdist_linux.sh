@@ -1,4 +1,6 @@
 #!/bin/bash
+export CC=gcc
+export FC=ifx
 
 # Check Intel Fortran Compiler status
 ifx -v
