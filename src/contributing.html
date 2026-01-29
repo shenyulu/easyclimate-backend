@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Contributing 😸 - Easyclimate-backend v2026.2.1 documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Open Source Licenses 🤗" href="softlist.html" /><link rel="prev" title="Changelog 😁" href="changelog.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=44020203" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/><meta property="og:title" content="Contributing 😸"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../index.html">
+      <img class="light-logo" src="../_static/easyclimate_backend_logo_mini.png" alt="Easyclimate-backend" height="28" loading="lazy" />
+      <img class="dark-logo" src="../_static/easyclimate_backend_logo_mini.png" alt="Easyclimate-backend" height="28" loading="lazy" />
+      <strong>Easyclimate-backend</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Building from source</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="building_windows.html">Building on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_linux.html">Building on Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_manylinux.html">Building manylinux wheels in Docker</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="module_pyspharm.html">Pyspharm</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Reference documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog 😁</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing 😸</a></li>
+<li class="toctree-l1"><a class="reference internal" href="softlist.html">Open Source Licenses 🤗</a></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><form class="searchbox flex items-center" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form>
+<h3><a href="../index.html">Table of Contents</a></h3>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building from source</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="building_windows.html">Building on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_linux.html">Building on Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_manylinux.html">Building manylinux wheels in Docker</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="module_pyspharm.html">Pyspharm</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog 😁</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing 😸</a></li>
+<li class="toctree-l1"><a class="reference internal" href="softlist.html">Open Source Licenses 🤗</a></li>
+</ul>
+</div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">Easyclimate-backend</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Contributing 😸</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="contributing">
+<span id="id1"></span><h1>Contributing 😸<a class="headerlink" href="#contributing" title="Link to this heading">¶</a></h1>
+<p>First off, thanks for taking the time to contribute! ❤️</p>
+<p>All types of contributions are encouraged and valued. See the <a class="reference internal" href="#id2">Table of Contents</a> for different ways to help and details about how this project handles them. Please make sure to read the relevant section before making your contribution. It will make it a lot easier for us maintainers and smooth out the experience for all involved. The community looks forward to your contributions. 🎉</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>And if you like the project, but just don’t have time to contribute, that’s fine. There are other easy ways to support the project and show your appreciation, which we would also be very happy about:</p>
+<ul class="simple">
+<li><p>Star the project</p></li>
+<li><p>Tweet about it</p></li>
+<li><p>Refer this project in your project’s readme</p></li>
+<li><p>Mention the project at local meetups and tell your friends/colleagues</p></li>
+</ul>
+</div>
+<section id="table-of-contents">
+<span id="id2"></span><h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#code-of-conduct">Code of Conduct</a></p></li>
+<li><p><a class="reference internal" href="#i-have-a-question">I Have a Question</a></p></li>
+<li><p><a class="reference internal" href="#i-want-to-contribute">I Want To Contribute</a>
+- <a class="reference internal" href="#reporting-bugs">Reporting Bugs</a>
+- <a class="reference internal" href="#suggesting-enhancements">Suggesting Enhancements</a>
+- <a href="#id6"><span class="problematic" id="id7">`Your First Code Contribution`_</span></a>
+- <a href="#id8"><span class="problematic" id="id9">`Improving The Documentation`_</span></a></p></li>
+<li><p><a href="#id10"><span class="problematic" id="id11">`Styleguides`_</span></a>
+- <a href="#id12"><span class="problematic" id="id13">`Commit Messages`_</span></a></p></li>
+<li><p><a href="#id14"><span class="problematic" id="id15">`Join The Project Team`_</span></a></p></li>
+</ul>
+</section>
+<section id="code-of-conduct">
+<h2>Code of Conduct<a class="headerlink" href="#code-of-conduct" title="Link to this heading">¶</a></h2>
+<p>This project and everyone participating in it is governed by the <a class="reference external" href="https://github.com/shenyulu/easyclimateblob/master/CODE_OF_CONDUCT.md">easyclimate Code of Conduct</a>.
+By participating, you are expected to uphold this code. Please report unacceptable behavior
+to <cite>shenyulumail&#64;foxmail.com</cite>.</p>
+</section>
+<section id="i-have-a-question">
+<h2>I Have a Question<a class="headerlink" href="#i-have-a-question" title="Link to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to ask a question, we assume that you have read the available <a class="reference external" href="https://shenyulu.github.io/easyclimate/">Documentation</a>.</p>
+</div>
+<p>Before you ask a question, it is best to search for existing <a class="reference external" href="https://github.com/shenyulu/easyclimate/issues">Issues</a> that might help you. In case you have found a suitable issue and still need clarification, you can write your question in this issue. It is also advisable to search the internet for answers first.</p>
+<p>If you then still feel the need to ask a question and need clarification, we recommend the following:</p>
+<ul class="simple">
+<li><p>Open an <a class="reference external" href="https://github.com/shenyulu/easyclimate/issues/new">Issue</a>.</p></li>
+<li><p>Provide as much context as you can about what you’re running into.</p></li>
+<li><p>Provide project and platform versions (nodejs, npm, etc), depending on what seems relevant.</p></li>
+</ul>
+<p>We will then take care of the issue as soon as possible.</p>
+</section>
+<section id="i-want-to-contribute">
+<h2>I Want To Contribute<a class="headerlink" href="#i-want-to-contribute" title="Link to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Legal Notice</strong>:
+When contributing to this project, you must agree that you have authored 100% of the content, that you have the necessary rights to the content and that the content you contribute may be provided under the project license.</p>
+</div>
+<section id="reporting-bugs">
+<h3>Reporting Bugs<a class="headerlink" href="#reporting-bugs" title="Link to this heading">¶</a></h3>
+<section id="before-submitting-a-bug-report">
+<h4>Before Submitting a Bug Report<a class="headerlink" href="#before-submitting-a-bug-report" title="Link to this heading">¶</a></h4>
+<p>A good bug report shouldn’t leave others needing to chase you up for more information. Therefore, we ask you to investigate carefully, collect information and describe the issue in detail in your report. Please complete the following steps in advance to help us fix any potential bug as fast as possible.</p>
+<ul class="simple">
+<li><p>Make sure that you are using the latest version.</p></li>
+<li><p>Determine if your bug is really a bug and not an error on your side e.g. using incompatible environment components/versions (Make sure that you have read the <a class="reference external" href="https://shenyulu.github.io/easyclimate/">documentation</a>. If you are looking for support, you might want to check <code class="docutils literal notranslate"><span class="pre">this</span> <span class="pre">section</span></code>).</p></li>
+<li><p>To see if other users have experienced (and potentially already solved) the same issue you are having, check if there is not already a bug report existing for your bug or error in the <a class="reference external" href="https://github.com/shenyulu/easyclimateissues?q=label%3Abug">bug tracker</a>.</p></li>
+<li><p>Also make sure to search the internet (including Stack Overflow) to see if users outside of the GitHub community have discussed the issue.</p></li>
+<li><p>Collect information about the bug:
+- Stack trace (Traceback)
+- OS, Platform and Version (Windows, Linux, macOS, x86, ARM)
+- Version of the interpreter, compiler, SDK, runtime environment, package manager, depending on what seems relevant.
+- Possibly your input and the output
+- Can you reliably reproduce the issue? And can you also reproduce it with older versions?</p></li>
+</ul>
+</section>
+<section id="how-do-i-submit-a-good-bug-report">
+<h4>How Do I Submit a Good Bug Report?<a class="headerlink" href="#how-do-i-submit-a-good-bug-report" title="Link to this heading">¶</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must never report security related issues, vulnerabilities or bugs including sensitive information to the issue tracker, or elsewhere in public. Instead sensitive bugs must be sent by email to <cite>shenyulumail&#64;foxmail.com</cite>.</p>
+</div>
+<p>We use GitHub issues to track bugs and errors. If you run into an issue with the project:</p>
+<ul class="simple">
+<li><p>Open an <a class="reference external" href="https://github.com/shenyulu/easyclimate/issues/new">Issue</a>. (Since we can’t be sure at this point whether it is a bug or not, we ask you not to talk about a bug yet and not to label the issue.)</p></li>
+<li><p>Explain the behavior you would expect and the actual behavior.</p></li>
+<li><p>Please provide as much context as possible and describe the <em>reproduction steps</em> that someone else can follow to recreate the issue on their own. This usually includes your code. For good bug reports you should isolate the problem and create a reduced test case.</p></li>
+<li><p>Provide the information you collected in the previous section.</p></li>
+</ul>
+<p>Once it’s filed:</p>
+<ul class="simple">
+<li><p>The project team will label the issue accordingly.</p></li>
+<li><p>A team member will try to reproduce the issue with your provided steps. If there are no reproduction steps or no obvious way to reproduce the issue, the team will ask you for those steps and mark the issue as <code class="docutils literal notranslate"><span class="pre">needs-repro</span></code>. Bugs with the <code class="docutils literal notranslate"><span class="pre">needs-repro</span></code> tag will not be addressed until they are reproduced.</p></li>
+<li><p>If the team is able to reproduce the issue, it will be marked <code class="docutils literal notranslate"><span class="pre">needs-fix</span></code>, as well as possibly other tags (such as <code class="docutils literal notranslate"><span class="pre">critical</span></code>), and the issue will be left to be <code class="docutils literal notranslate"><span class="pre">implemented</span> <span class="pre">by</span> <span class="pre">someone</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<section id="suggesting-enhancements">
+<h3>Suggesting Enhancements<a class="headerlink" href="#suggesting-enhancements" title="Link to this heading">¶</a></h3>
+<p>This section guides you through submitting an enhancement suggestion for easyclimate, <strong>including completely new features and minor improvements to existing functionality</strong>. Following these guidelines will help maintainers and the community to understand your suggestion and find related suggestions.</p>
+<section id="before-submitting-an-enhancement">
+<h4>Before Submitting an Enhancement<a class="headerlink" href="#before-submitting-an-enhancement" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>Make sure that you are using the latest version.</p></li>
+<li><p>Read the <a class="reference external" href="https://shenyulu.github.io/easyclimate/">documentation</a> carefully and find out if the functionality is already covered, maybe by an individual configuration.</p></li>
+<li><p>Perform a <a class="reference external" href="https://github.com/shenyulu/easyclimate/issues">search</a> to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.</p></li>
+<li><p>Find out whether your idea fits with the scope and aims of the project. It’s up to you to make a strong case to convince the project’s developers of the merits of this feature. Keep in mind that we want features that will be useful to the majority of our users and not just a small subset. If you’re just targeting a minority of users, consider writing an add-on/plugin library.</p></li>
+</ul>
+</section>
+<section id="how-do-i-submit-a-good-enhancement-suggestion">
+<h4>How Do I Submit a Good Enhancement Suggestion?<a class="headerlink" href="#how-do-i-submit-a-good-enhancement-suggestion" title="Link to this heading">¶</a></h4>
+<p>Enhancement suggestions are tracked as <a class="reference external" href="https://github.com/shenyulu/easyclimate/issues">GitHub issues</a>.</p>
+<ul class="simple">
+<li><p>Use a <strong>clear and descriptive title</strong> for the issue to identify the suggestion.</p></li>
+<li><p>Provide a <strong>step-by-step description of the suggested enhancement</strong> in as many details as possible.</p></li>
+<li><p><strong>Describe the current behavior</strong> and <strong>explain which behavior you expected to see instead</strong> and why. At this point you can also tell which alternatives do not work for you.</p></li>
+<li><p>You may want to <strong>include screenshots and animated GIFs</strong> which help you demonstrate the steps or point out the part which the suggestion is related to.</p></li>
+<li><p><strong>Explain why this enhancement would be useful</strong> to most easyclimate users. You may also want to point out the other projects that solved it better and which could serve as inspiration.</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="changelog.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Changelog 😁</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="softlist.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">Open Source Licenses 🤗</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2022-2026, Easyclimate contributors</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="../_static/documentation_options.js?v=a9ea532d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/shibuya.js?v=cac61aee"></script></body>
+</html>

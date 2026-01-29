@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Building manylinux wheels in Docker - Easyclimate-backend v2026.2.1 documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Pyspharm" href="module_pyspharm.html" /><link rel="prev" title="Building on Linux" href="building_linux.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=44020203" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/><meta property="og:title" content="Building manylinux wheels in Docker"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../index.html">
+      <img class="light-logo" src="../_static/easyclimate_backend_logo_mini.png" alt="Easyclimate-backend" height="28" loading="lazy" />
+      <img class="dark-logo" src="../_static/easyclimate_backend_logo_mini.png" alt="Easyclimate-backend" height="28" loading="lazy" />
+      <strong>Easyclimate-backend</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Building from source</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="building_windows.html">Building on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_linux.html">Building on Linux</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Building manylinux wheels in Docker</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="module_pyspharm.html">Pyspharm</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Reference documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog 😁</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing 😸</a></li>
+<li class="toctree-l1"><a class="reference internal" href="softlist.html">Open Source Licenses 🤗</a></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><form class="searchbox flex items-center" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form>
+<h3><a href="../index.html">Table of Contents</a></h3>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building from source</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="building_windows.html">Building on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_linux.html">Building on Linux</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Building manylinux wheels in Docker</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="module_pyspharm.html">Pyspharm</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog 😁</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing 😸</a></li>
+<li class="toctree-l1"><a class="reference internal" href="softlist.html">Open Source Licenses 🤗</a></li>
+</ul>
+</div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">Easyclimate-backend</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Building manylinux wheels in Docker</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="building-manylinux-wheels-in-docker">
+<span id="building-manylinux-wheels"></span><h1>Building manylinux wheels in Docker<a class="headerlink" href="#building-manylinux-wheels-in-docker" title="Link to this heading">¶</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
+<p>This document provides instructions for building Python manylinux wheels using Docker. Manylinux wheels are portable
+Python binary distributions compatible with multiple Linux distributions, adhering to the manylinux standards (e.g., manylinux_2_34).
+The process leverages a Docker container based on the <code class="docutils literal notranslate"><span class="pre">quay.io/pypa/manylinux_2_34_x86_64</span></code> image
+to ensure a consistent build environment across different Python versions (3.10, 3.11, 3.12, 3.13, and 3.14).</p>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
+<p>Before proceeding, ensure the following requirements are met:</p>
+<ul class="simple">
+<li><p><strong>Docker</strong>: Installed and running on your system. Verify with <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">--version</span></code>.</p></li>
+<li><p><strong>Project Files</strong>: The following files must be present in your working directory:</p></li>
+<li><p><strong>Permissions</strong>: Ensure you have sufficient permissions to run Docker commands (e.g., add your user to the <code class="docutils literal notranslate"><span class="pre">docker</span></code> group or use <code class="docutils literal notranslate"><span class="pre">sudo</span></code>).</p></li>
+<li><p><strong>Disk Space</strong>: Allocate enough space for the Docker image and wheel files (minimum 5-10 GB recommended).</p></li>
+</ul>
+</section>
+<section id="step-by-step-instructions">
+<h2>Step-by-Step Instructions<a class="headerlink" href="#step-by-step-instructions" title="Link to this heading">¶</a></h2>
+<section id="prepare-the-environment">
+<h3>1. Prepare the Environment<a class="headerlink" href="#prepare-the-environment" title="Link to this heading">¶</a></h3>
+<p>Clone or place your project repository in the current working directory. Ensure all required files are present and executable:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">chmod<span class="w"> </span>+x<span class="w"> </span>./scripts/topbuild_manywheel_linux.sh
+</span></pre></div>
+</div>
+</section>
+<section id="execute-the-build-script">
+<h3>2. Execute the Build Script<a class="headerlink" href="#execute-the-build-script" title="Link to this heading">¶</a></h3>
+<p>Run the following command to initiate the entire process:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">bash<span class="w"> </span>./scripts/topbuild_manywheel_linux.sh
+</span></pre></div>
+</div>
+<p>This script performs the following actions:</p>
+<ul class="simple">
+<li><p>Builds a Docker image named <code class="docutils literal notranslate"><span class="pre">my-image</span></code>.</p></li>
+<li><p>Runs a container named <code class="docutils literal notranslate"><span class="pre">my-container</span></code> from the image.</p></li>
+<li><p>Copies the built wheel files from the container to the host.</p></li>
+<li><p>Cleans up by removing the container and image.</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">¶</a></h2>
+<p>This setup provides a reproducible method to build manylinux wheels for Python projects. The resulting <code class="docutils literal notranslate"><span class="pre">.whl</span></code> files in the <code class="docutils literal notranslate"><span class="pre">./dist</span></code> directory can be distributed or uploaded to PyPI.</p>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="building_linux.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Building on Linux</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="module_pyspharm.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">Pyspharm</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2022-2026, Easyclimate contributors</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="../_static/documentation_options.js?v=a9ea532d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/shibuya.js?v=cac61aee"></script></body>
+</html>
