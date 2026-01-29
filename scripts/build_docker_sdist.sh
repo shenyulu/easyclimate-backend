@@ -23,11 +23,11 @@ docker cp . my_container_${MANYLINUX_VERSION}:${repository_path}
 
 # Install Packages for Python Environment
 docker exec my_container_${MANYLINUX_VERSION} /root/venv_py313/bin/python -m pip install -r ${repository_python_build_requirement}
-docker exec my_container_${MANYLINUX_VERSION} bash -c "source /root/venv_py313/bin/activate && cd ${repository_path} && source /opt/intel/oneapi/setvars.sh --force && bash ./scripts/topbuild_manysdist_linux.sh && cd /root"
+docker exec my_container_${MANYLINUX_VERSION} bash -c "source /root/venv_py313/bin/activate && cd ${repository_path} && source /opt/intel/oneapi/setvars.sh --force && git config --global safe.directory '*' && bash ./scripts/topbuild_manysdist_linux.sh && cd /root"
 
 # Copy file from the container to the host
 # ------------------------------------------------
-docker cp my_container_${MANYLINUX_VERSION}:${repository_path}/wheelhouse ./wheelhouse_${MANYLINUX_VERSION}
+# docker cp my_container_${MANYLINUX_VERSION}:${repository_path}/wheelhouse ./wheelhouse_${MANYLINUX_VERSION}
 docker cp my_container_${MANYLINUX_VERSION}:${repository_path}/dist ./wheelhouse_${MANYLINUX_VERSION}
 
 # Delete the container and image
