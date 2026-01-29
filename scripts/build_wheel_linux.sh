@@ -1,3 +1,4 @@
+#!/bin/bash
 export CC=gcc
 export FC=ifx
 find . -type d -name "__pycache__" -exec rm -rf {} +
