@@ -10,12 +10,20 @@ project('easyclimate-backend', 'c',
   default_options : ['warning_level=2'],
 )
 
+is_windows = host_machine.system() == 'windows'
+is_macos = host_machine.system() == 'darwin'
+
 # Windows and linux cross-compile configuration
-if host_machine.system() == 'windows'
+if is_windows
   add_global_arguments('-DNO_APPEND_FORTRAN', language : 'fortran')
   add_global_arguments('-DUPPERCASE_FORTRAN', language : 'fortran')
   add_global_arguments('-DNO_APPEND_FORTRAN', language : 'c')
   add_global_arguments('-DUPPERCASE_FORTRAN', language : 'c')
+endif
+
+if is_macos
+  add_global_arguments('-fPIC', language : 'fortran')
+  add_global_arguments('-fPIC', language : 'c')
 endif
 
 py_mod = import('python')
@@ -24,7 +32,6 @@ py = py_mod.find_installation(pure: false)
 subproject('redfit')
 subproject('redfit_x')
 subproject('SEES')
-subproject('pyspharm')
 subproject('heat_stress')
 subproject('wrf')
 subproject('aerobulk')
