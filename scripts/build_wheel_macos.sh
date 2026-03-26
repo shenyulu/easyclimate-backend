@@ -7,7 +7,7 @@ PYTHON_BIN="${PYTHON_BIN:-python}"
 export CC="${CC:-clang}"
 export FC="${FC:-gfortran}"
 export CXX="${CXX:-clang++}"
-export MACOSX_DEPLOYMENT_TARGET="${MACOSX_DEPLOYMENT_TARGET:-12.0}"
+export MACOSX_DEPLOYMENT_TARGET="${MACOSX_DEPLOYMENT_TARGET:-11.0}"
 
 find . -type d -name "__pycache__" -exec rm -rf {} +
 
