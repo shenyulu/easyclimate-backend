@@ -3,6 +3,7 @@ name: Build wheels (Windows)
 on:
   push:
     branches: [ "main", "dev" ]
+  pull_request:
 
 jobs:
   build-windows:

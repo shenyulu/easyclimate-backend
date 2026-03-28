@@ -29,8 +29,8 @@ classifiers = [
 ]
 dependencies = [
     'numpy >= 1.24.3',
-    'intel-fortran-rt',
-    'dpcpp-cpp-rt',
+    'intel-fortran-rt; sys_platform != "darwin"',
+    'dpcpp-cpp-rt; sys_platform != "darwin"',
     'wrapt'
 ]
 dynamic = ["version"]

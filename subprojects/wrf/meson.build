@@ -6,6 +6,7 @@ project('_wrf', 'c',
 )
 
 is_windows = build_machine.system() == 'windows'
+is_macos = build_machine.system() == 'darwin'
 
 # Windows Build Method
 if is_windows
@@ -78,6 +79,78 @@ if is_windows
     include_directories: inc_np,
     fortran_args: omp_flags,
     dependencies : [py_dep, omp_dep],
+    install : true,
+    install_dir: py.get_install_dir() / 'easyclimate_backend' / 'wrf'
+  )
+
+# macOS Build Method
+elif is_macos
+
+  add_languages('fortran', native: false)
+
+  py_mod = import('python')
+
+  py = py_mod.find_installation(pure: false)
+  py_dep = py.dependency()
+
+  incdir_numpy = run_command(py,
+    ['-c', 'import os; os.chdir(".."); import numpy; print(numpy.get_include())'],
+    check : true
+  ).stdout().strip()
+
+  incdir_f2py = run_command(py,
+      ['-c', 'import os; os.chdir(".."); import numpy.f2py; print(numpy.f2py.get_include())'],
+      check : true
+  ).stdout().strip()
+
+  inc_np = include_directories(incdir_numpy, incdir_f2py)
+
+  omp_src = 'src/ompgen.f90'
+  omp_flags = ['-cpp']
+
+  # Part1: omp_constants module
+  py.extension_module('_omp_constants',
+    omp_src,
+    '_omp_constantsmodule.c',
+    incdir_f2py / 'fortranobject.c',
+    include_directories: inc_np,
+    fortran_args: omp_flags,
+    dependencies : [py_dep],
+    install : true,
+    install_dir: py.get_install_dir() / 'easyclimate_backend' / 'wrf'
+  )
+
+  # Part2: wrf_constants module
+  py.extension_module('_wrf_constants',
+    'src/wrf_constants.f90',
+    '_wrf_constantsmodule.c',
+    '_wrf_constants-f2pywrappers2.f90',
+    incdir_f2py / 'fortranobject.c',
+    include_directories: inc_np,
+    dependencies : [py_dep],
+    install : true,
+    install_dir: py.get_install_dir() / 'easyclimate_backend' / 'wrf'
+  )
+
+  srcs_wrf = [
+    omp_src,
+    'src/wrf_constants.f90',
+    'src/calc_uh.f90', 'src/wrf_bint3d.f', 'src/wrf_cloud_fracf.f90',
+    'src/wrf_fctt.f90', 'src/wrf_pvo.f90', 'src/wrf_pw.f90',
+    'src/wrf_relhl.f90', 'src/wrf_rip_phys_routines.f90', 'src/wrf_user_dbz.f90',
+    'src/wrf_user_latlon_routines.f90', 'src/wrf_user.f90', 'src/wrf_vinterp.f90',
+    'src/wrf_wind.f90', 'src/rip_cape.f90', 'src/eqthecalc.f90',
+    '_wrfmodule.c',
+    '_wrf-f2pywrappers.f',
+    '_wrf-f2pywrappers2.f90',
+    incdir_f2py / 'fortranobject.c',
+  ]
+
+  py.extension_module('_wrf',
+    srcs_wrf,
+    include_directories: inc_np,
+    fortran_args: omp_flags,
+    dependencies : [py_dep],
     install : true,
     install_dir: py.get_install_dir() / 'easyclimate_backend' / 'wrf'
   )

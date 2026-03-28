@@ -25,7 +25,8 @@ inc_np = include_directories(incdir_numpy, incdir_f2py)
 
 lib = static_library('lib_ecl_redfit_x', [
                 'src/nrtype.f90', 'src/nrutil.f90', 'src/mutil.f90',
-                'src/nr.f90', 'src/ran.f90', 'src/ran1.f', 'src/gasdev.f'])
+                'src/nr.f90', 'src/ran.f90', 'src/ran1.f', 'src/gasdev.f'],
+                fortran_args: host_machine.system() == 'darwin' ? ['-fdec'] : [])
 
 # Fortran source files
 srcs_ecl_redfit_x =  ['redfit_x.f90',
@@ -45,6 +46,7 @@ py.extension_module('_ecl_redfit_x',
   incdir_f2py / 'fortranobject.c',
   include_directories: inc_np,
   link_with: lib,
+  fortran_args: host_machine.system() == 'darwin' ? ['-fdec'] : [],
   dependencies : py_dep,
   install : true,
   install_dir: py.get_install_dir() / 'easyclimate_backend' / 'redfit'
