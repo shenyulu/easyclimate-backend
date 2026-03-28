@@ -31,11 +31,24 @@ jobs:
         run: |
           brew update
           brew install gcc
-          gfortran --version
+          if [ -x "/opt/homebrew/bin/gfortran-15" ]; then
+            echo "/opt/homebrew/bin" >> "$GITHUB_PATH"
+            /opt/homebrew/bin/gfortran-15 --version
+          elif [ -x "/usr/local/bin/gfortran-15" ]; then
+            echo "/usr/local/bin" >> "$GITHUB_PATH"
+            /usr/local/bin/gfortran-15 --version
+          elif command -v gfortran >/dev/null 2>&1; then
+            gfortran --version
+          else
+            echo "gfortran not found after brew install gcc" >&2
+            brew --prefix gcc
+            ls -la "$(brew --prefix gcc)/bin" || true
+            exit 1
+          fi
 
       - name: Build wheels (macOS)
         env:
-          FC: gfortran
+          FC: gfortran-15
           MACOSX_DEPLOYMENT_TARGET: "11.0"
         run: |
           chmod +x scripts/topbuild_manywheel_macos_uv.sh scripts/build_wheel_macos.sh
