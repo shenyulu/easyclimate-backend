@@ -1,0 +1,51 @@
+name: Build wheels (macOS)
+
+on:
+  push:
+    branches: [ "main", "dev" ]
+  pull_request:
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
+      - name: Cache Homebrew gcc
+        uses: actions/cache@v4
+        with:
+          path: |
+            /Users/runner/Library/Caches/Homebrew
+            /opt/homebrew/Cellar/gcc
+            /usr/local/Cellar/gcc
+          key: ${{ runner.os }}-homebrew-gcc-15
+
+      - name: Install gfortran
+        run: |
+          brew update
+          brew install gcc
+          gfortran --version
+
+      - name: Build wheels (macOS)
+        env:
+          FC: gfortran
+          MACOSX_DEPLOYMENT_TARGET: "11.0"
+        run: |
+          chmod +x scripts/topbuild_manywheel_macos_uv.sh scripts/build_wheel_macos.sh
+          bash ./scripts/topbuild_manywheel_macos_uv.sh
+          ls -lh dist
+
+      - name: Upload wheels
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheels-macos
+          path: dist/*.whl
+          if-no-files-found: error
+          retention-days: 14
