@@ -13,9 +13,12 @@ py_dep = py.dependency()
 
 #  Intel Short Vector Math Library (SVML)
 is_windows = build_machine.system() == 'windows'
+is_macos = build_machine.system() == 'darwin'
 
 if is_windows
   svml_lib = meson.get_compiler('c').find_library('svml_dispmd')
+elif is_macos
+  svml_lib = declare_dependency()
 else
   svml_path = '/opt/intel/oneapi/compiler/latest/lib'
   svml_lib = meson.get_compiler('c').find_library('svml', dirs: svml_path)

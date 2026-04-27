@@ -12,9 +12,9 @@ WORKDIR /root
 COPY /config /etc/yum.repos.d
 RUN yum install -y wget
 RUN yum -y install \
-    intel-oneapi-mkl-devel \
-    intel-oneapi-mpi-devel \
-    intel-oneapi-compiler-fortran \
+    intel-oneapi-mkl-devel-2025.3.1-8 \
+    intel-oneapi-mpi-devel-2021.17.2-91 \
+    intel-oneapi-compiler-fortran-2025.3.3-30 \
     && yum clean all
 
 # Build Python Environment
