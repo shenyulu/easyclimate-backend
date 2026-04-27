@@ -25,44 +25,63 @@ jobs:
             /Users/runner/Library/Caches/Homebrew
             /opt/homebrew/Cellar/gcc
             /usr/local/Cellar/gcc
-          key: ${{ runner.os }}-homebrew-gcc-15
+          key: ${{ runner.os }}-${{ runner.arch }}-homebrew-gcc-15
+          restore-keys: |
+            ${{ runner.os }}-${{ runner.arch }}-homebrew-gcc-
 
       - name: Install gfortran
         shell: bash
         run: |
+          set -euxo pipefail
+
           brew update
           brew install gcc
 
           echo "Homebrew prefix:"
           brew --prefix
+
           echo "GCC prefix:"
           brew --prefix gcc
 
           echo "Available gfortran binaries:"
-          ls -l "$(brew --prefix gcc)/bin"/gfortran* || true
           ls -l "$(brew --prefix)/bin"/gfortran* || true
+          ls -l "$(brew --prefix gcc)/bin"/gfortran* || true
 
           if [ -x "$(brew --prefix)/bin/gfortran-15" ]; then
-            echo "$(brew --prefix)/bin" >> "$GITHUB_PATH"
-            echo "FC=$(brew --prefix)/bin/gfortran-15" >> "$GITHUB_ENV"
-            "$(brew --prefix)/bin/gfortran-15" --version
+            GFORTRAN="$(brew --prefix)/bin/gfortran-15"
           elif [ -x "$(brew --prefix gcc)/bin/gfortran-15" ]; then
-            echo "$(brew --prefix gcc)/bin" >> "$GITHUB_PATH"
-            echo "FC=$(brew --prefix gcc)/bin/gfortran-15" >> "$GITHUB_ENV"
-            "$(brew --prefix gcc)/bin/gfortran-15" --version
+            GFORTRAN="$(brew --prefix gcc)/bin/gfortran-15"
           elif command -v gfortran >/dev/null 2>&1; then
-            echo "FC=$(command -v gfortran)" >> "$GITHUB_ENV"
-            gfortran --version
+            GFORTRAN="$(command -v gfortran)"
           else
             echo "gfortran not found after brew install gcc" >&2
             exit 1
           fi
 
+          echo "Using GFORTRAN=${GFORTRAN}"
+          "${GFORTRAN}" --version
+
+          mkdir -p "$RUNNER_TEMP/bin"
+          ln -sf "${GFORTRAN}" "$RUNNER_TEMP/bin/gfortran"
+
+          echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
+          echo "FC=${GFORTRAN}" >> "$GITHUB_ENV"
+          echo "F77=${GFORTRAN}" >> "$GITHUB_ENV"
+          echo "F90=${GFORTRAN}" >> "$GITHUB_ENV"
+
       - name: Build wheels (macOS)
         env:
-          FC: gfortran
           MACOSX_DEPLOYMENT_TARGET: "11.0"
+        shell: bash
         run: |
+          set -euxo pipefail
+
+          echo "PATH=${PATH}"
+          echo "FC=${FC}"
+          command -v gfortran
+          gfortran --version
+          "${FC}" --version
+
           chmod +x scripts/topbuild_manywheel_macos_uv.sh scripts/build_wheel_macos.sh
           bash ./scripts/topbuild_manywheel_macos_uv.sh
           ls -lh dist
