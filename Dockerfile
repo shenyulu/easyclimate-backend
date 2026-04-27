@@ -2,7 +2,6 @@ ARG MANYLINUX_VERSION=manylinux_2_34_x86_64
 FROM quay.io/pypa/${MANYLINUX_VERSION}
 
 LABEL version="2025.8.0" maintainer="shenyulu"
-ARG ONEAPI_VERSION=2025.3.1
 
 WORKDIR /root
 
@@ -11,19 +10,11 @@ WORKDIR /root
 
 # Install AlmaLinux packages
 COPY /config /etc/yum.repos.d
-
-# print available versions
-RUN yum --showduplicates list Intel-fortran-essentials || true
-RUN yum --showduplicates list intel-oneapi-compiler-fortran || true
-RUN yum --showduplicates list intel-oneapi-mkl-devel || true
-RUN yum --showduplicates list intel-oneapi-mpi-devel || true
-
-
 RUN yum install -y wget
 RUN yum -y install \
-    intel-oneapi-mkl-devel-${ONEAPI_VERSION}* \
-    intel-oneapi-mpi-devel-${ONEAPI_VERSION}* \
-    intel-oneapi-compiler-fortran-${ONEAPI_VERSION}* \
+    intel-oneapi-mkl-devel-2025.3.1-8 \
+    intel-oneapi-mpi-devel-2021.17.2-91 \
+    intel-oneapi-compiler-fortran-2025.3.3-30 \
     && yum clean all
 
 # Build Python Environment
