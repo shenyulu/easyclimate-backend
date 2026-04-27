@@ -1,9 +1,10 @@
-name: Build & Publish (Linux + macOS + Windows)
+name: CI Build & Publish (Linux + macOS + Windows)
 
 on:
   push:
-    tags:
-      - "v*"
+    branches: [ "main", "dev" ]
+  pull_request:
+    branches: [ "main", "dev" ]
 
 jobs:
   # -------------------------
@@ -266,7 +267,3 @@ jobs:
         run: |
           ls -lh dist
 
-      - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          packages-dir: dist
