@@ -25,6 +25,20 @@ docker cp . my_container_${MANYLINUX_VERSION}:${repository_path}
 docker exec my_container_${MANYLINUX_VERSION} /root/venv_py313/bin/python -m pip install -r ${repository_python_build_requirement}
 docker exec my_container_${MANYLINUX_VERSION} bash -c "source /root/venv_py313/bin/activate && cd ${repository_path} && source /opt/intel/oneapi/setvars.sh --force && git config --global safe.directory '*' && bash ./scripts/topbuild_manysdist_linux.sh && cd /root"
 
+# Smoke test the source distribution in the same build environment.
+docker exec my_container_${MANYLINUX_VERSION} bash -c "source /root/venv_py313/bin/activate && cd ${repository_path} && python -m pip install --force-reinstall dist/*.tar.gz && python - <<'PY'
+import easyclimate_backend
+import easyclimate_backend.wrf as wrf
+from easyclimate_backend.pyspharm import spharm
+from easyclimate_backend.wrf import extension, constants
+
+print('easyclimate_backend:', easyclimate_backend.__version__)
+print('easyclimate_backend.wrf:', wrf.__name__)
+print('easyclimate_backend.pyspharm:', spharm.__version__)
+print('easyclimate_backend.wrf.extension:', extension.__name__)
+print('easyclimate_backend.wrf.constants:', constants.__name__)
+PY"
+
 # Copy file from the container to the host
 # ------------------------------------------------
 # docker cp my_container_${MANYLINUX_VERSION}:${repository_path}/wheelhouse ./wheelhouse_${MANYLINUX_VERSION}
