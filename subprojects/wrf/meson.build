@@ -214,6 +214,7 @@ else
     'src/wrf_relhl.f90', 'src/wrf_rip_phys_routines.f90', 'src/wrf_user_dbz.f90',
     'src/wrf_user_latlon_routines.f90', 'src/wrf_user.f90', 'src/wrf_vinterp.f90',
     'src/wrf_wind.f90', 'src/rip_cape.f90', 'src/eqthecalc.f90',
+    '_wrf-f2pywrappers2.f90',
   ]
 
   # https://github.com/numpy/numpy/issues/25199

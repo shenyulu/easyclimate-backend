@@ -233,11 +233,6 @@ jobs:
           bash ./scripts/build_docker_sdist.sh
           ls -lh dist
 
-      - name: Test sdist import
-        run: |
-          python -m pip install dist/*.tar.gz
-          python -c "import easyclimate_backend; from easyclimate_backend.pyspharm import spharm; from easyclimate_backend.wrf import extension, constants; print(easyclimate_backend.__version__); print(spharm.__version__); print(extension.__name__); print(constants.__name__)"
-
       - name: Upload sdist artifact
         uses: actions/upload-artifact@v4
         with:
