@@ -31,7 +31,8 @@ dependencies = [
     'numpy >= 1.24.3',
     'intel-fortran-rt; sys_platform != "darwin"',
     'dpcpp-cpp-rt; sys_platform != "darwin"',
-    'wrapt'
+    'wrapt',
+    'netCDF4'
 ]
 dynamic = ["version"]
 
