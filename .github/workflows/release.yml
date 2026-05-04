@@ -266,6 +266,13 @@ jobs:
         run: |
           ls -lh dist
 
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/**/*.whl
+            dist/**/*.tar.gz
+
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
